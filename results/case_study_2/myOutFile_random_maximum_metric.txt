@@ -1,0 +1,464 @@
+DB00175  Cytochrome P-450 CYP3A4 Substrates  0.5216758734725808
+DB00176  P-glycoprotein/ABCB1 Substrates  0.5058331030534513
+DB00182  Psychotropic Drugs  0.6550359384344991
+DB00182  QTc Prolonging Agents  0.6769335246081295
+DB00182  Serotonin Agents  0.6760885247581095
+DB00186  Cytochrome P-450 Enzyme Inhibitors  0.5296373306072137
+DB00193  Neurotransmitter Agents  0.6177156962258322
+DB00193  QTc Prolonging Agents  0.5601517238312215
+DB00195  Cytochrome P-450 CYP3A Substrates  0.5016848656751535
+DB00195  Cytochrome P-450 CYP3A4 Substrates  0.5034617283377134
+DB00196  Cytochrome P-450 CYP3A Substrates  0.6965149135650968
+DB00196  Cytochrome P-450 CYP3A4 Substrates  0.6953723989065118
+DB00197  Cytochrome P-450 CYP3A Substrates  0.5948437405741519
+DB00197  Cytochrome P-450 CYP3A4 Substrates  0.59386800024191
+DB00201  Cytochrome P-450 CYP3A Inhibitors  0.519618667439108
+DB00206  Cytochrome P-450 CYP3A Substrates  0.5705511506751877
+DB00206  Cytochrome P-450 CYP3A4 Substrates  0.5701804676113219
+DB00216  Cytochrome P-450 Enzyme Inhibitors  0.7228072815226896
+DB00230  Cytochrome P-450 Enzyme Inhibitors  0.74323083170443
+DB00231  Cytochrome P-450 Enzyme Inhibitors  0.5249798865615946
+DB00246  Agents producing tachycardia  0.6142788074080466
+DB00246  Agents that reduce seizure threshold  0.5203546397033723
+DB00246  Cytochrome P-450 CYP2D6 Substrates  0.8671716145049612
+DB00246  Potential QTc-Prolonging Agents  0.5595815642400722
+DB00250  Cytochrome P-450 Enzyme Inhibitors  0.5874734605611409
+DB00257  Cytochrome P-450 CYP3A Substrates  0.7713492441771261
+DB00257  Cytochrome P-450 CYP3A4 Substrates  0.7700839764833592
+DB00259  Cytochrome P-450 CYP3A Substrates  0.568972520016698
+DB00259  Cytochrome P-450 CYP3A4 Substrates  0.5680392170366889
+DB00264  Cytochrome P-450 CYP3A Substrates  0.7508787298552514
+DB00264  Cytochrome P-450 CYP3A4 Substrates  0.7498106503479114
+DB00277  Cytochrome P-450 Enzyme Inhibitors  0.5795009365760395
+DB00281  Cytochrome P-450 CYP3A Inhibitors  0.5688614833468001
+DB00281  Cytochrome P-450 CYP3A4 Inhibitors  0.5470799540655317
+DB00281  Enzyme Inhibitors  0.5110893514458454
+DB00285  Agents that produce hypertension  0.7545295197125244
+DB00285  Neurotoxic agents  0.5397677249468186
+DB00289  Central Nervous System Agents  0.711253527689656
+DB00289  Psychotropic Drugs  0.5411742244519705
+DB00289  Serotonergic Drugs Shown to Increase Risk of Serotonin Syndrome  0.5629080186776322
+DB00289  Serotonin Agents  0.5601657643068068
+DB00295  Cytochrome P-450 Enzyme Inhibitors  0.6765059311932626
+DB00313  Cytochrome P-450 CYP3A4 Substrates  1.1812689368173364
+DB00313  P-glycoprotein/ABCB1 Inhibitors  0.5129268855359482
+DB00315  Central Nervous System Agents  0.5275021395891302
+DB00316  Enzyme Inhibitors  0.5636198277710995
+DB00318  Cytochrome P-450 Enzyme Inhibitors  0.626027803962186
+DB00320  Enzyme Inhibitors  0.5076591480875875
+DB00321  Potential QTc-Prolonging Agents  0.6561571667984014
+DB00321  Psycholeptics  0.5856414764907718
+DB00327  Cytochrome P-450 Enzyme Inhibitors  0.5931212718975617
+DB00333  Cytochrome P-450 CYP3A Substrates  0.5232312309090117
+DB00333  Cytochrome P-450 CYP3A4 Substrates  0.5207355805377016
+DB00333  Enzyme Inhibitors  0.6435983824609574
+DB00333  Neurotransmitter Agents  0.5149890065470423
+DB00333  P-glycoprotein/ABCB1 Substrates  0.5794914774756085
+DB00334  Agents that reduce seizure threshold  0.6646464250428982
+DB00334  Central Nervous System Depressants  0.533589767745815
+DB00335  Cytochrome P-450 CYP3A Substrates  0.5062198076298758
+DB00335  Cytochrome P-450 CYP3A4 Substrates  0.5053894667520785
+DB00342  Central Nervous System Agents  0.5048211921665342
+DB00342  Enzyme Inhibitors  0.5093489508886878
+DB00343  Central Nervous System Agents  0.5246728893769581
+DB00343  Enzyme Inhibitors  0.5293786989920595
+DB00344  Adrenergic Antagonists  0.513719495580008
+DB00344  Agents producing tachycardia  0.5714713281607331
+DB00344  Anticholinergic Agents  0.505658227828252
+DB00344  Histamine Antagonists  0.5186790972707372
+DB00347  Cytochrome P-450 Enzyme Inhibitors  0.5787641218497475
+DB00363  Membrane Transport Modulators  0.5055024923009485
+DB00363  Potential QTc-Prolonging Agents  0.6029944099304474
+DB00363  Serotonergic Drugs Shown to Increase Risk of Serotonin Syndrome  1.0181435647911543
+DB00365  Cytochrome P-450 Enzyme Inhibitors  0.5443317500974671
+DB00366  Nervous System  0.6349910884033519
+DB00366  Psychotropic Drugs  0.5023575599289042
+DB00366  Serotonergic Drugs Shown to Increase Risk of Serotonin Syndrome  0.508627080064359
+DB00366  Serotonin Agents  0.5179432396467369
+DB00370  Agents producing tachycardia  0.5345695211887301
+DB00370  Neurotoxic agents  0.5942767391489288
+DB00373  Cytochrome P-450 CYP3A Substrates  0.5142981731888858
+DB00373  Cytochrome P-450 CYP3A4 Substrates  0.5152829259775875
+DB00390  Cytochrome P-450 Enzyme Inhibitors  0.6174932352640643
+DB00391  Serotonergic Drugs Shown to Increase Risk of Serotonin Syndrome  0.5057736866270931
+DB00391  Serotonin Agents  0.5112370049422642
+DB00393  Cytochrome P-450 Enzyme Inhibitors  0.5761372353464338
+DB00396  Cytochrome P-450 CYP3A4 Inhibitors  0.5233159841657922
+DB00398  Central Nervous System Agents  0.5616135765161552
+DB00401  Cytochrome P-450 Enzyme Inhibitors  0.5477064906797462
+DB00404  Cytochrome P-450 Enzyme Inhibitors  0.5650835476614082
+DB00408  Agents that produce hypertension  0.5344051563400496
+DB00408  Cytochrome P-450 CYP2D6 Substrates  0.5283374563848322
+DB00408  QTc Prolonging Agents  0.5873662594068332
+DB00409  Serotonin Agents  0.5013367780834408
+DB00420  Agents that reduce seizure threshold  0.588628918767084
+DB00420  Cytochrome P-450 CYP2D6 Inhibitors  0.5616339241132616
+DB00420  Membrane Transport Modulators  0.5074778506511617
+DB00420  Potential QTc-Prolonging Agents  0.6215444235647588
+DB00422  Cytochrome P-450 CYP2D6 Substrates  0.501735282081752
+DB00422  Psychotropic Drugs  0.5508643237206957
+DB00422  QTc Prolonging Agents  0.5578171178812861
+DB00425  Cytochrome P-450 Enzyme Inhibitors  0.602947683808987
+DB00433  Cytochrome P-450 Enzyme Inhibitors  0.5950678698005972
+DB00434  Central Nervous System Agents  0.6240061348960914
+DB00434  Nervous System  0.645552199917901
+DB00434  Psychotropic Drugs  0.5115003557230481
+DB00434  Serotonergic Drugs Shown to Increase Risk of Serotonin Syndrome  0.5172457989996261
+DB00435  Cytochrome P-450 CYP3A Substrates  0.5287973699200528
+DB00435  Cytochrome P-450 CYP3A4 Substrates  0.5279299674642138
+DB00443  Cytochrome P-450 Enzyme Inhibitors  0.5892111562702947
+DB00446  Cytochrome P-450 CYP3A Substrates  0.654581819026907
+DB00446  Cytochrome P-450 CYP3A4 Substrates  0.6535080885023824
+DB00448  Central Nervous System Agents  0.5002333202466133
+DB00450  Cytochrome P-450 CYP2D6 Substrates  0.5926369772764765
+DB00450  Serotonergic Drugs Shown to Increase Risk of Serotonin Syndrome  0.6581180460279428
+DB00450  Serotonin Agents  0.6707980578525552
+DB00454  Cytochrome P-450 Enzyme Inhibitors  0.7261432427782019
+DB00455  Enzyme Inhibitors  0.5002594897235694
+DB00458  Potential QTc-Prolonging Agents  0.6562529160846038
+DB00458  Psycholeptics  0.583810080622159
+DB00468  Cytochrome P-450 CYP3A Substrates  0.6641517295828405
+DB00468  Cytochrome P-450 CYP3A4 Substrates  0.661421970739076
+DB00468  Enzyme Inhibitors  0.703140745656035
+DB00468  Neurotransmitter Agents  0.5624468786001471
+DB00472  Agents that produce hypertension  0.7240182901379502
+DB00476  Agents that produce hypertension  0.6250734167878084
+DB00476  QTc Prolonging Agents  0.7190685709888385
+DB00477  Central Nervous System Depressants  0.5230923036055821
+DB00477  Membrane Transport Modulators  0.5554979563845206
+DB00477  Potential QTc-Prolonging Agents  0.6790012029996809
+DB00482  Cytochrome P-450 CYP3A Inhibitors  0.5188620169076079
+DB00490  Cytochrome P-450 Enzyme Inhibitors  0.6398358629641043
+DB00495  Cytochrome P-450 Enzyme Inhibitors  0.5472814503915294
+DB00497  Cytochrome P-450 Enzyme Inhibitors  0.5887527449020216
+DB00501  Cytochrome P-450 CYP3A Substrates  0.7124176522827239
+DB00501  Cytochrome P-450 CYP3A4 Substrates  0.7112490518767376
+DB00502  Agents that produce hypertension  0.6704118596923448
+DB00502  Serotonergic Drugs Shown to Increase Risk of Serotonin Syndrome  0.661662652835078
+DB00502  Serotonin Agents  0.6057139299761223
+DB00503  Central Nervous System Agents  0.5992978195627733
+DB00503  Central Nervous System Depressants  0.5067286360539899
+DB00503  Peripheral Nervous System Agents  0.5237094867343164
+DB00508  Agents that produce hypertension  0.6264574665449205
+DB00508  Cytochrome P-450 CYP2D6 Substrates  0.6193157783113309
+DB00508  QTc Prolonging Agents  0.6885854244097294
+DB00508  Serotonergic Drugs Shown to Increase Risk of Serotonin Syndrome  0.6876907292220041
+DB00514  Cytochrome P-450 Enzyme Inhibitors  0.6715424853937665
+DB00521  Cytochrome P-450 CYP3A Substrates  0.5158801292121196
+DB00521  Cytochrome P-450 CYP3A4 Substrates  0.5150622008686299
+DB00531  Cytochrome P-450 Enzyme Inhibitors  0.5874227651613754
+DB00533  Cytochrome P-450 CYP3A Inhibitors  0.5435201406284067
+DB00533  Cytochrome P-450 CYP3A4 Inhibitors  0.5227089234786603
+DB00533  P-glycoprotein/ABCB1 Inhibitors  0.5010144662658875
+DB00540  Psycholeptics  0.5951550984769518
+DB00543  Cytochrome P-450 CYP2D6 Inhibitors  0.5328398848796402
+DB00543  Psycholeptics  0.5536703097397
+DB00549  Cytochrome P-450 CYP3A Substrates  0.572040831697197
+DB00549  Cytochrome P-450 CYP3A4 Substrates  0.5711024956719454
+DB00554  Cytochrome P-450 CYP3A Substrates  0.714350787941813
+DB00554  Cytochrome P-450 CYP3A4 Substrates  0.7131790165544384
+DB00555  Cytochrome P-450 Enzyme Inhibitors  0.6358755428518309
+DB00559  Cytochrome P-450 Enzyme Inhibitors  0.5033035156424612
+DB00563  Cytochrome P-450 Enzyme Inhibitors  0.5487249710195801
+DB00564  Cytochrome P-450 CYP3A Inhibitors  0.5911372791007243
+DB00564  Cytochrome P-450 CYP3A4 Inhibitors  0.5685028165305417
+DB00564  Enzyme Inhibitors  0.5311028737689706
+DB00564  P-glycoprotein/ABCB1 Inhibitors  0.5449077343543582
+DB00568  Cytochrome P-450 Enzyme Inhibitors  0.6219729955197943
+DB00571  Central Nervous System Agents  0.506612453425684
+DB00571  Cytochrome P-450 CYP3A Inhibitors  0.5689352243999932
+DB00571  Cytochrome P-450 CYP3A4 Inhibitors  0.5471508740492074
+DB00571  Enzyme Inhibitors  0.5111555891683662
+DB00572  Central Nervous System Depressants  0.5190561383048091
+DB00575  Cytochrome P-450 Enzyme Inhibitors  0.8549092174571051
+DB00586  Cytochrome P-450 CYP3A Inhibitors  0.5361515611860246
+DB00586  Cytochrome P-450 CYP3A4 Inhibitors  0.5156224846514967
+DB00589  Cytochrome P-450 Enzyme Inhibitors  0.5887689702314572
+DB00593  Cytochrome P-450 Enzyme Inhibitors  0.5057406515753394
+DB00598  Cytochrome P-450 CYP3A Substrates  0.6284340516248569
+DB00598  Cytochrome P-450 CYP3A4 Substrates  0.6274032127466815
+DB00599  Cytochrome P-450 CYP3A Substrates  0.6008462482117533
+DB00599  Cytochrome P-450 CYP3A4 Substrates  0.5998606629534811
+DB00608  Cytochrome P-450 CYP3A Inhibitors  0.5103176508928647
+DB00612  Cytochrome P-450 Enzyme Inhibitors  0.6746610991806962
+DB00619  Central Nervous System Agents  0.5490858444876603
+DB00620  Cytochrome P-450 Enzyme Inhibitors  0.5893195297232795
+DB00622  Central Nervous System Agents  0.5807804839402103
+DB00622  Enzyme Inhibitors  0.5859883441754145
+DB00622  Peripheral Nervous System Agents  0.5075267994702084
+DB00624  Cytochrome P-450 Enzyme Inhibitors  0.6020174406170481
+DB00633  Cytochrome P-450 CYP3A Substrates  0.6895890318394835
+DB00633  Cytochrome P-450 CYP3A4 Substrates  0.6889612978654946
+DB00635  Cytochrome P-450 Enzyme Inhibitors  0.6165739725845985
+DB00656  Agents producing tachycardia  0.5720260380083471
+DB00656  Anticholinergic Agents  0.5045651662667997
+DB00656  Neurotoxic agents  0.64805078960207
+DB00661  Central Nervous System Agents  0.61751120809661
+DB00661  Central Nervous System Depressants  0.5221287347102899
+DB00661  Enzyme Inhibitors  0.6230496877490335
+DB00661  Peripheral Nervous System Agents  0.5396256539521357
+DB00668  Cytochrome P-450 CYP3A Substrates  0.6102134964658421
+DB00668  Cytochrome P-450 CYP3A4 Substrates  0.6092125446541992
+DB00674  Cytochrome P-450 Enzyme Inhibitors  0.6196464459063095
+DB00675  Central Nervous System Agents  0.5508596371637272
+DB00675  Enzyme Inhibitors  0.555800316641591
+DB00679  Agents producing tachycardia  0.5700094425882001
+DB00679  Anticholinergic Agents  0.5041649595797302
+DB00679  Histamine Antagonists  0.5171328048399454
+DB00679  Potential QTc-Prolonging Agents  0.5093242368919195
+DB00696  Enzyme Inhibitors  0.5121885278637333
+DB00697  Nervous System  0.5984944090890304
+DB00703  Cytochrome P-450 CYP3A Substrates  0.53430588616892
+DB00703  Cytochrome P-450 CYP3A4 Substrates  0.5334294479258513
+DB00708  Cytochrome P-450 Enzyme Inhibitors  0.5815965662111646
+DB00712  Cytochrome P-450 CYP3A Substrates  0.5446882784795167
+DB00712  Cytochrome P-450 CYP3A4 Substrates  0.5437948096816457
+DB00714  Agents that produce hypertension  0.5177486209759279
+DB00714  Cytochrome P-450 CYP2D6 Substrates  0.5110848425553752
+DB00714  Psychotropic Drugs  0.5570276389359574
+DB00715  Adrenergic Antagonists  0.5132750708244193
+DB00715  Agents that produce hypertension  0.8126615328580626
+DB00715  Histamine Antagonists  0.5178534929205997
+DB00715  Neurotoxic agents  0.6486437154569702
+DB00726  Agents producing tachycardia  0.6265668658156495
+DB00726  Anticholinergic Agents  0.5536069329567617
+DB00734  Agents producing tachycardia  0.6210343651597552
+DB00734  Anticholinergic Agents  0.5415513292312145
+DB00741  Cytochrome P-450 Enzyme Inhibitors  0.6432595361607867
+DB00744  Cytochrome P-450 Enzyme Inhibitors  0.6931057454713624
+DB00752  Cytochrome P-450 CYP3A Substrates  0.6205864232004944
+DB00752  Cytochrome P-450 CYP3A4 Substrates  0.6252739756438549
+DB00752  Neurotransmitter Agents  0.538618920463046
+DB00753  Neurotransmitter Agents  0.5254920139994046
+DB00757  Cytochrome P-450 Enzyme Inhibitors  0.6505909744242829
+DB00762  Cytochrome P-450 Enzyme Inhibitors  0.5417407839172387
+DB00768  Cytochrome P-450 Enzyme Inhibitors  0.6195444073439985
+DB00777  Central Nervous System Agents  0.6307935850663746
+DB00777  Neurotransmitter Agents  0.5877754643653789
+DB00777  Psychotropic Drugs  0.5170661727729418
+DB00777  QTc Prolonging Agents  0.5233531713796604
+DB00777  Serotonergic Drugs Shown to Increase Risk of Serotonin Syndrome  0.5228733423837669
+DB00780  Cytochrome P-450 CYP3A Substrates  0.5217686762702907
+DB00780  Cytochrome P-450 CYP3A4 Substrates  0.5282081348241316
+DB00780  Neurotransmitter Agents  0.5968597395618166
+DB00780  QTc Prolonging Agents  0.5429345061267108
+DB00784  Cytochrome P-450 CYP3A Substrates  0.7206696665913853
+DB00784  Cytochrome P-450 CYP3A4 Substrates  0.7194875301546164
+DB00788  Cytochrome P-450 CYP3A Substrates  0.5401446889733027
+DB00788  Cytochrome P-450 CYP3A4 Substrates  0.5392586731638923
+DB00795  Cytochrome P-450 CYP3A Substrates  0.5247194898406389
+DB00795  Cytochrome P-450 CYP3A4 Substrates  0.5238587764558822
+DB00802  Cytochrome P-450 Enzyme Inhibitors  0.6835534394018168
+DB00805  Neurotransmitter Agents  0.5743708288564153
+DB00805  QTc Prolonging Agents  0.5114526590749331
+DB00805  Serotonin Agents  0.5206153934134374
+DB00812  Cytochrome P-450 CYP3A Substrates  0.6706724044706559
+DB00812  Cytochrome P-450 CYP3A4 Substrates  0.6695722800680152
+DB00813  Cytochrome P-450 Enzyme Inhibitors  0.711061541848788
+DB00818  Cytochrome P-450 CYP3A Substrates  0.8013171398025377
+DB00818  Cytochrome P-450 CYP3A4 Substrates  0.8000031131040679
+DB00819  Cytochrome P-450 CYP3A Substrates  0.576597399155907
+DB00819  Cytochrome P-450 CYP3A4 Substrates  0.5756515888540634
+DB00829  Enzyme Inhibitors  0.5088887510472796
+DB00829  P-glycoprotein/ABCB1 Inhibitors  0.522116204035377
+DB00831  Cytochrome P-450 CYP2D6 Substrates  0.5770702619260075
+DB00831  QTc Prolonging Agents  0.6434041460534855
+DB00831  Serotonergic Drugs Shown to Increase Risk of Serotonin Syndrome  0.639410344554224
+DB00831  Serotonin Agents  0.6496981007202584
+DB00843  Cytochrome P-450 Enzyme Inhibitors  0.6296886792506163
+DB00860  Cytochrome P-450 Enzyme Inhibitors  0.6070676343306202
+DB00862  Cytochrome P-450 Enzyme Inhibitors  0.5616370401268655
+DB00864  Cytochrome P-450 Enzyme Inhibitors  0.7602163388114749
+DB00865  Cytochrome P-450 Enzyme Inhibitors  0.5756129125658803
+DB00870  Cytochrome P-450 CYP3A Substrates  0.6162886748697419
+DB00870  Cytochrome P-450 CYP3A4 Substrates  0.6152777577576379
+DB00877  Cytochrome P-450 Enzyme Inhibitors  0.5847227766868677
+DB00889  Cytochrome P-450 Enzyme Inhibitors  0.5893698744049443
+DB00904  Cytochrome P-450 CYP3A Inhibitors  0.5533249191886878
+DB00904  Cytochrome P-450 CYP3A4 Inhibitors  0.5322286373332257
+DB00904  P-glycoprotein/ABCB1 Inhibitors  0.5117158700967611
+DB00907  Cytochrome P-450 CYP3A Inhibitors  0.5087608895289475
+DB00915  Central Nervous System Depressants  0.5321783326732669
+DB00916  Cytochrome P-450 CYP3A Substrates  0.6504689063152511
+DB00916  Cytochrome P-450 CYP3A4 Substrates  0.6494019223269041
+DB00921  Enzyme Inhibitors  0.5454151514373533
+DB00924  Cytochrome P-450 Enzyme Inhibitors  0.5250072791617778
+DB00933  Agents that produce hypertension  0.6108117248273542
+DB00933  Serotonergic Drugs Shown to Increase Risk of Serotonin Syndrome  0.6706630084352584
+DB00934  Adrenergic Antagonists  0.5542800841350468
+DB00934  Agents that produce hypertension  0.8504529309244232
+DB00934  Neurotoxic agents  0.700833108530702
+DB00951  Cytochrome P-450 CYP3A Substrates  0.6448796188831316
+DB00951  Cytochrome P-450 CYP3A4 Substrates  0.6438218031734501
+DB00956  Cytochrome P-450 Enzyme Inhibitors  0.5190034097817566
+DB00960  Central Nervous System Agents  0.5974267252482977
+DB00960  Nervous System  0.5730365580578517
+DB00962  Cytochrome P-450 Enzyme Inhibitors  0.5609499801492654
+DB00972  Central Nervous System Agents  0.5123268520237698
+DB00972  Cytochrome P-450 CYP3A Inhibitors  0.575353343824224
+DB00972  Cytochrome P-450 CYP3A4 Inhibitors  0.5533232432772506
+DB00996  Cytochrome P-450 Enzyme Inhibitors  0.7852733970521178
+DB00998  Central Nervous System Agents  0.517538368420511
+DB01001  Cytochrome P-450 CYP3A Substrates  0.5956948295409401
+DB01001  Cytochrome P-450 CYP3A4 Substrates  0.5947177730490814
+DB01009  Cytochrome P-450 CYP3A Substrates  0.6565894766291859
+DB01009  Cytochrome P-450 CYP3A4 Substrates  0.6555124528826565
+DB01015  Cytochrome P-450 CYP3A Substrates  0.7116433712943463
+DB01015  Cytochrome P-450 CYP3A4 Substrates  0.7104760409650832
+DB01026  Central Nervous System Agents  0.5162035601671321
+DB01028  Cytochrome P-450 Enzyme Inhibitors  0.5417103385529058
+DB01029  Cytochrome P-450 CYP3A Substrates  0.5715048635769028
+DB01029  Cytochrome P-450 CYP3A4 Substrates  0.5705674067165075
+DB01030  Cytochrome P-450 CYP3A Substrates  0.6377976523735435
+DB01030  Cytochrome P-450 CYP3A4 Substrates  0.6367514534295495
+DB01036  Cytochrome P-450 Enzyme Inhibitors  0.5267863506314496
+DB01037  Cytochrome P-450 CYP3A Inhibitors  0.5271544168035721
+DB01037  Cytochrome P-450 CYP3A4 Inhibitors  0.5069698458645254
+DB01041  Cytochrome P-450 CYP3A Substrates  0.5702289852228541
+DB01041  Cytochrome P-450 CYP3A4 Substrates  0.5692936212246413
+DB01049  Cytochrome P-450 Enzyme Inhibitors  0.5533801047786787
+DB01050  Cytochrome P-450 CYP3A Substrates  0.7359109526692513
+DB01050  Cytochrome P-450 CYP3A4 Substrates  0.7347038154860225
+DB01059  Cytochrome P-450 CYP3A Substrates  0.5553213886878712
+DB01059  Cytochrome P-450 CYP3A4 Substrates  0.5544104780749826
+DB01069  Agents that produce hypertension  0.6792935169319375
+DB01069  Central Nervous System Agents  0.9007369271576033
+DB01069  Nervous System  0.9300467373529299
+DB01069  Psychotropic Drugs  0.7356971812688913
+DB01075  Agents that produce hypertension  0.616097335399037
+DB01075  Nervous System  0.8348595577280358
+DB01075  Psychotropic Drugs  0.6480373301828319
+DB01075  Serotonin Agents  0.6696242619179554
+DB01076  Cytochrome P-450 CYP3A Inhibitors  0.5175439589156706
+DB01104  Agents that produce hypertension  0.693786077542286
+DB01115  Central Nervous System Agents  0.5696577793828679
+DB01115  Enzyme Inhibitors  0.5747670600600541
+DB01118  Central Nervous System Agents  0.5182205527753424
+DB01136  Cytochrome P-450 Enzyme Inhibitors  0.6786966841240382
+DB01137  Cytochrome P-450 CYP3A Substrates  0.7095303591252002
+DB01137  Cytochrome P-450 CYP3A4 Substrates  0.7083664948342516
+DB01142  Membrane Transport Modulators  0.5188260546438928
+DB01142  Psycholeptics  0.5651176593826128
+DB01151  Adrenergic Antagonists  0.62552698868848
+DB01151  Psycholeptics  0.5701160296995242
+DB01166  Cytochrome P-450 Enzyme Inhibitors  0.6824584589318795
+DB01169  Cytochrome P-450 CYP3A Substrates  0.5322157208661672
+DB01169  Cytochrome P-450 CYP3A4 Substrates  0.5313427111850011
+DB01171  Neurotransmitter Agents  0.7093474995141545
+DB01171  QTc Prolonging Agents  0.6347788675210773
+DB01175  Agents that produce hypertension  0.6964938168468371
+DB01175  Neurotoxic agents  0.5193864435319911
+DB01183  Cytochrome P-450 CYP3A Substrates  0.5303342982660021
+DB01183  Cytochrome P-450 CYP3A4 Substrates  0.5294643747397162
+DB01184  Cytochrome P-450 Enzyme Inhibitors  0.6776208850150217
+DB01192  Cytochrome P-450 Enzyme Inhibitors  0.5103596808802956
+DB01193  Central Nervous System Agents  0.5077916636352642
+DB01193  Cytochrome P-450 CYP3A Substrates  0.5913264385639928
+DB01193  Cytochrome P-450 CYP3A4 Substrates  0.5945733835320636
+DB01202  Cytochrome P-450 Enzyme Inhibitors  0.632377323287837
+DB01203  Cytochrome P-450 CYP3A Substrates  0.5085046955563736
+DB01203  Cytochrome P-450 CYP3A4 Substrates  0.5076710857491729
+DB01204  Cytochrome P-450 CYP3A Substrates  0.7560159187019032
+DB01204  Cytochrome P-450 CYP3A4 Substrates  0.7547758027296273
+DB01220  Cytochrome P-450 Enzyme Inhibitors  0.5066760906083528
+DB01221  Cytochrome P-450 Enzyme Inhibitors  0.7482567840190646
+DB01222  Cytochrome P-450 Enzyme Inhibitors  0.5589109768105113
+DB01223  Cytochrome P-450 Enzyme Inhibitors  0.5291735684173028
+DB01224  Agents that reduce seizure threshold  0.5309096701310494
+DB01224  Neurotransmitter Agents  1.0618990705747682
+DB01224  Potential QTc-Prolonging Agents  0.5544229185783084
+DB01233  Cytochrome P-450 CYP3A Substrates  0.5681743268210606
+DB01233  Cytochrome P-450 CYP3A4 Substrates  0.5672423427501747
+DB01234  Enzyme Inhibitors  0.5483340575548251
+DB01238  Agents that reduce seizure threshold  0.5404288735037752
+DB01238  Neurotransmitter Agents  1.0723443841098266
+DB01239  Agents that produce hypertension  0.7278970564890915
+DB01239  Cytochrome P-450 CYP2D6 Substrates  0.7196639663238987
+DB01239  Serotonergic Drugs Shown to Increase Risk of Serotonin Syndrome  0.7992495559935537
+DB01242  Adrenergic Antagonists  0.5037379859807475
+DB01242  Agents producing tachycardia  0.5683227022019971
+DB01242  Histamine Antagonists  0.5079209754326399
+DB01242  Potential QTc-Prolonging Agents  0.5174631379950643
+DB01244  Cytochrome P-450 Enzyme Inhibitors  0.5440210718188451
+DB01247  Neurotransmitter Agents  0.5748941340344288
+DB01247  QTc Prolonging Agents  0.5128564302288803
+DB01255  Central Nervous System Depressants  0.5850793301503969
+DB01267  Agents producing tachycardia  0.5390593694445853
+DB01320  Cytochrome P-450 Enzyme Inhibitors  0.5512749766116088
+DB01355  Cytochrome P-450 Enzyme Inhibitors  0.560942741615558
+DB01367  Neurotransmitter Agents  0.5337607127910688
+DB01392  Cytochrome P-450 Enzyme Inhibitors  0.6182571266026158
+DB01403  Agents that reduce seizure threshold  0.6160571881572787
+DB01403  Membrane Transport Modulators  0.5168460870034846
+DB01580  Cytochrome P-450 CYP3A Substrates  0.6439363373108281
+DB01580  Cytochrome P-450 CYP3A4 Substrates  0.6481274977707407
+DB01580  Nervous System  0.5236207338262097
+DB01615  Nervous System  0.5850629189834504
+DB01623  Agents that produce hypertension  0.5763003041134387
+DB01623  Cytochrome P-450 CYP2D6 Substrates  0.5685087208280009
+DB01623  Serotonergic Drugs Shown to Increase Risk of Serotonin Syndrome  0.6287980261336414
+DB01623  Serotonin Agents  0.6373016164904118
+DB01624  Agents producing tachycardia  0.5659215041342731
+DB01624  Potential QTc-Prolonging Agents  0.5067028328449152
+DB01628  P-glycoprotein/ABCB1 Inhibitors  0.5316233846537768
+DB01645  Cytochrome P-450 CYP3A Substrates  0.6186445717300609
+DB01645  Cytochrome P-450 CYP3A4 Substrates  0.6176297901684749
+DB03783  Cytochrome P-450 Enzyme Inhibitors  0.5707045278962369
+DB04828  Cytochrome P-450 Enzyme Inhibitors  0.5708061435564717
+DB04829  Cytochrome P-450 Enzyme Inhibitors  0.5265018927531206
+DB04832  Cytochrome P-450 CYP3A Substrates  0.5745264440009519
+DB04832  Cytochrome P-450 CYP3A4 Substrates  0.5735848668386405
+DB04836  Neurotransmitter Agents  0.562563318356908
+DB04836  QTc Prolonging Agents  0.5009315485590808
+DB04836  Serotonin Agents  0.5099616641896237
+DB04841  Cytochrome P-450 Enzyme Inhibitors  0.6715377879979528
+DB04842  Agents that produce hypertension  0.5619027992240594
+DB04842  Cytochrome P-450 CYP2D6 Substrates  0.5468177718248235
+DB04861  Cytochrome P-450 Enzyme Inhibitors  0.5876994311067033
+DB04896  QTc Prolonging Agents  0.526068739031468
+DB04946  Central Nervous System Agents  0.7983946864687719
+DB04946  Neurotransmitter Agents  0.7379586338284504
+DB04946  Psychotropic Drugs  0.6301778120332422
+DB04948  Psychotropic Drugs  0.6443181144181072
+DB04948  QTc Prolonging Agents  0.6577847929437489
+DB04951  Cytochrome P-450 CYP3A Substrates  0.5098579454924671
+DB04951  Cytochrome P-450 CYP3A4 Substrates  0.5090216099522279
+DB06148  Neurotoxic agents  0.5502150957099878
+DB06148  QTc Prolonging Agents  0.7497166703818022
+DB06216  Agents producing tachycardia  0.5133832850344585
+DB06216  Cytochrome P-450 CYP2D6 Substrates  0.7140836523035025
+DB06216  Neurotransmitter Agents  0.8988233964818177
+DB06288  Agents that produce hypertension  0.5009150498711941
+DB06288  Serotonergic Drugs Shown to Increase Risk of Serotonin Syndrome  0.5494692606954193
+DB06288  Serotonin Agents  0.559617549957796
+DB06446  Cytochrome P-450 Enzyme Inhibitors  0.500949147338414
+DB06684  QTc Prolonging Agents  0.5316980499047496
+DB06700  QTc Prolonging Agents  0.5679113503349488
+DB06738  Cytochrome P-450 Enzyme Inhibitors  0.6210136765015949
+DB06772  Cytochrome P-450 Enzyme Inhibitors  0.5311513238897051
+DB06774  Cytochrome P-450 CYP3A Substrates  0.604095522158855
+DB06774  Cytochrome P-450 CYP3A4 Substrates  0.6031046058470716
+DB07615  Cytochrome P-450 Enzyme Inhibitors  0.6724156640255077
+DB08880  Cytochrome P-450 CYP3A Substrates  0.6149805904642717
+DB08880  Cytochrome P-450 CYP3A4 Substrates  0.6139718190429186
+DB08918  Agents that produce hypertension  0.5081331422453362
+DB08918  Nervous System  0.672590693486134
+DB08918  QTc Prolonging Agents  0.5711122052454959
+DB09068  Cytochrome P-450 Enzyme Inhibitors  0.544943505322583
+DB09068  QTc Prolonging Agents  0.582269084383092
+DB09089  Cytochrome P-450 Enzyme Inhibitors  0.5327216894711233
+DB09118  Cytochrome P-450 CYP3A Substrates  0.6062930886304897
+DB09118  Cytochrome P-450 CYP3A4 Substrates  0.6052985680088616
+DB09224  Neurotransmitter Agents  0.5478991264704136
+DB09225  Neurotransmitter Agents  0.5877442820888191
+DB09225  QTc Prolonging Agents  0.530352878218592
+DB09286  Agents that produce hypertension  0.5269575120906193
+DB09286  Cytochrome P-450 CYP2D6 Substrates  0.5209526191059216
+DB09286  QTc Prolonging Agents  0.5792139040654566
+DB09289  Neurotransmitter Agents  0.5343572631655871
+DB11672  Cytochrome P-450 CYP3A Substrates  0.8608022516802922
+DB11672  Cytochrome P-450 CYP3A4 Substrates  0.8593902514897238
+DB11753  Cytochrome P-450 CYP3A Substrates  0.8720142930503122
+DB11753  Cytochrome P-450 CYP3A4 Substrates  0.8705839014062825
+DB12693  Nervous System  0.57959141141176
+DB14066  Cytochrome P-450 Enzyme Inhibitors  0.5175658060388497

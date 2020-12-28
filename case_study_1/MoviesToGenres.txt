@@ -1,0 +1,39 @@
+The Lighthouse	Horror
+You should have left	Horror
+Doctor Sleep	Horror
+BirdBox	Horror
+Ma	Horror
+Mamma Mia!	Comedy
+Mamma Mia!	Romantic Comedy
+Letters to Juliet	Comedy
+Letters to Juliet	Romantic Comedy
+In Time	Sci-fi
+Lovelave	Drama
+Footloose	Comedy
+Footloose	Romantic Comedy
+Crazy, Stupid, Love	Comedy
+Crazy, Stupid, Love	Romantic Comedy
+Good Time	Drama
+Good Time	Action
+Remember Me	Romantic Comedy
+Remember Me	Drama
+Cosmopolis	Thriller
+Cosmopolis	Drama
+Spider-Man	Action
+Aquaman	Action
+Van Gogh	Drama
+The Florida Project	Drama
+Trainspotting	Drama
+Moulin Rouge!	Comedy
+Moulin Rouge!	Romantic Comedy
+Moulin Rouge!	Drama
+Star Wars	Action
+Star Wars	Sci-fi
+The Blind Side	Drama
+Miss Detective	Comedy
+Miss Detective	Romantic Comedy
+Oceans 8	Action
+Gravity	Sci-fi
+Gravity	Drama
+The shape of water	Drama
+The Help	Drama

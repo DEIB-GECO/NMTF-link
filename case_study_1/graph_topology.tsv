@@ -1,0 +1,13 @@
+#general parameters	
+#metric	APS
+#initialization	random
+#integration.strategy	intersection
+#number.of.iterations	200
+#stop.criterion	relative_error
+#type.of.masking	fully_random
+#threshold.for.retrieval	0.5
+#ds1			main
+users	genres	UsersToGenres.txt	0
+users	movies	UsersToMovies.txt	1
+movies	actors	MoviesToActors.txt	0
+movies	genres	MoviesToGenres.txt	0

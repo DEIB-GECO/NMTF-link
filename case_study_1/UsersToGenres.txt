@@ -1,0 +1,31 @@
+Anna	Horror
+Anna	Thriller
+Anna	Action
+Luca	Drama
+Luca	Romantic Comedy
+Luca	Comedy
+Francesco	Thriller
+Renato	Drama
+Renato	Horror
+Renato	Thriller
+Renato	Romantic Comedy
+Renato	Comedy
+Flavio	Horror
+Flavio	Sci-fi
+Flavio	Thriller
+Flavio	Action
+Anacleto	Drama
+Anacleto	Comedy
+Anacleto	Romantic Comedy
+Ilaria	Thiller
+Ilaria	Action
+Chiara	Sci-fi
+Chiara	Action
+Chiara	Thriller
+Chiara	Drama
+Serena	Comedy
+Serena	Romantic Comedy
+Serena	Drama
+Mario	Horror
+Mario	Sci-fi
+Mario	Thriller

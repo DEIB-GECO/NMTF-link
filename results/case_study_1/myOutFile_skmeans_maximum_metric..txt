@@ -1,0 +1,11 @@
+Anna  BirdBox  0.5352081663980298
+Anna  You should have left  0.5160894658264544
+Chiara  In Time  0.6156207351321733
+Luca  Crazy, Stupid, Love  0.5856731206651906
+Luca  Footloose  0.5856731206651906
+Mario  Gravity  0.503934730383202
+Mario  Oceans 8  0.5521496508367011
+Mario  Spider-Man  0.5862005227851046
+Renato  Crazy, Stupid, Love  0.585673238844747
+Renato  Doctor Sleep  0.5526846416619409
+Renato  Footloose  0.585673238844747

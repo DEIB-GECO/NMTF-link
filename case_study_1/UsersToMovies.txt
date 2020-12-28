@@ -1,0 +1,63 @@
+Anna	The Lighthouse
+Anna	Doctor Sleep
+Anna	Ma
+Anna	Spider-Man
+Anna	Oceans 8
+Luca	Miss Detective
+Luca	Moulin Rouge!
+Luca	Mamma Mia!
+Luca	Van Gogh
+Luca	The Florida Project
+Francesco	Cosmopolis
+Francesco	In Time
+Renato	Lovelace
+Renato	Gravity
+Renato	The Help
+Renato	The shape of water
+Renato	Ma
+Renato	The Lighthouse
+Renato	Mean Girls
+Renato	Letters to Juliet
+Renato	Mamma Mia!
+Flavio	You should have left
+Flavio	The Lighthouse
+Flavio	Ma
+Flavio	Doctor Sleep
+Flavio	BirdBox
+Flavio	In Time
+Flavio	Star Wars
+Flavio	Gravity
+Flavio	Spider-Man
+Flavio	Aquaman
+Flavio	Oceans 8
+Anacleto	Footloose
+Anacleto	Trainspotting
+Anacleto	The shape of water
+Anacleto	Crazy, Stupid, Love
+Anacleto	Remember Me
+Anacleto	Van Gogh
+Anacleto	The Florida Project
+Anacleto	Lovelace
+Ilaria	Cosmopolis
+Ilaria	Good Time
+Ilaria	Star Wars
+Chiara	Star Wars
+Chiara	Aquaman
+Chiara	Gravity
+Chiara	The Help
+Chiara	The Blind Side
+Serena	Remember Me
+Serena	Miss Detective
+Serena	Mean Girls
+Serena	Crazy, Stupid, Love
+Serena	Mamma Mia!
+Serena	Letters to Juliet
+Serena	Footloose
+Mario	The Lighthouse
+Mario	Ma
+Mario	BirdBox
+Mario	Doctor Sleep
+Mario	You should have left
+Mario	In Time 
+Mario	Cosmopolis
+Mario	Good Time

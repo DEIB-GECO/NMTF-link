@@ -1,0 +1,14 @@
+Anacleto  Moulin Rouge!  0.5387297429739764
+Chiara  Ma  0.54018792732621
+Chiara  The Lighthouse  0.5738572065448093
+Luca  Crazy, Stupid, Love  0.5814485648826136
+Luca  Footloose  0.5814485648826136
+Luca  Remember Me  0.5048985600321811
+Mario  Gravity  0.5156710469008045
+Mario  Oceans 8  0.5323982752478691
+Mario  Spider-Man  0.5605709749678979
+Renato  Crazy, Stupid, Love  0.5821219434952051
+Renato  Footloose  0.5821219434952051
+Renato  Moulin Rouge!  0.5390232727610828
+Renato  Remember Me  0.5054832856852963
+Serena  Moulin Rouge!  0.5387297429739764

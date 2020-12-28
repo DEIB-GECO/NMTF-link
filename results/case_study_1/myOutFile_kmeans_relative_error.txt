@@ -1,0 +1,12 @@
+Anacleto  Mamma Mia!  0.5265707434106672
+Anna  In Time  0.527104309209498
+Anna  Star Wars  0.5695717313081617
+Anna  You should have left  0.5247413025303979
+Chiara  Doctor Sleep  0.50649144665729
+Chiara  Ma  0.5802762463185908
+Chiara  The Lighthouse  0.6003384561715344
+Luca  Crazy, Stupid, Love  0.5252329432166913
+Luca  Footloose  0.5252329432166913
+Renato  Crazy, Stupid, Love  0.525240937455044
+Renato  Doctor Sleep  0.5472092758187108
+Renato  Footloose  0.525240937455044
