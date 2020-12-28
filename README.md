@@ -3,7 +3,7 @@
 This tool is designed for computing **link predictions** using the **Non Negative Matrix Tri-Factorization (NMTF)** method. This is generalization for already pre-existing code in [DEIB-GECO/NMTF-DrugRepositioning](https://github.com/DEIB-GECO/NMTF-DrugRepositioning) allowing the use of networks of any topology. 
 **This is a command line tool that uses a setting file**. 
 
-An example setting file called [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-DrugRepositioning/blob/elena/case_study_1/graph_topology.tsv) is located in the subfolders "case_study_1" or "case_study_2" of the main directory. An example of [myOutFile.txt](https://github.com/DEIB-GECO/NMTF-DrugRepositioning/blob/elena/results/myOutFile.txt) file containing new possible relations among objects of the datasets is located in the results folder of the main directory.
+An example setting file called [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/case_study_1/graph_topology.tsv) is located in the subfolders "case_study_1" or "case_study_2" of the main directory. An example of [myOutFile.txt](https://github.com/DEIB-GECO/NMTF-link/results/myOutFile.txt) file containing new possible relations among objects of the datasets is located in the results folder of the main directory.
 
 # Table of contents
 - [Parameters to be specified by the user in the setting file](#parameters-to-be-specified-by-the-user-in-the-setting-file)
@@ -14,7 +14,7 @@ An example setting file called [graph_topology.tsv](https://github.com/DEIB-GECO
 - [Usage](#usage)
 
 # Parameters to be specified by the user in the setting file
-In the [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-DrugRepositioning/blob/elena/case_study_1/graph_topology.tsv) file the user needs to specify the following parameters:
+In the [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/case_study_1/graph_topology.tsv) file the user needs to specify the following parameters:
 
 - **metric**, performance evaluation metric.
 
@@ -60,7 +60,7 @@ In the setting file, the user has also to specify the datasets which will be use
 
 # Setting file example
 
-Example of [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-DrugRepositioning/tree/elena/case_study_1/graph_topology.tsv) file:
+Example of [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/case_study_1/graph_topology.tsv) file:
 
 | #general parameters | | | |
 | ------------- | ------------- | ------------- | ------------- |
@@ -81,16 +81,16 @@ Example of [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-DrugReposition
 
 We used APS (Average Precision Score) as evaluation metric, a random initialization strategy for the factor matrices, 200 maximum iterations for each run of the algorithm, a stop criterion based on the relative error of the loss function and a random masking strategy for the evaluation process. The mode of integration of shared datasets is by intersection, i.e., only objects shared by all association matrices are considered. The new link predictions have an NMTF score above 0.5 (the threshold for retrieval).
 
-The example contains 4 nodes' categories (**users, genres, actors and movies**). Users to genres links are reported in [UsersToGenres.txt](https://github.com/DEIB-GECO/NMTF-DrugRepositioning/blob/elena/case_study_1/UsersToGenres.txt), each link represents the preference of movie genres for a specific user. Users to movies links are the list of watched movies for each user reported in [UsersToMovies.txt](https://github.com/DEIB-GECO/NMTF-DrugRepositioning/blob/elena/case_study_1/UsersToMovies.txt). [MoviesToActors.txt](https://github.com/DEIB-GECO/NMTF-DrugRepositioning/blob/elena/case_study_1/MoviesToActors.txt) file contains information on which actors worked on a specific movie, i.e., there is a link when an actor worked on that movie. Movies to genres links ([MoviesToGenres.txt](https://github.com/DEIB-GECO/NMTF-DrugRepositioning/blob/elena/case_study_1/MoviesToGenres.txt)) classify the genre of each movie in the network.
-The output file ([myOutFile.txt](https://github.com/DEIB-GECO/NMTF-DrugRepositioning/blob/elena/results/myOutFile.txt)) contains new movie suggestions for the users, this is selected by the element equal to 1 in the column **main**.
+The example contains 4 nodes' categories (**users, genres, actors and movies**). Users to genres links are reported in [UsersToGenres.txt](https://github.com/DEIB-GECO/NMTF-link/case_study_1/UsersToGenres.txt), each link represents the preference of movie genres for a specific user. Users to movies links are the list of watched movies for each user reported in [UsersToMovies.txt](https://github.com/DEIB-GECO/NMTF-link/case_study_1/UsersToMovies.txt). [MoviesToActors.txt](https://github.com/DEIB-GECO/NMTF-link/case_study_1/MoviesToActors.txt) file contains information on which actors worked on a specific movie, i.e., there is a link when an actor worked on that movie. Movies to genres links ([MoviesToGenres.txt](https://github.com/DEIB-GECO/NMTF-link/case_study_1/MoviesToGenres.txt)) classify the genre of each movie in the network.
+The output file ([myOutFile.txt](https://github.com/DEIB-GECO/NMTF-link/results/myOutFile.txt)) contains new movie suggestions for the users, this is selected by the element equal to 1 in the column **main**.
 
 # Contents
 
 This repository contains all data, scripts and example results related to the NMTF-link tool. In particular, you will find:
 
-1. folders which stores the case study number 1 ([case_study_1](https://github.com/DEIB-GECO/NMTF-DrugRepositioning/tree/elena/case_study_1)), the case study number two ([case_study_2](https://github.com/DEIB-GECO/NMTF-DrugRepositioning/tree/elena/case_study_2)) and the [results](https://github.com/DEIB-GECO/NMTF-DrugRepositioning/tree/elena/results), i.e., the evaluation plots and the new link predictions;
-2. .py files, [NMTF-link.py](https://github.com/DEIB-GECO/NMTF-DrugRepositioning/blob/elena/NMTF-link.py), [Network.py](https://github.com/DEIB-GECO/NMTF-DrugRepositioning/blob/elena/Network.py) and [AssociationMatrix.py](https://github.com/DEIB-GECO/NMTF-DrugRepositioning/blob/elena/AssociationMatrix.py) which create classes used in other files. In particular, NMTF-link.py is used to create the network, execute and output the results, Network.py creates the network of association matrices and AssociationMatrix.py computes each association matrix.
-3. A Jupyter notebook, [NMTF-link_Example](https://github.com/DEIB-GECO/NMTF-DrugRepositioning/blob/elena/NMTF-link_Example.ipynb), explaining in detail an example of how to run the algorithm and comparisons between different outputs achieved by changing some parameters of the setting file. This example can be tried also online using this link: [NMTF_link_Example](https://colab.research.google.com/drive/1JWuYjppKcUiNm0bJsHTjQzYoSK6MJ7Pm?usp=sharing)
+1. folders which stores the case study number 1 ([case_study_1](https://github.com/DEIB-GECO/NMTF-link/case_study_1)), the case study number two ([case_study_2](https://github.com/DEIB-GECO/NMTF-link/case_study_2)) and the [results](https://github.com/DEIB-GECO/NMTF-link/results), i.e., the evaluation plots and the new link predictions;
+2. .py files, [NMTF-link.py](https://github.com/DEIB-GECO/NMTF-link/NMTF-link.py), [Network.py](https://github.com/DEIB-GECO/NMTF-link/Network.py) and [AssociationMatrix.py](https://github.com/DEIB-GECO/NMTF-link/AssociationMatrix.py) which create classes used in other files. In particular, NMTF-link.py is used to create the network, execute and output the results, Network.py creates the network of association matrices and AssociationMatrix.py computes each association matrix.
+3. A Jupyter notebook, [NMTF-link_Example](https://github.com/DEIB-GECO/NMTF-link/NMTF-link_Example.ipynb), explaining in detail an example of how to run the algorithm and comparisons between different outputs achieved by changing some parameters of the setting file. This example can be tried also online using this link: [NMTF_link_Example](https://colab.research.google.com/drive/1JWuYjppKcUiNm0bJsHTjQzYoSK6MJ7Pm?usp=sharing)
 
 # Usage
 
