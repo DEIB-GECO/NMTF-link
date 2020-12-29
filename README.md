@@ -1,4 +1,4 @@
-# NMTF-link Tool
+# NMTF-link Tool 
 
 This tool is designed for computing **link predictions** using the **Non Negative Matrix Tri-Factorization (NMTF)** method. This is generalization for already pre-existing code in [DEIB-GECO/NMTF-DrugRepositioning](https://github.com/DEIB-GECO/NMTF-DrugRepositioning) allowing the use of networks of any topology. 
 **This is a command line tool that uses a setting file**. 
