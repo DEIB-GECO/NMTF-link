@@ -23,22 +23,27 @@ This repository contains all data, scripts and example results related to the NM
 # Parameters to be specified by the user in the setting file
 In the [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv) file the user needs to specify the following parameters:
 
-- **metric**, performance evaluation metric.
-
-  *Options*: "APS" (Average Precision Score) and "AUROC" (Area Under the ROC Curve).
-
-- **initialization**, method to initialize the factor matrices, which are the three matrices that factorize each association matrix. 
-
-  *Options*: "random", "kmeans" and "skmeans".
-
 - **integration.strategy**, mode of integration of datasets.
 When one dataset is present in several association matrices, there are two ways to integrate its elements. The options are either to use only the objects, which are shared by all association matrices (intersection) or to use all its objects, which are present in at least one matrix (union).
 
   *Options*: "intersection" and "union".
+  
+- **initialization**, method to initialize the factor matrices, which are the three matrices that factorize each association matrix. 
+
+  *Options*: "random", "kmeans" and "skmeans".
+
+- **metric**, performance evaluation metric.
+
+  *Options*: "APS" (Average Precision Score) and "AUROC" (Area Under the ROC Curve).
 
 - **number.of.iterations**, number of maximum iterations for each run of the algorithm. 
 
   *Options*: any integer value.
+
+- **type.of.masking**, to evaluate the NMTF predictions, there is the need of choosing the masking strategy applied on the selected association matrix. 
+It can either have a completely randomized distribution of masking elements or have the same number of masking elements per row randomly distributed within each row. 
+
+  *Options*: "fully_random" and "per_row_random".
 
 - **stop.criterion**, stop criterion strategies for link predictions using the NMTF method. 
 
@@ -48,12 +53,7 @@ When one dataset is present in several association matrices, there are two ways 
     - "relative_error" option runs the algorithm 5 times with masking, chooses the iteration with relative error < 0.001 and after runs one more time, without evaluation, until chosen iteration and outputs results. It also outputs evaluation plots to the main directory.
     - "maximum_iterations" option runs the chosen number of iterations without masking and outputs result for the last iteration. 
 
-- **type.of.masking**, to evaluate the NMTF predictions, there is the need of choosing the masking strategy applied on the selected association matrix. 
-It can either have a completely randomized distribution of masking elements or have the same number of masking elements per row randomly distributed within each row. 
-
-  *Options*: "fully_random" and "per_row_random".
-
-- **threshold.for.retrieval**, value of threshold for retrieved results. 
+- **likelyhood.threshold**, value of threshold for retrieved results. 
 
   *Options*: any value between 0 and 1.
 
