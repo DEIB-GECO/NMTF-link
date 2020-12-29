@@ -1,5 +1,7 @@
 import warnings
 warnings.filterwarnings('ignore')
+import sys
+sys.path.insert(0, 'scripts/')
 from Network import Network
 import numpy as np
 import pandas as pd
@@ -58,7 +60,7 @@ with open(dirname_1) as f:
           else:
               print("Option '{}' not supported".format(s[1]))
               exit(-1)
-       if line.strip().startswith("#threshold.for.retrieval"):
+       if line.strip().startswith("#likelyhood.threshold"):
             s = line.strip().split("\t")
             if 0<=float(s[1])<=1:
               threshold = float(s[1])

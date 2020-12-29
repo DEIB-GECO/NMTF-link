@@ -1,13 +1,13 @@
 #general.parameters	
-#metric	APS	
-#initialization	skmeans
 #integration.strategy	intersection
+#initialization	skmeans
+#metric	APS
 #number.of.iterations	200
-#stop.criterion	relative_error
 #type.of.masking	fully_random
-#threshold.for.retrieval	0.5
-#ds1			main
+#stop.criterion	relative_error
+#likelyhood.threshold	0.5
+#nodes_l	nodes_r	filename	main
 drug	label	DrugsToLabels.txt	1
 drug	protein	DrugsToProteins.txt	0
 drug	disease	DrugsToDiseases.txt	0
-protein 	pathway 	ProteinsToPathways.txt	0
+protein	pathway 	ProteinsToPathways.txt	0

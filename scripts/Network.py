@@ -1,5 +1,7 @@
 import warnings
 warnings.filterwarnings('ignore')
+import sys
+sys.path.insert(0, 'scripts/')
 from AssociationMatrix import AssociationMatrix
 import numpy as np
 import copy
