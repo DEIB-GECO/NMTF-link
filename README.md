@@ -3,14 +3,21 @@
 This tool is designed for computing **link predictions** using the **Non Negative Matrix Tri-Factorization (NMTF)** method. This is generalization for already pre-existing code in [DEIB-GECO/NMTF-DrugRepositioning](https://github.com/DEIB-GECO/NMTF-DrugRepositioning) allowing the use of networks of any topology. 
 **This is a command line tool that uses a setting file**. 
 
-An example setting file called [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv) is located in the subfolders "case_study_1" or "case_study_2" of the main directory. An example of [myOutFile.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/results/myOutFile.txt) file containing new possible relations among objects of the datasets is located in the results folder of the main directory.
+An example setting file called [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv) is located in the subfolders "case_study_1" or "case_study_2" of the main directory. An example of [myOutFile.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/results/case_study_1/myOutFile_random_relative_error.txt) file containing new possible relations among objects of the datasets is located in the results folder of the main directory.
+
+# Contents
+This repository contains all data, scripts and example results related to the NMTF-link tool. In particular, you will find:
+
+1. folders which stores the case study number 1 ([case_study_1](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1)), the case study number two ([case_study_2](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_2)) and the [results](https://github.com/DEIB-GECO/NMTF-link/blob/master/results), i.e., the evaluation plots and the new link predictions;
+2. the tool execution .py file, [NMTF-link.py](https://github.com/DEIB-GECO/NMTF-link/blob/master/NMTF-link.py);
+3. .py files which are used within the execution file, [Network.py](https://github.com/DEIB-GECO/NMTF-link/blob/master/scripts/Network.py) and [AssociationMatrix.py](https://github.com/DEIB-GECO/NMTF-link/blob/master/scripts/AssociationMatrix.py) which create classes used in other files. In particular, NMTF-link.py is used to create the network, execute and output the results, Network.py creates the network of association matrices and AssociationMatrix.py computes each association matrix;
+4. a Jupyter notebook, [NMTF-link_Example](https://github.com/DEIB-GECO/NMTF-link/blob/master/NMTF-link_Example.ipynb), explaining in detail an example of how to run the algorithm and comparisons between different outputs achieved by changing some parameters of the setting file. This example can be tried also online using this link: [NMTF_link_Example](https://colab.research.google.com/drive/1JWuYjppKcUiNm0bJsHTjQzYoSK6MJ7Pm?usp=sharing).
 
 # Table of contents
 - [Parameters to be specified by the user in the setting file](#parameters-to-be-specified-by-the-user-in-the-setting-file)
 - [Other entries to be specified by the user in the setting file](#other-entries-to-be-specified-by-the-user-in-the-setting-file)
 - [Setting file example](#setting-file-example)
   * [Interpretation of the setting file](#interpretation-of-the-setting-file)
-- [Contents](#contents)
 - [Usage](#usage)
 
 # Parameters to be specified by the user in the setting file
@@ -52,26 +59,26 @@ It can either have a completely randomized distribution of masking elements or h
 
 # Other entries to be specified by the user in the setting file
 
-In the setting file, the user has also to specify the datasets which will be used to create the network. The structure of the datafile line is (entries separated by whitespace):
-- name of left category of nodes (e.g., in tenth line of the setting file the left category of nodes is **users**)
-- name of right category of nodes (e.g., in tenth line of the setting file the right category of nodes is **genres**)
-- filename (e.g., in tenth line of the setting file the filename is **UsersToGenres.txt**, which has to be in the specified data directory)
+In the setting file, e.g. [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv), the user has also to specify the datasets which will be used to create the network. The structure of the datafile line is (entries separated by whitespace):
+- name of left category of nodes (e.g., in the column **nodes_l** of the setting file the first category of nodes is **users**)
+- name of right category of nodes (e.g., in the column **nodes_r** of the setting file the first category of nodes is **genres**)
+- filename (e.g., in the column **filename** of the setting file the first file is **UsersToGenres.txt**, which has to be in the specified data directory)
 - 1 or 0 value in the **main** column representing whether or not this datafile represents the matrix which will be searched for new links.
 
 # Setting file example
 
-Example of [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv) file:
+Example of [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv) file for the use case number 1:
 
 | #general parameters | | | |
 | ------------- | ------------- | ------------- | ------------- |
-| **#metric**  | APS |  |  |
-| **#initialization**  | random |  |  |
 | **#integration.strategy**  | intersection |  |  |
+| **#initialization**  | random |  |  |
+| **#metric**  | APS |  |  |
 | **#number.of.iterations** | 200 |  |  |
-| **#stop.criterion**  | relative_error |  |  |
 | **#type.of.masking** | fully_random |  |  |
-| **#threshold.for.retrieval** | 0.5 |  |  |
-| **#ds1** |  |  | **main** |
+| **#stop.criterion**  | relative_error |  |  |
+| **#likelyhood.threshold** | 0.5 |  |  |
+| **#nodes_l** | **nodes_r** | **filename** | **main** |
 | users |	genres |	UsersToGenres.txt |	0 |
 | users |	movies |	UsersToMovies.txt	| 1 |
 | movies	| actors	| MoviesToActors.txt |	0 |
@@ -79,18 +86,11 @@ Example of [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/mast
 
 ## Interpretation of the setting file
 
-We used APS (Average Precision Score) as evaluation metric, a random initialization strategy for the factor matrices, 200 maximum iterations for each run of the algorithm, a stop criterion based on the relative error of the loss function and a random masking strategy for the evaluation process. The mode of integration of shared datasets is by intersection, i.e., only objects shared by all association matrices are considered. The new link predictions have an NMTF score above 0.5 (the threshold for retrieval).
+We used APS (Average Precision Score) as evaluation metric, a random initialization strategy for the factor matrices, 200 maximum iterations for each run of the algorithm, a stop criterion based on the relative error of the loss function and a random masking strategy for the evaluation process. 
+The mode of integration of shared datasets is by intersection, i.e., only objects shared by all association matrices are considered. The new link predictions have an NMTF score above 0.5 (likelyhood threshold for retrieval).
 
 The example contains 4 nodes' categories (**users, genres, actors and movies**). Users to genres links are reported in [UsersToGenres.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/UsersToGenres.txt), each link represents the preference of movie genres for a specific user. Users to movies links are the list of watched movies for each user reported in [UsersToMovies.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/UsersToMovies.txt). [MoviesToActors.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/MoviesToActors.txt) file contains information on which actors worked on a specific movie, i.e., there is a link when an actor worked on that movie. Movies to genres links ([MoviesToGenres.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/MoviesToGenres.txt)) classify the genre of each movie in the network.
-The output file ([myOutFile.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/results/myOutFile.txt)) contains new movie suggestions for the users, this is selected by the element equal to 1 in the column **main**.
-
-# Contents
-
-This repository contains all data, scripts and example results related to the NMTF-link tool. In particular, you will find:
-
-1. folders which stores the case study number 1 ([case_study_1](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1)), the case study number two ([case_study_2](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_2)) and the [results](https://github.com/DEIB-GECO/NMTF-link/blob/master/results), i.e., the evaluation plots and the new link predictions;
-2. .py files, [NMTF-link.py](https://github.com/DEIB-GECO/NMTF-link/blob/master/NMTF-link.py), [Network.py](https://github.com/DEIB-GECO/NMTF-link/blob/master/Network.py) and [AssociationMatrix.py](https://github.com/DEIB-GECO/NMTF-link/blob/master/AssociationMatrix.py) which create classes used in other files. In particular, NMTF-link.py is used to create the network, execute and output the results, Network.py creates the network of association matrices and AssociationMatrix.py computes each association matrix.
-3. A Jupyter notebook, [NMTF-link_Example](https://github.com/DEIB-GECO/NMTF-link/blob/master/NMTF-link_Example.ipynb), explaining in detail an example of how to run the algorithm and comparisons between different outputs achieved by changing some parameters of the setting file. This example can be tried also online using this link: [NMTF_link_Example](https://colab.research.google.com/drive/1JWuYjppKcUiNm0bJsHTjQzYoSK6MJ7Pm?usp=sharing)
+The output file ([myOutFile.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/results/case_study_1/myOutFile_random_relative_error.txt)) contains new movie suggestions for the users, this is selected by the element equal to 1 in the column **main**.
 
 # Usage
 
