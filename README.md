@@ -14,11 +14,20 @@ This repository contains all data, scripts and example results related to the NM
 4. a Jupyter notebook, [NMTF-link_Example](https://github.com/DEIB-GECO/NMTF-link/blob/master/NMTF-link_Example.ipynb), explaining in detail an example of how to run the algorithm and comparisons between different outputs achieved by changing some parameters of the setting file. This example can be tried also online using this link: [NMTF_link_Example](https://colab.research.google.com/drive/1JWuYjppKcUiNm0bJsHTjQzYoSK6MJ7Pm?usp=sharing).
 
 # Table of contents
+- [NMTF method](#nmtf-method)
 - [Parameters to be specified by the user in the setting file](#parameters-to-be-specified-by-the-user-in-the-setting-file)
 - [Other entries to be specified by the user in the setting file](#other-entries-to-be-specified-by-the-user-in-the-setting-file)
 - [Setting file example](#setting-file-example)
   * [Interpretation of the setting file](#interpretation-of-the-setting-file)
 - [Usage](#usage)
+
+# NMTF method
+The NMTF method permits an effortless factorization of all association matrices in a multipartite network. 
+By simultaneously decomposing each association matrix into three factor matrices, the NMTF method can output new predictions for a user-specified subnetwork of the multipartite network. 
+At the starting point of the algorithm, each factor matrix needs to be initialized using a user-selected **initialization strategy**. 
+NMTF is an iterative approach; thus, it updates the factor matrices until a specified **stop criterion** is reached. 
+Then, the new link predictions are computed by multiplying the estimated factor matrices of the chosen subnetwork. 
+To evaluate our method, the user can either use the Average Precision Score (**APS**) or the Area Under the ROC curve (**AUROC**) on masked elements of the selected association matrix (the user can also choose the **masking strategy**). 
 
 # Parameters to be specified by the user in the setting file
 In the [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv) file the user needs to specify the following parameters:
