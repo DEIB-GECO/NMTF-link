@@ -1,7 +1,7 @@
 # NMTF-link tool 
 
-<!-- This tool is designed for computing **link predictions** using the **Non negative Matrix Tri-Factorization (NMTF)** method. This is the generalization for already pre-existing code in [DEIB-GECO/NMTF-DrugRepositioning](https://github.com/DEIB-GECO/NMTF-DrugRepositioning) allowing the use of networks of any topology. -->
-This tool is designed for computing network **link predictions** using a **Non negative Matrix Tri-Factorization (NMTF)** based method generalized to allow its application on networks of any topology. 
+<!-- This tool is designed for computing **link predictions** using the **Non-negative Matrix Tri-Factorization (NMTF)** method. This is the generalization for already pre-existing code in [DEIB-GECO/NMTF-DrugRepositioning](https://github.com/DEIB-GECO/NMTF-DrugRepositioning) allowing the use of networks of any topology. -->
+This tool is designed for computing network **link predictions** using a **Non-negative Matrix Tri-Factorization (NMTF)** based method generalized to allow its application on networks of any topology. 
 
 **It is a command-line tool that uses a setting file**. 
 Two example setting files called [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv) are located in the folders "[case_study_1](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/)" and "[case_study_2](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_2/)" of the main directory. Examples of the [myOutFile.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/results/case_study_1/myOutFile_random_relative_error.txt) file containing new possible relations among objects of the input datasets are located in the [results](https://github.com/DEIB-GECO/NMTF-link/blob/master/results/) folder of the main directory.
