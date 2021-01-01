@@ -36,15 +36,15 @@ In the [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/c
 - **integration.strategy**, mode of integration of datasets.
 When a dataset is present in several association matrices, there are two ways to integrate its elements: either using only its objects that are shared by all association matrices (intersection option), or using all its objects, which are present in at least one association matrix (union option).
 
-  *Options*: "intersection" and "union".
+  *Options*: "intersection" or "union".
   
 - **initialization**, method to initialize the factor matrices, which are the three matrices that factorize each association matrix. 
 
-  *Options*: "random", "kmeans" and "skmeans".
+  *Options*: "random", "kmeans" or "skmeans".
 
 - **metric**, performance evaluation metric.
 
-  *Options*: "APS" (Average Precision Score) and "AUROC" (Area Under the ROC Curve).
+  *Options*: "APS" (Average Precision Score) or "AUROC" (Area Under the ROC Curve).
 
 - **number.of.iterations**, number of maximum iterations for each run of the algorithm. 
 
@@ -53,11 +53,11 @@ When a dataset is present in several association matrices, there are two ways to
 - **type.of.masking**, to evaluate the NMTF predictions, there is the need of choosing the masking strategy applied on the selected association matrix. 
 It can either have a completely randomized distribution of masking elements or have the same number of masking elements per row randomly distributed within each row. 
 
-  *Options*: "fully_random" and "per_row_random".
+  *Options*: "fully_random" or "per_row_random".
 
 - **stop.criterion**, stop criterion strategies for link predictions using the NMTF method. 
 
-  *Options*: "maximum_metric", "relative_error" and "maximum_iterations".
+  *Options*: "maximum_metric", "relative_error" or "maximum_iterations".
     
     - "maximum_metric" option runs the algorithm 5 times with masking, chooses the iteration with best average evaluation metric and after runs one more time, without evaluation, untile chosen iteration and outputs results. It also outputs evaluation plots to the main directory.
     - "relative_error" option runs the algorithm 5 times with masking, chooses the iteration with relative error < 0.001 and after runs one more time, without evaluation, until chosen iteration and outputs results. It also outputs evaluation plots to the main directory.
