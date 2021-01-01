@@ -104,7 +104,7 @@ The output file ([myOutFile.txt](https://github.com/DEIB-GECO/NMTF-link/blob/mas
 
 # Usage
 
-To run the tool user should call it from terminal following way:
+To run the NMTF-link tool, the user should call it from the terminal as follows:
 ```
 python3 NMTF-link.py
 ```
