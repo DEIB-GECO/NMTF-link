@@ -7,7 +7,7 @@ This tool is designed for computing network **link predictions** using a **Non n
 Two example setting files called [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv) are located in the folders "[case_study_1](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/)" and "[case_study_2](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_2/)" of the main directory. Examples of the [myOutFile.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/results/case_study_1/myOutFile_random_relative_error.txt) file containing new possible relations among objects of the datasets are located in the [results](https://github.com/DEIB-GECO/NMTF-link/blob/master/results/) folder of the main directory.
 
 # Contents
-This repository contains all data, scripts and example results related to the NMTF-link tool. In particular, you will find:
+This repository contains all data, scripts and example results related to the NMTF-link tool. In particular, you can find:
 
 1. folders which stores the case study number 1 ([case_study_1](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1)), the case study number two ([case_study_2](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_2)) and the [results](https://github.com/DEIB-GECO/NMTF-link/blob/master/results), i.e., the evaluation plots and the new link predictions;
 2. the tool execution .py file, [NMTF-link.py](https://github.com/DEIB-GECO/NMTF-link/blob/master/NMTF-link.py);
