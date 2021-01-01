@@ -69,11 +69,11 @@ It can either have a completely randomized distribution of masking elements, or 
 
 # Other entries to be specified by the user in the setting file
 
-In the setting file, e.g. [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv), the user has also to specify the datasets which will be used to create the network. The structure of the datafile line is (entries separated by whitespace):
-- name of left category of nodes (e.g., in the column **nodes_l** of the setting file the first category of nodes is **users**)
-- name of right category of nodes (e.g., in the column **nodes_r** of the setting file the first category of nodes is **genres**)
-- filename (e.g., in the column **filename** of the setting file the first file is **UsersToGenres.txt**, which has to be in the specified data directory)
-- 1 or 0 value in the **main** column representing whether or not this datafile represents the matrix which will be searched for new links.
+In the setting file, e.g. [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv), the user has also to specify the datasets to be used to create the network. The structure of the datafile line is (entries separated by whitespace):
+- name of left category of nodes (e.g., in the column **nodes_l** of the example setting file the first category of nodes is **users**)
+- name of right category of nodes (e.g., in the column **nodes_r** of the example setting file the first category of nodes is **genres**)
+- filename (e.g., in the column **filename** of the example setting file the first file is **UsersToGenres.txt**, which has to be in the specified data directory)
+- 1 or 0 value in the **main** column representing whether or not the datafile represents the matrix for which computing new links.
 
 # Setting file example
 
