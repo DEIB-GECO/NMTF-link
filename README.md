@@ -50,12 +50,12 @@ When a dataset is present in several association matrices, there are two ways to
 
   *Options*: any integer value.
 
-- **type.of.masking**, to evaluate the NMTF predictions, there is the need of choosing the masking strategy applied on the selected association matrix. 
-It can either have a completely randomized distribution of masking elements or have the same number of masking elements per row randomly distributed within each row. 
+- **type.of.masking**, to evaluate the NMTF predictions, there is the need of choosing the masking strategy to be applied on the selected association matrix. 
+It can either have a completely randomized distribution of masking elements, or have the same number of masking elements per row, randomly distributed within each row. 
 
   *Options*: "fully_random" or "per_row_random".
 
-- **stop.criterion**, stop criterion strategies for link predictions using the NMTF method. 
+- **stop.criterion**, stop criterion strategies for link prediction using the NMTF method. 
 
   *Options*: "maximum_metric", "relative_error" or "maximum_iterations".
     
