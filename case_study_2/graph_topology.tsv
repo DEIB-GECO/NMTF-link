@@ -7,7 +7,7 @@
 #stop.criterion	relative_error
 #likelyhood.threshold	0.5
 #nodes_l	nodes_r	filename	main
-drug	Indication	DrugsToIndications.txt	1
+drug	Label	DrugsToLabels.txt	1
 drug	protein	DrugsToProteins.txt	0
 drug	disease	DrugsToDiseases.txt	0
 protein	pathway ProteinsToPathways.txt	0
