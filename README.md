@@ -59,11 +59,11 @@ It can either have a completely randomized distribution of masking elements, or 
 
   *Options*: "maximum_metric", "relative_error" or "maximum_iterations".
     
-    - "maximum_metric" option runs the algorithm 5 times with masking, chooses the iteration with best average evaluation metric and after runs one more time, without evaluation, untile chosen iteration and outputs results. It also outputs evaluation plots to the main directory.
-    - "relative_error" option runs the algorithm 5 times with masking, chooses the iteration with relative error < 0.001 and after runs one more time, without evaluation, until chosen iteration and outputs results. It also outputs evaluation plots to the main directory.
-    - "maximum_iterations" option runs the chosen number of iterations without masking and outputs result for the last iteration. 
+    - "maximum_metric" option runs the algorithm 5 times with masking, chooses the iteration with best average evaluation metric, runs one more time (without evaluation) until the chosen iteration and outputs the results. It also outputs evaluation plots to the main directory.
+    - "relative_error" option runs the algorithm 5 times with masking, chooses the first iteration of each run with relative error < 0.001, runs one more time (without evaluation) until the chosen iteration and outputs the results. It also outputs evaluation plots to the main directory.
+    - "maximum_iterations" option runs the chosen number of iterations without masking and outputs the result for the last iteration. 
 
-- **likelyhood.threshold**, value of threshold for retrieved results. 
+- **likelyhood.threshold**, minimum NMTF score value for the novel links predicted. 
 
   *Options*: any value between 0 and 1.
 
