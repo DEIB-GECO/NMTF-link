@@ -44,7 +44,7 @@ When a dataset is present in several association matrices, there are two ways to
 
 - **metric**, performance evaluation metric.
 
-  *Options*: "APS" (Average Precision Score) or "AUROC" (Area Under the ROC Curve).
+  *Options*: "APS" (Average Precision Score) or "AUROC" (Area Under the ROC curve).
 
 - **number.of.iterations**, number of maximum iterations for each run of the algorithm. 
 
