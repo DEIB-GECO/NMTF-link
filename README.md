@@ -23,12 +23,12 @@ This repository contains all data, scripts and example results related to the NM
 - [Usage](#usage)
 
 # NMTF method
-The NMTF method permits an effortless factorization of all association matrices in a multipartite network. 
-By simultaneously decomposing each association matrix into three factor matrices, the NMTF method can output new predictions for a user-specified subnetwork of the multipartite network. 
+The NMTF-link tool implements a generalized NMTF-based method that permits an effortless factorization of all association matrices in a multipartite network. 
+By simultaneously decomposing each association matrix into three factor matrices, this NMTF-based method can output new predictions for a user-specified subnetwork of the multipartite network. 
 At the starting point of the algorithm, each factor matrix needs to be initialized using a user-selected **initialization strategy**. 
-NMTF is an iterative approach; thus, it updates the factor matrices until a specified **stop criterion** is reached. 
+The NMTF is an iterative approach; thus, it updates the factor matrices until a specified **stop criterion** is reached. 
 Then, the new link predictions are computed by multiplying the estimated factor matrices of the chosen subnetwork. 
-To evaluate our method, the user can either use the Average Precision Score (**APS**) or the Area Under the ROC curve (**AUROC**) on masked elements of the selected association matrix (the user can also choose the **masking strategy**). 
+To evaluate our method, the user can either use the Average Precision Score (**APS**) or the Area Under the ROC (**AUROC**) curve on masked elements of the selected association matrix (choosing the **masking strategy** to be used). 
 
 # Parameters to be specified by the user in the setting file
 In the [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv) file the user needs to specify the following parameters:
