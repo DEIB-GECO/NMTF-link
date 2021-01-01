@@ -34,7 +34,7 @@ To evaluate our method, the user can either use the Average Precision Score (**A
 In the [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv) file the user needs to specify the following parameters:
 
 - **integration.strategy**, mode of integration of datasets.
-When one dataset is present in several association matrices, there are two ways to integrate its elements. The options are either to use only the objects, which are shared by all association matrices (intersection) or to use all its objects, which are present in at least one matrix (union).
+When a dataset is present in several association matrices, there are two ways to integrate its elements: either using only its objects that are shared by all association matrices (intersection option), or using all its objects, which are present in at least one association matrix (union option).
 
   *Options*: "intersection" and "union".
   
