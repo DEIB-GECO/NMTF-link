@@ -6,7 +6,7 @@
 #type.of.masking	fully_random
 #stop.criterion	relative_error
 #likelihood.threshold	0.5
-#nodes_l	nodes_r	filename	main
+#nodes_left	nodes_right	filename	main
 users	genres	UsersToGenres.txt	0
 users	movies	UsersToMovies.txt	1
 movies	actors	MoviesToActors.txt	0
