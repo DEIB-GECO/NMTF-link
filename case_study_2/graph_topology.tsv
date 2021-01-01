@@ -10,4 +10,4 @@
 drug	label	DrugsToLabels.txt	1
 drug	protein	DrugsToProteins.txt	0
 drug	disease	DrugsToDiseases.txt	0
-protein	pathway 	ProteinsToPathways.txt	0
+protein	pathway ProteinsToPathways.txt	0
