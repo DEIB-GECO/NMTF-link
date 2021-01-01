@@ -63,23 +63,23 @@ It can either have a completely randomized distribution of masking elements, or 
     - "relative_error" option runs the algorithm 5 times with masking, chooses the first iteration of each run with relative error < 0.001, runs one more time (without evaluation) until the chosen iteration and outputs the results. It also outputs evaluation plots to the main directory.
     - "maximum_iterations" option runs the chosen number of iterations without masking and outputs the result for the last iteration. 
 
-- **likelyhood.threshold**, minimum NMTF score value for the novel links predicted. 
+- **likelihood.threshold**, minimum NMTF score value for the novel links predicted. 
 
   *Options*: any value between 0 and 1.
 
 # Other entries to be specified by the user in the setting file
 
 In the setting file, e.g. [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv), the user has also to specify the datasets to be used to create the network. The structure of the datafile line is (entries separated by whitespace):
-- name of left category of nodes (e.g., in the column **nodes_l** of the example setting file the first category of nodes is **users**)
-- name of right category of nodes (e.g., in the column **nodes_r** of the example setting file the first category of nodes is **genres**)
+- name of left category of nodes (e.g., in the column **nodes_left** of the example setting file the first category of nodes is **users**)
+- name of right category of nodes (e.g., in the column **nodes_right** of the example setting file the first category of nodes is **genres**)
 - filename (e.g., in the column **filename** of the example setting file the first file is **UsersToGenres.txt**, which has to be in the specified data directory)
-- 1 or 0 value in the **main** column representing whether or not the datafile represents the matrix for which computing new links.
+- 1 or 0 value in the **main** column indicating whether or not the datafile represents the matrix for which computing new links.
 
 # Setting file example
 
 Example of [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv) file for the use case number 1:
 
-| #general parameters | | | |
+| #parameters | | | |
 | ------------- | ------------- | ------------- | ------------- |
 | **#integration.strategy**  | intersection |  |  |
 | **#initialization**  | random |  |  |
@@ -87,8 +87,8 @@ Example of [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/mast
 | **#number.of.iterations** | 200 |  |  |
 | **#type.of.masking** | fully_random |  |  |
 | **#stop.criterion**  | relative_error |  |  |
-| **#likelyhood.threshold** | 0.5 |  |  |
-| **#nodes_l** | **nodes_r** | **filename** | **main** |
+| **#likelihood.threshold** | 0.5 |  |  |
+| **#nodes_left** | **nodes_right** | **filename** | **main** |
 | users |	genres |	UsersToGenres.txt |	0 |
 | users |	movies |	UsersToMovies.txt	| 1 |
 | movies	| actors	| MoviesToActors.txt |	0 |
