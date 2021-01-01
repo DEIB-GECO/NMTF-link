@@ -101,11 +101,11 @@ We used the random initialization strategy for the factor matrices, the APS (Ave
 The used mode of integration of shared datasets is by intersection, i.e., only objects shared by all association matrices are considered. The new link predictions have an NMTF score (likelyhood threshold) above 0.5.
 
 The example contains 4 nodes' categories (**users, genres, actors and movies**). Users to genres links are reported in [UsersToGenres.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/UsersToGenres.txt); each link represents the preference of movie genres for a specific user. Users to movies links are the list of watched movies for each user, reported in [UsersToMovies.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/UsersToMovies.txt). The [MoviesToActors.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/MoviesToActors.txt) file contains information on which actors worked on a specific movie, i.e., there is a link when an actor worked on a movie. Movies to genres links ([MoviesToGenres.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/MoviesToGenres.txt)) classify the genre of each movie in the network.
-The output file ([myOutFile.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/results/case_study_1/myOutFile_random_relative_error.txt)) contains new movie suggestions for the users; this file is selected by the element equal to 1 in the column **main** of the setting file.
+The output file ([myOutFile.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/results/case_study_1/myOutFile_random_relative_error.txt)) contains new movie suggestions for the users; this file is selected by the element equal to 1 in the column **main** of the [setting file](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv).
 
 # Usage
 
-To run the NMTF-link tool, the user should call it from the terminal as follows:
+To run the NMTF-link tool, the user can call it from the terminal as follows:
 ```
 python3 NMTF-link.py
 ```
