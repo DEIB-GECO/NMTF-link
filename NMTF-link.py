@@ -60,7 +60,7 @@ with open(dirname_1) as f:
           else:
               print("Option '{}' not supported".format(s[1]))
               exit(-1)
-       if line.strip().startswith("#likelyhood.threshold"):
+       if line.strip().startswith("#likelihood.threshold"):
             s = line.strip().split("\t")
             if 0<=float(s[1])<=1:
               threshold = float(s[1])
