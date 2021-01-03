@@ -74,7 +74,7 @@ In the setting file, e.g. [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF
 - name of left category of nodes (e.g., in the column **nodes_left** of the [example setting file of use case 1](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv), the first category of nodes is **users**)
 - name of right category of nodes (e.g., in the column **nodes_right** of the [example setting file of use case 1](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv), the first category of nodes is **genres**)
 - filename (e.g., in the column **filename** of the [example setting file of use case 1](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv), the first file is **UsersToGenres.txt**, which has to be in the specified data directory)
-- 1 or 0 value in the **main** column, indicating whether or not the datafile represents the matrix for which computing new links.
+- 1 or 0 value in the **main** column, indicating whether or not the datafile represents the matrix for which to compute new links.
 
 # Setting file example
 
