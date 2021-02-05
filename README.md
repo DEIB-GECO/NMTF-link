@@ -33,6 +33,8 @@ pip3 install -r /NMTF-link/requirements.txt
 cd /NMTF-link
 python3 NMTF-link.py
 ```
+Additionally, an online example is available here:
+[online NMTF_link_Example](https://colab.research.google.com/drive/1JWuYjppKcUiNm0bJsHTjQzYoSK6MJ7Pm?usp=sharing).
 
 # NMTF method
 The NMTF-link tool implements a generalized NMTF-based method that permits an effortless factorization of all association matrices in a multipartite network. 
