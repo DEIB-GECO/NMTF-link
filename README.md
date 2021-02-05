@@ -16,12 +16,23 @@ This repository contains all data, scripts and example results related to the NM
 5. a [requirements.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/requirements.txt) file with the software requirements to run the tool.
 
 # Table of contents
+- [Installation](#installation)
 - [NMTF method](#nmtf-method)
 - [Parameters to be specified by the user in the setting file](#parameters-to-be-specified-by-the-user-in-the-setting-file)
 - [Other entries to be specified by the user in the setting file](#other-entries-to-be-specified-by-the-user-in-the-setting-file)
 - [Setting file example](#setting-file-example)
   * [Interpretation of the setting file](#interpretation-of-the-setting-file)
-- [Usage](#usage)
+  
+
+# Installation
+
+To run the NMTF-link tool, the user can call it from the terminal as follows:
+```
+git clone https://github.com/DEIB-GECO/NMTF-link
+pip3 install -r /NMTF-link/requirements.txt
+cd /NMTF-link
+python3 NMTF-link.py
+```
 
 # NMTF method
 The NMTF-link tool implements a generalized NMTF-based method that permits an effortless factorization of all association matrices in a multipartite network. 
@@ -103,10 +114,3 @@ The used mode of integration of shared datasets is by intersection, i.e., only o
 The example contains 4 node categories (**users, genres, actors and movies**). Users to genres links are reported in [UsersToGenres.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/UsersToGenres.txt); each link represents the preference of movie genres for a specific user. Users to movies links are the list of watched movies for each user, reported in [UsersToMovies.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/UsersToMovies.txt). The [MoviesToActors.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/MoviesToActors.txt) file contains information on which actors worked on a specific movie, i.e., there is a link when an actor worked on a movie. Movies to genres links ([MoviesToGenres.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/MoviesToGenres.txt)) classify the genre of each movie in the network.
 
 The element equal to 1 in the column **main** of the [setting file](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv) indicates the file describing the association matrix for which to compute the predictions, i.e., in the example, new movie suggestions for the users; they are stored in the output file ([myOutFile.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/results/case_study_1/myOutFile_random_relative_error.txt)). 
-
-# Usage
-
-To run the NMTF-link tool, the user can call it from the terminal as follows:
-```
-python3 NMTF-link.py
-```
