@@ -33,7 +33,7 @@ pip3 install -r /NMTF-link/requirements.txt
 cd /NMTF-link
 python3 NMTF-link.py
 ```
-Additionally, an online executable example of the NMTF-link use and its outputs is available here:
+Additionally, an online executable example of the NMTF-link use and outputs is available here:
 [online NMTF_link_Example](https://colab.research.google.com/drive/1JWuYjppKcUiNm0bJsHTjQzYoSK6MJ7Pm?usp=sharing).
 
 # NMTF method
