@@ -96,7 +96,7 @@ if stop_criterion== 'maximum_metric':
       X = np.arange(1, max_iter, 10)
       df = pd.DataFrame([metric_vals], columns = X).melt()
       sns.lineplot(x="variable", y="value", data=df, ci='sd')        
-      plt.xlabel('Iterations')
+      plt.xlabel('Iteration')
       if metric == 'aps':
          plt.ylabel('Average Precision Score (APS)')
          if j==4:
@@ -111,7 +111,8 @@ if stop_criterion== 'maximum_metric':
     
     res_best_iter = statistics.median(best_iter_arr)    
     plt.axvline(x=res_best_iter, color='k', label='selected stop iteration',linestyle = 'dashed')
-    plt.legend()
+    plt.legend(loc=4)
+    plt.ylim(0, 1)
     plt.savefig('results/'+ metric +'_' + network.init_strategy + '_' + stop_criterion + '.png')
     plt.close("all")
     
@@ -173,7 +174,7 @@ if stop_criterion== 'relative_error':
       X = np.arange(1, max_iter, 10)
       df = pd.DataFrame([metric_vals], columns = X).melt()
       sns.lineplot(x="variable", y="value", data=df, ci='sd')
-      plt.xlabel('Iterations')
+      plt.xlabel('Iteration')
       if metric == 'aps':
          plt.ylabel('Average Precision Score (APS)')
          if j==4:
@@ -187,7 +188,8 @@ if stop_criterion== 'relative_error':
     
     res_best_epsilon = statistics.median(best_epsilon_arr)
     plt.axvline(x=res_best_epsilon, color='k', label='selected stop iteration',linestyle = 'dashed')
-    plt.legend()
+    plt.ylim(0, 1)
+    plt.legend(loc=4)
     plt.savefig('results/'+ metric +'_' + network.init_strategy + '_' + stop_criterion + '.png')
     plt.close("all")
     
