@@ -78,7 +78,7 @@ It can either have a completely randomized distribution of masking elements, or 
     - "relative_error" option runs the algorithm 5 times with masking, chooses the first iteration of each run with relative error < 0.001, runs one more time (without masking and evaluation) until the chosen iteration and outputs the results; it also outputs evaluation plots to the main directory.
     - "maximum_iterations" option runs the chosen number of iterations without masking and outputs the result for the last iteration. 
 
-- **likelihood.threshold**, minimum NMTF score value for the novel links predicted. 
+- **score.threshold**, minimum NMTF score value for the novel links predicted. 
 
   *Options*: any value between 0 and 1.
 
@@ -102,7 +102,7 @@ Example of [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/mast
 | **#number.of.iterations** | 200 |  |  |
 | **#type.of.masking** | fully_random |  |  |
 | **#stop.criterion**  | relative_error |  |  |
-| **#likelihood.threshold** | 0.5 |  |  |
+| **#score.threshold** | 0.5 |  |  |
 | **#nodes_left** | **nodes_right** | **filename** | **main** |
 | users |	genres |	UsersToGenres.txt |	0 |
 | users |	movies |	UsersToMovies.txt	| 1 |
