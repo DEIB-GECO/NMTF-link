@@ -29,8 +29,8 @@ This repository contains all data, scripts and example results related to the NM
 After cheching the software requirements in the [requirements.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/requirements.txt) file, to run the NMTF-link tool the user can call it from the terminal as follows:
 ```
 git clone https://github.com/DEIB-GECO/NMTF-link
-pip3 install -r /NMTF-link/requirements.txt
 cd /NMTF-link
+pip3 install -r /NMTF-link/requirements.txt
 python3 NMTF-link.py
 ```
 Additionally, an online executable example of the NMTF-link use and outputs is available here:
