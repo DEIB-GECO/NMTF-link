@@ -92,7 +92,7 @@ In the setting file, e.g. [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF
 
 # Setting file example
 
-Example of [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv) file for the use case number 1:
+Example of [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv) configuration file, from the use case number 1. The lines starting with a _hash mark_ (#) represent execution parameters. The final lines describe the topology of the multi-layer network.
 
 | #parameters | | | |
 | ------------- | ------------- | ------------- | ------------- |
@@ -119,7 +119,7 @@ The example contains 4 node categories (**users, genres, actors and movies**). U
 The element equal to 1 in the column **main** of the [setting file](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv) indicates the file describing the association matrix for which to compute the predictions, i.e., in the example, new movie suggestions for the users; they are stored in the output file ([myOutFile.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/results/case_study_1/myOutFile_random_relative_error.txt)). 
 
 ## Input network format
-Each input file ([UsersToGenres.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/UsersToGenres.txt), [UsersToMovies.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/UsersToMovies.txt), [MoviesToActors.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/MoviesToActors.txt) , ([MoviesToGenres.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/MoviesToGenres.txt))) is a tab-separated edgelist containing all link information for each bipartite layer of the overall input network architecture. For example, the first five rows of [UsersToMovies.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/UsersToMovies.txt) show that the first column contains user names and the second column conatins movie titles as follows:
+Each input file (e.g., [UsersToGenres.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/UsersToGenres.txt), [UsersToMovies.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/UsersToMovies.txt), [MoviesToActors.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/MoviesToActors.txt) ,([MoviesToGenres.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/MoviesToGenres.txt)) is a tab-separated file containing all link information for each bipartite layer of the overall input network architecture. For example, the first five rows of [UsersToMovies.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/UsersToMovies.txt) show that the first column contains user names and the second column conatins movie titles as follows:
 
 | **UsersToMovies.txt** | | 
 | ------------- | ------------- | 
