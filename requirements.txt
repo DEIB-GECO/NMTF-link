@@ -1,10 +1,10 @@
 joblib==0.17.0
-matplotlib==2.2.2
-scipy==1.1.0
+matplotlib==3.1.1
+scipy==1.2.0
 spherecluster==0.1.7
 seaborn==0.9.0
 numpy==1.18.1
 networkx==2.1
-pandas==0.23.0
+pandas==1.1.0
 scikit_learn==0.21.3
 
