@@ -3,11 +3,9 @@ warnings.filterwarnings('ignore')
 import sys
 sys.path.insert(0, 'scripts/')
 from AssociationMatrix import AssociationMatrix
+from scripts.utils import bold
 import numpy as np
-import copy
-from scipy import sparse
 import os
-#import math
 
 class Network():
 
@@ -41,7 +39,7 @@ class Network():
                         print("Option '{}' not supported".format(s[1]))
                         exit(-1)
                     if verbose==True:
-                        print("Initialization strategy is " + '\033[1m' + self.init_strategy + '\033[0m' + "\n")
+                        print(f"Initialization strategy is {bold(self.init_strategy)}\n")
                 if line.strip().startswith("#type.of.masking"):
                     s = line.strip().split("\t")
                     if s[1] == "fully_random":
