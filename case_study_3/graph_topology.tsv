@@ -1,9 +1,9 @@
 #parameters
 #integration.strategy	intersection
-#initialization	random
+#initialization	skmeans
 #metric	RMSE
-#number.of.iterations	200
-#type.of.masking	per_row_random
+#number.of.iterations	300
+#type.of.masking	fully_random
 #stop.criterion	maximum_metric
 #score.threshold	0.5
 #nodes_left	nodes_right	filename	main

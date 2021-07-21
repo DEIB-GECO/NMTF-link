@@ -10,6 +10,7 @@ import copy
 from scripts.utils import bold
 from contextlib import contextmanager
 from scipy.stats import pearsonr
+from math import sqrt
 import os
 import sys
 
@@ -190,7 +191,7 @@ class AssociationMatrix():
         self.M = np.zeros_like(self.association_matrix)
         if self.type_of_masking == 0:
             a = np.ones(self.association_matrix.shape, dtype=self.association_matrix.dtype)
-            n = self.association_matrix.size * 0.1
+            n = self.association_matrix.size * 0.05
             a = a.reshape(a.size)
             a[:int(n)] = 0
             np.random.shuffle(a)
@@ -205,7 +206,7 @@ class AssociationMatrix():
             for i in range(0, self.association_matrix.shape[0] - 1):
                 nc = self.association_matrix.shape[1]  # nc is row size ( number of columns)
                 a = np.ones(nc, dtype=int)  # get array of dimension of 1 row
-                n = self.association_matrix.shape[1] * 0.1
+                n = self.association_matrix.shape[1] * 0.05
                 a[:int(n)] = 0
                 np.random.shuffle(a)
                 self.association_matrix[i, :] = np.multiply(self.association_matrix[i, :], a)
@@ -239,7 +240,7 @@ class AssociationMatrix():
                 elif metric == 'r2':
                     return metrics.r2_score(R12_2, R12_found_2)
                 elif metric == 'rmse':
-                    return metrics.mean_squared_error(R12_2, R12_found_2)
+                    return sqrt(metrics.mean_squared_error(R12_2, R12_found_2))
 
 
     def get_error(self):

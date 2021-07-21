@@ -79,7 +79,7 @@ if stop_criterion == 'maximum_metric':
     # cycle to find the stop criterion value
     for j in range(5):
         V = []
-
+        difference = []
         verbose = True if j==0 else False
 
         network = Network(conf_file, input_dir, verbose)
@@ -94,16 +94,24 @@ if stop_criterion == 'maximum_metric':
             V.append(network.validate(metric))
             print(f"iteration {str(i + 1)}, {metric} = {V[-1]}")
             if metric=='rmse' and i>1 and best_iter==0:
-                if ((V[-2] - V[-1])/V[-1] < 0.0001): #da verificare valore
-                    best_iter = i
-                    #break
+                difference.append(abs((V[-1] - V[-2]) / V[-2]))
+                if (difference[-1] < 0.0001):  # da verificare valore
+                    #best_iter = i
+                    if difference[-1] == min(difference):
+                        best_iter = i
+
+                    #if ((V[-2] - V[-1])/V[-1] <= 0.0001): #da verificare valore
+                    #    best_iter = i
+                    #    break
             else:
                 if V[-1] == max(V):
                     best_iter = i
+
         X = np.arange(1, max_iter, 10)
         df = pd.DataFrame([metric_vals], columns=X).melt()
         sns.lineplot(x="variable", y="value", data=df, ci='sd')
         plt.xlabel('Iteration')
+
         if metric == 'aps':
             plt.ylabel('Average Precision Score (APS)')
             if j == 4:
@@ -131,7 +139,7 @@ if stop_criterion == 'maximum_metric':
     res_best_iter = statistics.median(best_iter_arr)
     plt.axvline(x=res_best_iter, color='k', label='selected stop iteration', linestyle='dashed')
     plt.legend(loc=4)
-    plt.ylim(0, 1)
+    #plt.ylim(0, 1)
     plt.savefig('results/' + metric + '_' + network.init_strategy + '_' + stop_criterion + '.png')
     plt.close("all")
 
@@ -270,7 +278,7 @@ elif stop_criterion == 'maximum_iterations':
             result = [metric_vals]
         if i > 1:
             epsilon = abs((error[-1] - error[-2]) / error[-2])
-        print(f"iteration {i + 1}, relative error = {epsilon}")
+            print(f"iteration {i + 1}, relative error = {epsilon}")
 
     # reconstruction of the matrix from factor matrices and output of result
     rebuilt_association_matrix = np.linalg.multi_dot(
