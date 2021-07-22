@@ -25,7 +25,7 @@ class Network():
                     elif s[1] == "intersection":
                         self.integration_strategy = lambda x, y: x.intersection(y)
                     else:
-                        print("Option '{}' not supported".format(s[1]))
+                        print(f"Option '{s[1]}' not supported")
                         exit(-1)
                 if line.strip().startswith("#initialization"):
                     s = line.strip().split("\t")
@@ -36,7 +36,7 @@ class Network():
                     elif s[1] == "skmeans":
                         self.init_strategy = "skmeans"
                     else:
-                        print("Option '{}' not supported".format(s[1]))
+                        print(f"Option '{s[1]}' not supported")
                         exit(-1)
                     if verbose==True:
                         print(f"Initialization strategy is {bold(self.init_strategy)}\n")
@@ -47,7 +47,7 @@ class Network():
                     elif s[1] == "per_row_random":
                         self.type_of_masking = 1
                     else:
-                        print("Option '{}' not supported".format(s[1]))
+                        print(f"Option '{s[1]}' not supported")
                         exit(-1)
 
         #For each category of nodes, compute the intersection or union between the different matrices
@@ -82,7 +82,7 @@ class Network():
             self.datasets[k] = list(sorted(list(self.datasets[k])))
 
         if verbose==True:
-            print('All specified nodes\' categories: '+ '\033[1m' + "{}".format(str(list(self.datasets.keys()))) + '\033[0m' + "\n")
+            print(f'All specified nodes\' categories: {bold(str(list(self.datasets.keys())))}\n')
 
         with open(graph_topology_file) as f:
             for line in f:
@@ -142,7 +142,7 @@ class Network():
         for am in self.association_matrices:
             am.create_update_rules()
 
-#method to calculate rank for each datatype. In case of k-means and shrerical k-means initialization represents number of clusters.
+#method to calculate rank for each datatype. In case of k-means and spherical k-means initialization represents number of clusters.
     def select_rank(self, ds_name):
 
         if self.init_strategy == "kmeans" or self.init_strategy == "skmeans":

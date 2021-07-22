@@ -1,0 +1,10 @@
+#parameters
+#integration.strategy	intersection
+#initialization	skmeans
+#metric	RMSE
+#number.of.iterations	50
+#type.of.masking	fully_random
+#stop.criterion	maximum_metric
+#score.threshold	0.001
+#nodes_left	nodes_right	filename	main
+cell_line	drug	drug_cell.txt   1

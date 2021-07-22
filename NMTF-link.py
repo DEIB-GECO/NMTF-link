@@ -1,19 +1,20 @@
 import warnings
-
-warnings.filterwarnings('ignore')
 import sys
-
-from scripts import Network, bold
-import numpy as np
-import pandas as pd
-import matplotlib
-
-matplotlib.use('agg')
-import pylab as plt
-import seaborn as sns
 import time
 import statistics
 import os
+import numpy as np
+import pandas as pd
+import pylab as plt
+import seaborn as sns
+import matplotlib
+import time
+import statistics
+import os
+from scripts import Network, bold
+
+warnings.filterwarnings('ignore')
+matplotlib.use('agg')
 
 current = os.getcwd()
 try:
@@ -88,27 +89,23 @@ if stop_criterion == 'maximum_metric':
         print(f"initial error: {initial_error}")
         for i in range(max_iter):
             network.update()
-            if i % 10 == 0:
-                metric_vals[i // 10] = network.validate(metric)
-                result = [metric_vals]
             V.append(network.validate(metric))
+            if i % 10 == 0:
+                metric_vals[i // 10] = V[-1]
+                result = [metric_vals]
             print(f"iteration {str(i + 1)}, {metric} = {V[-1]}")
-            if metric=='rmse' and i>1 and best_iter==0:
-                difference.append(abs((V[-1] - V[-2]) / V[-2]))
-                if (difference[-1] < 0.0001):  # da verificare valore
-                    #best_iter = i
-                    if difference[-1] == min(difference):
+            if metric=='rmse':
+                if i>1 and best_iter==0:
+                    difference.append(abs((V[-1] - V[-2]) / V[-2]))
+                    if (difference[-1] < 0.001) and (difference[-1] == min(difference)): #to verify
                         best_iter = i
-
-                    #if ((V[-2] - V[-1])/V[-1] <= 0.0001): #da verificare valore
-                    #    best_iter = i
-                    #    break
             else:
                 if V[-1] == max(V):
                     best_iter = i
-
+        print('metric_vals ', metric_vals)
         X = np.arange(1, max_iter, 10)
         df = pd.DataFrame([metric_vals], columns=X).melt()
+        print('df ', df)
         sns.lineplot(x="variable", y="value", data=df, ci='sd')
         plt.xlabel('Iteration')
 
@@ -294,3 +291,4 @@ elif stop_criterion == 'maximum_iterations':
                 outF.write(line)
                 outF.write("\n")
     outF.close()
+

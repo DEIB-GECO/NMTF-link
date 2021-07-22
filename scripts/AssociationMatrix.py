@@ -191,22 +191,18 @@ class AssociationMatrix():
         self.M = np.zeros_like(self.association_matrix)
         if self.type_of_masking == 0:
             a = np.ones(self.association_matrix.shape, dtype=self.association_matrix.dtype)
-            n = self.association_matrix.size * 0.05
+            n = self.association_matrix.size * 0.1
             a = a.reshape(a.size)
             a[:int(n)] = 0
             np.random.shuffle(a)
             a = a.reshape(self.association_matrix.shape)
             self.association_matrix = np.multiply(self.association_matrix, a)
             self.M = a
-            print('association m')
-            print(self.association_matrix)
-            print('M')
-            print(self.M)
         else:
             for i in range(0, self.association_matrix.shape[0] - 1):
                 nc = self.association_matrix.shape[1]  # nc is row size ( number of columns)
                 a = np.ones(nc, dtype=int)  # get array of dimension of 1 row
-                n = self.association_matrix.shape[1] * 0.05
+                n = self.association_matrix.shape[1] * 0.1
                 a[:int(n)] = 0
                 np.random.shuffle(a)
                 self.association_matrix[i, :] = np.multiply(self.association_matrix[i, :], a)
