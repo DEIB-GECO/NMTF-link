@@ -1,8 +1,8 @@
 #parameters
 #integration.strategy	intersection
-#initialization	skmeans
+#initialization	random
 #metric	R2
-#number.of.iterations	200
+#number.of.iterations	300
 #type.of.masking	fully_random
 #normalization	standard_scaler
 #stop.criterion	maximum_metric
