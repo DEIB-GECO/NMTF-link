@@ -1,8 +1,8 @@
 #parameters
 #integration.strategy	intersection
 #initialization	skmeans
-#metric	RMSE
-#number.of.iterations	50
+#metric	PEARSON
+#number.of.iterations	200
 #type.of.masking	fully_random
 #stop.criterion	maximum_metric
 #score.threshold	0.001

@@ -4,6 +4,7 @@
 #metric	RMSE
 #number.of.iterations	300
 #type.of.masking	fully_random
+#normalization	min_max
 #stop.criterion	maximum_metric
 #score.threshold	0.01
 #nodes_left	nodes_right	filename	main
