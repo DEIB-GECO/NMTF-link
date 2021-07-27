@@ -78,7 +78,7 @@ class AssociationMatrix():
 
         self.original_matrix = copy.deepcopy(self.association_matrix)  # for all to use in select_rank
 
-        if hasattr(self,normalization):
+        if hasattr(self,'normalization'):
             self.normalize()
 
         if self.main == 1 and self.validation == 1:  # so this is the matrix which we try to investigate
