@@ -6,6 +6,10 @@ This tool is designed for computing network **link predictions** using a **Non-n
 **It is a command-line tool that uses a setting file**. 
 Two example setting files called [graph_topology.tsv](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/graph_topology.tsv) are located in the folders "[case_study_1](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/)" and "[case_study_2](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_2/)" of the main directory. Examples of the [myOutFile.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/results/case_study_1/myOutFile_random_relative_error.txt) file containing new possible relations among objects of the input datasets are located in the [results](https://github.com/DEIB-GECO/NMTF-link/blob/master/results/) folder of the main directory.
 
+To run the software:
+```
+python NMTF-link.py case_study_1 graph_topology.tsv
+```
 # Contents
 This repository contains all data, scripts and example results related to the NMTF-link tool. In particular, you can find:
 
@@ -128,4 +132,3 @@ Each input file (e.g., [UsersToGenres.txt](https://github.com/DEIB-GECO/NMTF-lin
 | Anna |	Ma |
 | Anna |	Spider-Man |
 | Anna |	Oceans 8 | 
-

@@ -1,19 +1,16 @@
 import warnings
+
+warnings.filterwarnings('ignore')
 import networkx as nx
 import numpy as np
 from sklearn.cluster import KMeans
 from spherecluster import SphericalKMeans
-import sklearn.preprocessing as preprocessing
 import sklearn.metrics as metrics
 import copy
-from scripts.utils import bold
+
 from contextlib import contextmanager
-from scipy.stats import pearsonr
-from math import sqrt
 import os
 import sys
-
-warnings.filterwarnings('ignore')
 
 
 @contextmanager
@@ -29,7 +26,6 @@ def suppress_stdout():
 
 class AssociationMatrix():
     def __init__(self, filename, leftds, rightds, left_sorted_terms, right_sorted_terms, main, mask, type_of_masking,
-                 normalization,
                  verbose):
         self.filename = filename
         self.leftds = leftds
@@ -49,38 +45,23 @@ class AssociationMatrix():
         self.validation = mask
         if self.main == 1:
             self.type_of_masking = type_of_masking
-        if normalization != None:
-            self.normalization = normalization
 
         with open(self.filename, "r") as f:
-            def split_line(line):
-                s = line.strip().split("\t")
-                if len(s) == 3:
-                    return tuple(s)
-                elif len(s) == 2:
-                    return tuple(s + [1])
-
-            data_graph = [split_line(element) for element in f.readlines()]
-
-        self.edges = [el for el in data_graph
+            data_graph = [element.strip().split("\t") for element in f.readlines()]
+        self.edges = [(el[0], el[1])
+                      for el in data_graph
                       if el[0] in set(self.left_sorted_term_list) and el[1] in set(self.right_sorted_term_list)]
 
         graph = nx.Graph()
         graph.add_nodes_from(list(self.left_sorted_term_list), bipartite=0)
         graph.add_nodes_from(list(self.right_sorted_term_list), bipartite=1)
-        graph.add_weighted_edges_from(self.edges)
+        graph.add_edges_from(self.edges)
 
         self.association_matrix = nx.algorithms.bipartite.matrix.biadjacency_matrix(graph,
                                                                                     self.left_sorted_term_list,
-                                                                                    self.right_sorted_term_list,
-                                                                                    dtype=np.float)
+                                                                                    self.right_sorted_term_list)
         self.association_matrix = self.association_matrix.toarray()
-
         self.original_matrix = copy.deepcopy(self.association_matrix)  # for all to use in select_rank
-
-        if hasattr(self,'normalization'):
-            self.normalize()
-
         if self.main == 1 and self.validation == 1:  # so this is the matrix which we try to investigate
             self.mask_matrix()
             # self.compute_tf_idf() #not affecting original matrix
@@ -91,22 +72,28 @@ class AssociationMatrix():
         self.S = None
 
     def initialize(self, initialize_strategy, verbose):
-        if verbose:
-            print(f"Association matrix filename: {self.filename}")
-            print("Used parameters:  " + bold(' k\u2081 = ' + str(self.k1) + ' and ' + 'k\u2082 =' + str(self.k2)))
-            print(
-                f"Non-zero elements of the association matrix = {bold(str(np.count_nonzero(self.association_matrix)))}")
-
-        with suppress_stdout():
-            if initialize_strategy == "random":
-                if self.G_left is None:
-                    self.G_left = np.random.rand(self.association_matrix.shape[0], self.k1)
-                    self.G_left_primary = True
-                if self.G_right is None:
-                    self.G_right = np.random.rand(self.association_matrix.shape[1], self.k2)
-                    self.G_right_primary = True
-            elif initialize_strategy == "oldkmeans":
-                if self.G_left is None:
+        if initialize_strategy == "random":
+            if verbose == True:
+                print("Association matrix filename: " + self.filename)
+                print("Used parameters: " + '\033[1m' + " k\u2081 = " + str(self.k1) + " and" + " k\u2082 = " + str(
+                    self.k2) + '\033[0m')
+                print("Non-zero elements of the association matrix = " + '\033[1m' + "{}".format(
+                    np.count_nonzero(self.association_matrix)) + '\033[0m')
+            if self.G_left is None:
+                self.G_left = np.random.rand(self.association_matrix.shape[0], self.k1)
+                self.G_left_primary = True
+            if self.G_right is None:
+                self.G_right = np.random.rand(self.association_matrix.shape[1], self.k2)
+                self.G_right_primary = True
+        elif initialize_strategy == "oldkmeans":
+            if verbose == True:
+                print("Association matrix filename: " + self.filename)
+                print("Used parameters: " + '\033[1m' + " k\u2081 = " + str(self.k1) + " and" + " k\u2082 = " + str(
+                    self.k2) + '\033[0m')
+                print("Non-zero elements of the association matrix = " + '\033[1m' + "{}".format(
+                    np.count_nonzero(self.association_matrix)) + '\033[0m')
+            if self.G_left is None:
+                with suppress_stdout():
                     km = KMeans(n_clusters=self.k1).fit(self.association_matrix)
                     self.G_left = np.zeros((self.association_matrix.shape[0], self.k1))
                     for row in range(self.association_matrix.shape[0]):
@@ -114,7 +101,8 @@ class AssociationMatrix():
                             self.G_left[row, col] = np.linalg.norm(
                                 self.association_matrix[row] - km.cluster_centers_[col])
                     self.G_left_primary = True
-                if self.G_right is None:
+            if self.G_right is None:
+                with suppress_stdout():
                     km = KMeans(n_clusters=self.k2).fit(self.association_matrix.transpose())
                     self.G_right = np.zeros((self.association_matrix.shape[1], self.k2))
                     for row in range(self.association_matrix.shape[1]):
@@ -122,26 +110,44 @@ class AssociationMatrix():
                             self.G_right[row, col] = np.linalg.norm(
                                 self.association_matrix.transpose()[row] - km.cluster_centers_[col])
                     self.G_right_primary = True
-            elif initialize_strategy == "kmeans":
-                if self.G_left is None:
+        elif initialize_strategy == "kmeans":
+            if verbose == True:
+                print("Association matrix filename: " + self.filename)
+                print("Used parameters: " + '\033[1m' + " k\u2081 = " + str(self.k1) + " and" + " k\u2082 = " + str(
+                    self.k2) + '\033[0m')
+                print("Non-zero elements of the association matrix = " + '\033[1m' + "{}".format(
+                    np.count_nonzero(self.association_matrix)) + '\033[0m')
+            if self.G_left is None:
+                with suppress_stdout():
                     km = KMeans(n_clusters=self.k1, n_init=10).fit_predict(self.association_matrix.transpose())
                     self.G_left = np.array(
                         [np.mean([self.association_matrix[:, i] for i in range(len(km)) if km[i] == p], axis=0) for p in
                          range(self.k1)]).transpose()
                     self.G_left_primary = True
-                if self.G_right is None:
+            if self.G_right is None:
+                with suppress_stdout():
                     km = KMeans(n_clusters=self.k2, n_init=10).fit_predict(self.association_matrix)
                     self.G_right = np.array(
                         [np.mean([self.association_matrix[i] for i in range(len(km)) if km[i] == p], axis=0) for p in
                          range(self.k2)]).transpose()
                     self.G_right_primary = True
-            elif initialize_strategy == "skmeans":
-                if self.G_left is None:
-                    skm = SphericalKMeans(n_clusters=self.k1).fit(self.association_matrix.transpose())
+        elif initialize_strategy == "skmeans":
+            if verbose == True:
+                print("Association matrix filename: " + self.filename)
+                print("Used parameters: " + '\033[1m' + " k\u2081 = " + str(self.k1) + " and" + " k\u2082 = " + str(
+                    self.k2) + '\033[0m')
+                print("Non-zero elements of the association matrix = " + '\033[1m' + "{}".format(
+                    np.count_nonzero(self.association_matrix)) + '\033[0m')
+            # with suppress_stdout():
+            if self.G_left is None:
+                with suppress_stdout():
+                    skm = SphericalKMeans(n_clusters=self.k1)
+                    skm = skm.fit(self.association_matrix.transpose())
                     # Factor matrices are initialized with the center coordinates
                     self.G_left = skm.cluster_centers_.transpose()
                     self.G_left_primary = True
-                if self.G_right is None:
+            if self.G_right is None:
+                with suppress_stdout():
                     skm = SphericalKMeans(n_clusters=self.k2).fit(self.association_matrix)
                     # Factor matrices are initialized with the center coordinates
                     self.G_right = skm.cluster_centers_.transpose()
@@ -159,22 +165,18 @@ class AssociationMatrix():
         for am in self.dep_own_right_other_right:
             if am.G_right is None:
                 am.G_right = self.G_right
-
-        if verbose:
+        if verbose == True:
             print(self.leftds, self.rightds, self.association_matrix.shape)
-            print(f"Shape Factor Matrix left {str(self.G_left.shape)}")
-            print(f"Shape Factor Matrix right {str(self.G_right.shape)}\n")
-
+            print("Shape Factor Matrix left " + str(self.G_left.shape))
+            print("Shape Factor Matrix right " + str(self.G_right.shape) + "\n")
         self.S = np.linalg.multi_dot([self.G_left.transpose(), self.association_matrix, self.G_right])
 
-    # NON USATA, IMPLEMENTATA PER TRASFORMAZIONE MA NO RISULTATI MIGLIORI
     def compute_tf_idf2(self):
         self.tf_rows = np.true_divide(np.count_nonzero(self.original_matrix, axis=1), np.count_nonzero(
             self.original_matrix))  # axis - Axis or tuple of axes along which to count non-zeros.
         self.tf_columns = np.true_divide(np.count_nonzero(self.original_matrix, axis=0),
                                          np.count_nonzero(self.original_matrix))
 
-    # NON USATA, IMPLEMENTATA PER TRASFORMAZIONE MA NO RISULTATI MIGLIORI
     def compute_tf_idf(self):
         self.tf = np.true_divide(self.association_matrix,
                                  np.repeat(np.count_nonzero(self.association_matrix, axis=1)[:, np.newaxis],
@@ -185,16 +187,12 @@ class AssociationMatrix():
                              np.newaxis, :], self.association_matrix.shape[0], axis=0)
         self.association_matrix = np.multiply(self.association_matrix, self.tf, self.idf)
 
-    # method to mask the matrix.
-    # Used in validation phase to be able later in validate method to assess performance of the algorithm.
-    # self.type_of_masking is set in the settings file and read in the method open of the class network.
-    # This parameter can be "fully_random"(0) or "per_row_random"(1).
-    # In the first case masking elements in the created mask are distrubited uniformly randomly and in the second case mask has same number of masking elements per row, distributed randomly within the row.
+    # method to mask the matrix. Used in validation phase to be able later in validate method to assess performance of the algorithm. self.type_of_masking is set in the settings file and read in the method open of the class network. This parameter can be "fully_random"(0) or "per_row_random"(1). In the first case masking elements in the created mask are distrubited uniformly randomly and in the second case mask has same number of masking elements per row, distributed randomly within the row.
     def mask_matrix(self):
         self.M = np.zeros_like(self.association_matrix)
         if self.type_of_masking == 0:
             a = np.ones(self.association_matrix.shape, dtype=self.association_matrix.dtype)
-            n = self.association_matrix.size * 0.1
+            n = self.association_matrix.size * 0.05
             a = a.reshape(a.size)
             a[:int(n)] = 0
             np.random.shuffle(a)
@@ -205,7 +203,7 @@ class AssociationMatrix():
             for i in range(0, self.association_matrix.shape[0] - 1):
                 nc = self.association_matrix.shape[1]  # nc is row size ( number of columns)
                 a = np.ones(nc, dtype=int)  # get array of dimension of 1 row
-                n = self.association_matrix.shape[1] * 0.1
+                n = self.association_matrix.shape[1] * 0.05
                 a[:int(n)] = 0
                 np.random.shuffle(a)
                 self.association_matrix[i, :] = np.multiply(self.association_matrix[i, :], a)
@@ -227,19 +225,12 @@ class AssociationMatrix():
                         if self.M[i, j] == 0:
                             R12_2.append(self.original_matrix[i, j])
                             R12_found_2.append(self.rebuilt_association_matrix[i, j])
-
                 # We can asses the quality of our output with APS or AUROC score
                 if metric == 'auroc':
                     fpr, tpr, threshold = metrics.roc_curve(R12_2, R12_found_2)
                     return metrics.auc(fpr, tpr)
-                elif metric == 'aps':
+                if metric == 'aps':
                     return metrics.average_precision_score(R12_2, R12_found_2)
-                elif metric == 'pearson':
-                    return pearsonr(R12_2, R12_found_2)[0]
-                elif metric == 'r2':
-                    return metrics.r2_score(R12_2, R12_found_2)
-                elif metric == 'rmse':
-                    return sqrt(metrics.mean_squared_error(R12_2, R12_found_2))
 
     def get_error(self):
         self.rebuilt_association_matrix = np.linalg.multi_dot([self.G_left, self.S, self.G_right.transpose()])
@@ -298,13 +289,3 @@ class AssociationMatrix():
         if self.G_left_primary:
             self.G_left = self.update_G_left()
         self.S = self.update_S()
-
-    def normalize(self):
-        if self.normalization == 'min_max':
-            self.association_matrix = preprocessing.minmax_scale(self.association_matrix)
-        elif self.normalization == 'standard_scaler':
-            self.association_matrix = preprocessing.StandardScaler().fit_transform(self.association_matrix)
-        elif self.normalization == 'max':
-            self.association_matrix = preprocessing.maxabs_scale(self.association_matrix)
-        elif self.normalization == 'unit_form':
-            self.association_matrix = preprocessing.normalize(self.association_matrix)
