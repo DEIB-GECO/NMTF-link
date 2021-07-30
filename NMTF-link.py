@@ -22,20 +22,20 @@ dirname_1 = os.path.join(current, filename_1, filename_2)
 dirname_2 = os.path.join(current, filename_1)
 
 # Baseline parameters
-# threshold=0
-# metric = 'aps'
-# max_iter =200
-# stop_criterion= 'calculate'
+threshold=0
+metric = 'aps'
+max_iter =200
+stop_criterion= 'calculate'
 
 
 with open(dirname_1) as f:
     for line in f:
         if line.strip().startswith("#metric"):
             s = line.strip().split("\t")
-            if s[1] == "APS":
+            if s[1].upper() == "APS":
                 metric = "aps"
                 print("\nEvaluation metric is " + '\033[1m' + "APS" + '\033[0m')
-            elif s[1] == "AUROC":
+            elif s[1].upper() == "AUROC":
                 metric = "auroc"
                 print("\nEvaluation metric is " + '\033[1m' + "AUROC" + '\033[0m')
             else:

@@ -1,6 +1,6 @@
 #parameters	
 #integration.strategy	intersection
-#initialization	skmeans
+#initialization	kmeans
 #metric	APS
 #number.of.iterations	200
 #type.of.masking	fully_random

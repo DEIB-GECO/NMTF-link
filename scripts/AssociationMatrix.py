@@ -23,6 +23,15 @@ def suppress_stdout():
         finally:
             sys.stdout = old_stdout
 
+def parse_line(line):
+    s = line.strip().split("\t")
+    if len(s)==2:
+        return tuple(s+[1])
+    elif len(s)==3:
+        return tuple([s[0],s[1],float(s[2])])
+    else:
+        raise Exception()
+
 
 class AssociationMatrix():
     def __init__(self, filename, leftds, rightds, left_sorted_terms, right_sorted_terms, main, mask, type_of_masking,
@@ -47,19 +56,20 @@ class AssociationMatrix():
             self.type_of_masking = type_of_masking
 
         with open(self.filename, "r") as f:
-            data_graph = [element.strip().split("\t") for element in f.readlines()]
-        self.edges = [(el[0], el[1])
+            data_graph = [parse_line(element) for element in f.readlines()]
+        self.edges = [el
                       for el in data_graph
                       if el[0] in set(self.left_sorted_term_list) and el[1] in set(self.right_sorted_term_list)]
 
         graph = nx.Graph()
         graph.add_nodes_from(list(self.left_sorted_term_list), bipartite=0)
         graph.add_nodes_from(list(self.right_sorted_term_list), bipartite=1)
-        graph.add_edges_from(self.edges)
+        graph.add_weighted_edges_from(self.edges)
 
         self.association_matrix = nx.algorithms.bipartite.matrix.biadjacency_matrix(graph,
                                                                                     self.left_sorted_term_list,
                                                                                     self.right_sorted_term_list)
+        print(self.association_matrix)
         self.association_matrix = self.association_matrix.toarray()
         self.original_matrix = copy.deepcopy(self.association_matrix)  # for all to use in select_rank
         if self.main == 1 and self.validation == 1:  # so this is the matrix which we try to investigate
@@ -141,7 +151,9 @@ class AssociationMatrix():
             # with suppress_stdout():
             if self.G_left is None:
                 with suppress_stdout():
-                    skm = SphericalKMeans(n_clusters=self.k1)
+                    #skm = SphericalKMeans(n_clusters=self.k1)
+                    skm = SphericalKMeans(n_clusters=5)
+                    print("\n\n\nMATRIX\n\n\n\n", self.k1,  file=sys.stderr)
                     skm = skm.fit(self.association_matrix.transpose())
                     # Factor matrices are initialized with the center coordinates
                     self.G_left = skm.cluster_centers_.transpose()

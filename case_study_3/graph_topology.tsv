@@ -1,7 +1,7 @@
 #parameters
 #integration.strategy	intersection
-#initialization	skmeans
-#metric	RMSE
+#initialization	kmeans
+#metric	auroc
 #number.of.iterations	300
 #type.of.masking	fully_random
 #normalization	min_max
