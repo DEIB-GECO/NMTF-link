@@ -2,11 +2,11 @@ import warnings
 
 warnings.filterwarnings('ignore')
 import sys
-# sys.path.insert(0, 'scripts/')
 from scripts import Network
 import numpy as np
 import pandas as pd
 import matplotlib
+from utils import EvaluationMetric, StopCriterion
 
 matplotlib.use('agg')
 import pylab as plt
@@ -22,7 +22,8 @@ dirname_1 = os.path.join(current, filename_1, filename_2)
 dirname_2 = os.path.join(current, filename_1)
 
 # Baseline parameters
-threshold=0
+default_threshold = 0.1
+threshold=default_threshold
 metric = 'aps'
 max_iter =200
 stop_criterion= 'calculate'
@@ -31,46 +32,37 @@ stop_criterion= 'calculate'
 with open(dirname_1) as f:
     for line in f:
         if line.strip().startswith("#metric"):
-            s = line.strip().split("\t")
-            if s[1].upper() == "APS":
-                metric = "aps"
-                print("\nEvaluation metric is " + '\033[1m' + "APS" + '\033[0m')
-            elif s[1].upper() == "AUROC":
-                metric = "auroc"
-                print("\nEvaluation metric is " + '\033[1m' + "AUROC" + '\033[0m')
-            else:
-                print("Option '{}' not supported".format(s[1]))
-                exit(-1)
+            _,metric_name = line.strip().split("\t")
+            metric = EvaluationMetric(metric_name.upper())
+
         if line.strip().startswith("#number.of.iterations"):
             try:
-                s = line.strip().split("\t")
+                s, max_iter_value = line.strip().split("\t")
                 max_iter = int(s[1])
-                print("Maximum number of iteration is " + '\033[1m' + str(max_iter) + '\033[0m')
             except ValueError:
-                print("Number of iterations should be integer")
-                exit(-1)
+                print(f"Invalid number of iteration {max_iter_value}, set default value {max_iter}", file=sys.stderr)
+
         if line.strip().startswith("#stop.criterion"):
-            s = line.strip().split("\t")
-            if s[1] == "maximum_metric":
-                stop_criterion = 'maximum_metric'
-            elif s[1] == "maximum_iterations":
-                stop_criterion = 'maximum_iterations'
-            elif s[1] == "relative_error":
-                stop_criterion = 'relative_error'
-            else:
-                print("Option '{}' not supported".format(s[1]))
-                exit(-1)
+            _,criterion_name = line.strip().split("\t")
+            stop_criterion = StopCriterion(criterion_name.upper())
+
         if line.strip().startswith("#score.threshold"):
-            s = line.strip().split("\t")
-            if 0 <= float(s[1]) <= 1:
-                threshold = float(s[1])
-            else:
-                print("Threshold for retrieval should be between 0 and 1")
-                exit(-1)
+            _, th_value = line.strip().split("\t")
+            try:
+                threshold = float(th_value)
+                if not (0 <= threshold <= 1):
+                    raise ValueError()
+            except ValueError:
+                threshold = default_threshold
+
+print(f"metric : {metric.value}")
+print(f"number of iterations : {max_iter}")
+print(f"stop criterion : {stop_criterion.value}")
+print(f"threshold : {threshold}")
 
 metric_vals = np.zeros(max_iter // 10)
 
-if stop_criterion == 'maximum_metric':
+if stop_criterion == StopCriterion.MAXIMUM_METRIC:
     best_iter = 0
     best_iter_arr = []  # contains the iterations with best performance from each of 5 validation runs (j cycle)
     # cycle to find the stop criterion value
@@ -97,14 +89,12 @@ if stop_criterion == 'maximum_metric':
         df = pd.DataFrame([metric_vals], columns=X).melt()
         sns.lineplot(x="variable", y="value", data=df, ci='sd')
         plt.xlabel('Iteration')
-        if metric == 'aps':
+        if metric == EvaluationMetric.APS:
             plt.ylabel('Average Precision Score (APS)')
-            if j == 4:
-                plt.savefig('results/aps_' + network.init_strategy + '_' + stop_criterion + '.png')
-        elif metric == 'auroc':
+        elif metric == EvaluationMetric.AUROC:
             plt.ylabel('Area Under ROC Curve')
-            if j == 4:
-                plt.savefig('results/auroc_' + network.init_strategy + '_' + stop_criterion + '.png')
+        if j == 4:
+            plt.savefig(f'results/{metric.value}_{network.init_strategy}_{stop_criterion.value}.png')
         best_iter_arr.append(best_iter)
         best_iter = 0
         time.sleep(2)  # used since otherwise random initialization gives the same result multiple times
@@ -113,7 +103,7 @@ if stop_criterion == 'maximum_metric':
     plt.axvline(x=res_best_iter, color='k', label='selected stop iteration', linestyle='dashed')
     plt.legend(loc=4)
     plt.ylim(0, 1)
-    plt.savefig('results/' + metric + '_' + network.init_strategy + '_' + stop_criterion + '.png')
+    plt.savefig(f'results/{metric.value}_{network.init_strategy}_{stop_criterion.value}.png')
     plt.close("all")
 
     network = Network(dirname_1, dirname_2, mask=0, verbose=False)
@@ -144,7 +134,7 @@ if stop_criterion == 'maximum_metric':
                 outF.write("\n")
     outF.close()
 
-if stop_criterion == 'relative_error':
+elif stop_criterion == StopCriterion.RELATIVE_ERROR:
     best_epsilon_arr = []
     # cycle to find the stop criterion value
     for j in range(5):
@@ -177,14 +167,12 @@ if stop_criterion == 'relative_error':
         df = pd.DataFrame([metric_vals], columns=X).melt()
         sns.lineplot(x="variable", y="value", data=df, ci='sd')
         plt.xlabel('Iteration')
-        if metric == 'aps':
+        if metric == EvaluationMetric.APS:
             plt.ylabel('Average Precision Score (APS)')
-            if j == 4:
-                plt.savefig('results/aps_' + network.init_strategy + '_' + stop_criterion + '.png')
-        elif metric == 'auroc':
+        elif metric == EvaluationMetric.AUROC:
             plt.ylabel('Area Under ROC Curve')
-            if j == 4:
-                plt.savefig('results/auroc_' + network.init_strategy + '_' + stop_criterion + '.png')
+        if j == 4:
+            plt.savefig(f'results/{metric.value}_{network.init_strategy}_{stop_criterion.value}.png')
         best_epsilon_arr.append(eps_iter[0])
         time.sleep(2)  # used since otherwise random initialization gives the same result multiple times
 
@@ -192,7 +180,7 @@ if stop_criterion == 'relative_error':
     plt.axvline(x=res_best_epsilon, color='k', label='selected stop iteration', linestyle='dashed')
     plt.ylim(0, 1)
     plt.legend(loc=4)
-    plt.savefig('results/' + metric + '_' + network.init_strategy + '_' + stop_criterion + '.png')
+    plt.savefig('results/' + metric.value + '_' + network.init_strategy + '_' + stop_criterion.value + '.png')
     plt.close("all")
 
     network = Network(dirname_1, dirname_2, mask=0, verbose=False)
@@ -224,7 +212,7 @@ if stop_criterion == 'relative_error':
                 outF.write("\n")
     outF.close()
 
-elif stop_criterion == 'maximum_iterations':
+elif stop_criterion == StopCriterion.MAXIMUM_ITERATIONS:
     network = Network(dirname_1, dirname_2, mask=0, verbose=True)
     initial_error = network.get_error()
     print('\033[1m' + "Unique run of the algorithm without masking" + '\033[0m')
@@ -254,8 +242,3 @@ elif stop_criterion == 'maximum_iterations':
                 outF.write(line)
                 outF.write("\n")
     outF.close()
-
-
-
-
-

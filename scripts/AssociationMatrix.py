@@ -11,6 +11,8 @@ import copy
 from contextlib import contextmanager
 import os
 import sys
+sys.path.insert(0, 'scripts/')
+from utils import EvaluationMetric
 
 
 @contextmanager
@@ -220,7 +222,7 @@ class AssociationMatrix():
                 self.M[i, :] = a
 
     # method to produce performance metrics (APS, AUROC). Produces output only if the matrix is the matrix for which predictions are searched and the network is in validation mode.
-    def validate(self, metric='aps'):
+    def validate(self, metric=EvaluationMetric.APS):
         with suppress_stdout():
             if self.main == 1 and self.validation == 1:
                 self.rebuilt_association_matrix = np.linalg.multi_dot([self.G_left, self.S, self.G_right.transpose()])
@@ -236,11 +238,17 @@ class AssociationMatrix():
                             R12_2.append(self.original_matrix[i, j])
                             R12_found_2.append(self.rebuilt_association_matrix[i, j])
                 # We can asses the quality of our output with APS or AUROC score
-                if metric == 'auroc':
+                if metric == EvaluationMetric.AUROC:
                     fpr, tpr, threshold = metrics.roc_curve(R12_2, R12_found_2)
                     return metrics.auc(fpr, tpr)
-                elif metric == 'aps':
+                elif metric == EvaluationMetric.APS:
                     return metrics.average_precision_score(R12_2, R12_found_2)
+                else:
+                    print("NOT GUD", file=sys.stderr)
+                    print(f"metric = {type(metric)}", file=sys.stderr)
+                    print(f"metric = {type(EvaluationMetric.APS)}", file=sys.stderr)
+                    print(f"metric = {metric}", file=sys.stderr)
+                    AAAA
 
     def get_error(self):
         self.rebuilt_association_matrix = np.linalg.multi_dot([self.G_left, self.S, self.G_right.transpose()])

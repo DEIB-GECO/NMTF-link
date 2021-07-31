@@ -4,10 +4,8 @@ warnings.filterwarnings('ignore')
 import sys
 
 sys.path.insert(0, 'scripts/')
-from AssociationMatrix import AssociationMatrix
+from AssociationMatrix import AssociationMatrix, EvaluationMetric
 import numpy as np
-import copy
-from scipy import sparse
 import os
 
 
@@ -173,7 +171,7 @@ class Network():
         for am in self.association_matrices:
             am.update()
 
-    def validate(self, metric='aps'):
+    def validate(self, metric=EvaluationMetric.APS):
         for am in self.association_matrices:
             if am.main == 1 and am.validation == 1:
                 return am.validate(metric)
