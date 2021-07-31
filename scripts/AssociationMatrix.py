@@ -69,7 +69,6 @@ class AssociationMatrix():
         self.association_matrix = nx.algorithms.bipartite.matrix.biadjacency_matrix(graph,
                                                                                     self.left_sorted_term_list,
                                                                                     self.right_sorted_term_list)
-        print(self.association_matrix)
         self.association_matrix = self.association_matrix.toarray()
         self.original_matrix = copy.deepcopy(self.association_matrix)  # for all to use in select_rank
         if self.main == 1 and self.validation == 1:  # so this is the matrix which we try to investigate
@@ -153,7 +152,6 @@ class AssociationMatrix():
                 with suppress_stdout():
                     #skm = SphericalKMeans(n_clusters=self.k1)
                     skm = SphericalKMeans(n_clusters=5)
-                    print("\n\n\nMATRIX\n\n\n\n", self.k1,  file=sys.stderr)
                     skm = skm.fit(self.association_matrix.transpose())
                     # Factor matrices are initialized with the center coordinates
                     self.G_left = skm.cluster_centers_.transpose()
@@ -241,7 +239,7 @@ class AssociationMatrix():
                 if metric == 'auroc':
                     fpr, tpr, threshold = metrics.roc_curve(R12_2, R12_found_2)
                     return metrics.auc(fpr, tpr)
-                if metric == 'aps':
+                elif metric == 'aps':
                     return metrics.average_precision_score(R12_2, R12_found_2)
 
     def get_error(self):
