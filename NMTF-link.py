@@ -30,17 +30,19 @@ def plot_iteration(max_it, met_val):
     X = np.arange(1, max_it, 10)
     plt.plot(X, met_val)
 
-def complete_plot(m, y_lim):
+def complete_plot(m):
     plt.xlabel('Iteration')
     if m == EvaluationMetric.APS:
         plt.ylabel('Average Precision Score (APS)')
+        plt.ylim(0,1)
     elif m == EvaluationMetric.AUROC:
         plt.ylabel('Area Under ROC Curve')
-    plt.ylim(y_lim)
+        plt.ylim(0, 1)
+    elif m == EvaluationMetric.RMSE:
+        plt.ylabel('RMSE')
 
 def predict(num_iterations, th):
     network = Network(dirname_1, dirname_2, mask=0, verbose=False)
-    initial_error = network.get_error()
 
     for i in range(num_iterations):
         network.update()
@@ -111,17 +113,14 @@ if stop_criterion == StopCriterion.MAXIMUM_METRIC:
             network.update()
             if i % 10 == 0:
                 metric_vals[i // 10] = network.validate(metric)
-                result = [metric_vals]
             V.append(network.validate(metric))
-            print("iteration {}, ".format(i + 1) + metric + " = {}".format(V[-1]))
-            if V[-1] == max(V):
-                best_iter = i
+            print(f"iteration {i + 1}, {metric.value} = {V[-1]}")
         plot_iteration(max_iter, metric_vals)
-        best_iter_arr.append(best_iter)
+        best_iter_arr.append(V.index(min(V)) if metric==EvaluationMetric.RMSE else V.index(max(V)))
         best_iter = 0
         time.sleep(2)  # used since otherwise random initialization gives the same result multiple times
 
-    complete_plot(metric, y_lim=(0,1))
+    complete_plot(metric)
 
     res_best_iter = statistics.median(best_iter_arr)
     plt.axvline(x=res_best_iter, color='k', label='selected stop iteration', linestyle='dashed')
@@ -153,18 +152,17 @@ elif stop_criterion == StopCriterion.RELATIVE_ERROR:
             V.append(network.validate(metric))
             if i % 10 == 0:
                 metric_vals[i // 10] = network.validate(metric)
-                result = [metric_vals]
             if i > 1:
                 epsilon = abs((error[-1] - error[-2]) / error[-2])
                 if epsilon < 0.001:
                     eps_iter.append(i)
-            print("iteration {}, relative error = {}".format(i + 1, epsilon))
+            print(f"iteration {i + 1}, relative error = {epsilon}")
 
         plot_iteration(max_iter, metric_vals)
         time.sleep(2)  # used since otherwise random initialization gives the same result multiple times
         best_epsilon_arr.append(eps_iter[0])
 
-    complete_plot(metric, y_lim=(0,1))
+    complete_plot(metric)
 
     res_best_epsilon = statistics.median(best_epsilon_arr)
     plt.axvline(x=res_best_epsilon, color='k', label='selected stop iteration', linestyle='dashed')

@@ -1,11 +1,12 @@
 import warnings
-
 warnings.filterwarnings('ignore')
+
 import networkx as nx
 import numpy as np
 from sklearn.cluster import KMeans
 from spherecluster import SphericalKMeans
 import sklearn.metrics as metrics
+from scipy import stats as stats
 import copy
 
 from contextlib import contextmanager
@@ -75,7 +76,6 @@ class AssociationMatrix():
         self.original_matrix = copy.deepcopy(self.association_matrix)  # for all to use in select_rank
         if self.main == 1 and self.validation == 1:  # so this is the matrix which we try to investigate
             self.mask_matrix()
-            # self.compute_tf_idf() #not affecting original matrix
         self.G_left = None
         self.G_left_primary = False
         self.G_right = None
@@ -223,32 +223,20 @@ class AssociationMatrix():
 
     # method to produce performance metrics (APS, AUROC). Produces output only if the matrix is the matrix for which predictions are searched and the network is in validation mode.
     def validate(self, metric=EvaluationMetric.APS):
-        with suppress_stdout():
-            if self.main == 1 and self.validation == 1:
-                self.rebuilt_association_matrix = np.linalg.multi_dot([self.G_left, self.S, self.G_right.transpose()])
-                n, m = self.rebuilt_association_matrix.shape
-                # R12_found = np.linalg.multi_dot([self.G1, self.S12, self.G2.transpose()])#equals to rebuilt_association_matrix
-                R12_2 = []
-                R12_found_2 = []
+        if self.main == 1 and self.validation == 1:
+            self.rebuilt_association_matrix = np.linalg.multi_dot([self.G_left, self.S, self.G_right.transpose()])
 
-                # We first isolate the validation set and the corresponding result
-                for i in range(n):
-                    for j in range(m):
-                        if self.M[i, j] == 0:
-                            R12_2.append(self.original_matrix[i, j])
-                            R12_found_2.append(self.rebuilt_association_matrix[i, j])
-                # We can asses the quality of our output with APS or AUROC score
-                if metric == EvaluationMetric.AUROC:
-                    fpr, tpr, threshold = metrics.roc_curve(R12_2, R12_found_2)
-                    return metrics.auc(fpr, tpr)
-                elif metric == EvaluationMetric.APS:
-                    return metrics.average_precision_score(R12_2, R12_found_2)
-                else:
-                    print("NOT GUD", file=sys.stderr)
-                    print(f"metric = {type(metric)}", file=sys.stderr)
-                    print(f"metric = {type(EvaluationMetric.APS)}", file=sys.stderr)
-                    print(f"metric = {metric}", file=sys.stderr)
-                    AAAA
+            R12_2 = list(self.original_matrix[self.M == 0])
+            R12_found_2 = list(self.rebuilt_association_matrix[self.M == 0])
+            if metric == EvaluationMetric.AUROC:
+                fpr, tpr, _ = metrics.roc_curve(R12_2, R12_found_2)
+                return metrics.auc(fpr, tpr)
+            elif metric == EvaluationMetric.APS:
+                return metrics.average_precision_score(R12_2, R12_found_2)
+            elif metric == EvaluationMetric.RMSE:
+                return (metrics.mean_squared_error(R12_2, R12_found_2))**(.5)
+            elif metric == EvaluationMetric.PEARSON:
+                return stats.pearsonr(R12_2, R12_found_2)[0]
 
     def get_error(self):
         self.rebuilt_association_matrix = np.linalg.multi_dot([self.G_left, self.S, self.G_right.transpose()])
