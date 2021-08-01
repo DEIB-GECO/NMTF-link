@@ -71,6 +71,8 @@ class Network():
                         exit(-1)
 
                 # For each category of nodes, compute the intersection or union between the different matrices
+        with open(graph_topology_file) as f:
+            for line in f:
                 if not line.strip().startswith("#") and not line.strip().startswith("+"):
                     s = line.strip().split()
                     filename = s[2]
@@ -100,20 +102,30 @@ class Network():
 
                     # TODO: OTTIMIZZARE, AD OGNI CICLO FA IL FOR
                     # sort the nodes, such that each matrix receives the same ordered list of nodes
-                    for k in self.datasets.keys():
-                        self.datasets[k] = list(sorted(list(self.datasets[k])))
+        for k in self.datasets.keys():
+            self.datasets[k] = list(sorted(list(self.datasets[k])))
 
-                    self.association_matrices.append(
-                        AssociationMatrix(filename,
-                                          ds1_name,
-                                          ds2_name,
-                                          self.datasets[ds1_name],
-                                          self.datasets[ds2_name],
-                                          main,
-                                          mask,
-                                          self.type_of_masking,
-                                          self.normalization,
-                                          verbose))
+        with open(graph_topology_file) as f:
+            for line in f:
+                if not line.strip().startswith("#") and not line.strip().startswith("+"):
+                    s = line.strip().split()
+                    filename = s[2]
+                    filename = os.path.join(dirfilename, filename)
+                    ds1_name = s[0].upper()
+                    ds2_name = s[1].upper()
+                    main = int(s[3])
+
+                self.association_matrices.append(
+                    AssociationMatrix(filename,
+                                      ds1_name,
+                                      ds2_name,
+                                      self.datasets[ds1_name],
+                                      self.datasets[ds2_name],
+                                      main,
+                                      mask,
+                                      self.type_of_masking,
+                                      self.normalization,
+                                      verbose))
 
         if verbose == True:
             print(f'All specified nodes\' categories: {bold(str(list(self.datasets.keys())))}\n')
