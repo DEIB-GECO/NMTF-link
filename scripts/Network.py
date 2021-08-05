@@ -147,7 +147,6 @@ class Network():
 
     # method to calculate rank for each datatype. In case of k-means and shrerical k-means initialization represents number of clusters.
     def select_rank(self, ds_name):
-
         if ds_name in self.dataset_ks:
             rank = self.dataset_ks[ds_name]
         else:
