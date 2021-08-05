@@ -235,6 +235,8 @@ class AssociationMatrix():
                 return metrics.average_precision_score(R12_2, R12_found_2)
             elif metric == EvaluationMetric.RMSE:
                 return (metrics.mean_squared_error(R12_2, R12_found_2))**(.5)
+            elif metric == EvaluationMetric.LOG_RMSE:
+                return np.log10((metrics.mean_squared_error(R12_2, R12_found_2))**(.5))
             elif metric == EvaluationMetric.PEARSON:
                 return stats.pearsonr(R12_2, R12_found_2)[0]
 

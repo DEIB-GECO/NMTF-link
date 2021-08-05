@@ -1,10 +1,10 @@
 #parameters
 #integration.strategy	intersection
 #initialization	skmeans
-#metric	RMSE
+#metric	LOG_RMSE
 #number.of.iterations	1000
 #type.of.masking	fully_random
-#stop.criterion	maximum_iterations
+#stop.criterion	maximum_metric
 #score.threshold	0.001
 #k	cell_line	50
 #k	drug	50

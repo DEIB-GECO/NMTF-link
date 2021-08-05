@@ -9,6 +9,7 @@ class EvaluationMetric(Enum):
     AUROC = 'AUROC'
     PEARSON = 'PEARSON'
     RMSE = 'RMSE'
+    LOG_RMSE = 'LOG_RMSE'
 
     @classmethod
     def _missing_(cls, value):
