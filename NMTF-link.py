@@ -71,7 +71,7 @@ with open(dirname_1) as f:
         if line.strip().startswith("#number.of.iterations"):
             try:
                 s, max_iter_value = line.strip().split("\t")
-                max_iter = int(s[1])
+                max_iter = int(max_iter_value)
             except ValueError:
                 print(f"Invalid number of iteration {max_iter_value}, set default value {max_iter}", file=sys.stderr)
 
