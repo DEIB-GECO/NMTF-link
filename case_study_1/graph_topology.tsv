@@ -7,6 +7,7 @@
 #stop.criterion	relative_error
 #score.threshold	0.5
 #nodes_left	nodes_right	filename	main
+#k movies 5
 users	genres	UsersToGenres.txt	0
 users	movies	UsersToMovies.txt	1
 movies	actors	MoviesToActors.txt	0

@@ -8,21 +8,23 @@ from AssociationMatrix import AssociationMatrix, EvaluationMetric
 import numpy as np
 import os
 
-
-# import math
-
 class Network():
 
     def __init__(self, graph_topology_file, dirfilename, verbose, mask=1):
+        self.graph_topology_file = graph_topology_file
         self.init_strategy = "random"
         self.integration_strategy = lambda x, y: x.intersection(y)
         self.association_matrices = []
         self.datasets = {}
         self.type_of_masking = 1
+        self.dataset_ks = {}
 
-        with open(graph_topology_file) as f:
+        with open(self.graph_topology_file) as f:
             for line in f:
-                if line.strip().startswith("#integration.strategy"):
+                if line.strip().startswith("#k\t"):
+                    _, dsname, k = line.strip().split("\t")
+                    self.dataset_ks[dsname.upper()] = int(k)
+                elif line.strip().startswith("#integration.strategy"):
                     s = line.strip().split("\t")
                     if s[1] == "union":
                         self.integration_strategy = lambda x, y: x.union(y)
@@ -31,7 +33,7 @@ class Network():
                     else:
                         print("Option '{}' not supported".format(s[1]))
                         exit(-1)
-                if line.strip().startswith("#initialization"):
+                elif line.strip().startswith("#initialization"):
                     s = line.strip().split("\t")
                     if s[1] == "random":
                         self.init_strategy = "random"
@@ -44,7 +46,7 @@ class Network():
                         exit(-1)
                     if verbose == True:
                         print("Initialization strategy is " + '\033[1m' + self.init_strategy + '\033[0m' + "\n")
-                if line.strip().startswith("#type.of.masking"):
+                elif line.strip().startswith("#type.of.masking"):
                     s = line.strip().split("\t")
                     if s[1] == "fully_random":
                         self.type_of_masking = 0
@@ -146,22 +148,25 @@ class Network():
     # method to calculate rank for each datatype. In case of k-means and shrerical k-means initialization represents number of clusters.
     def select_rank(self, ds_name):
 
-        if self.init_strategy == "kmeans" or self.init_strategy == "skmeans":
-            el_num = len(self.datasets[ds_name])
-            if el_num > 200:
-                el_num = int(el_num / 5)
-            for am in self.association_matrices:  # rank should be less then the number of unique elements in rows and in columns of any matrix where datatype is present
-                if am.leftds == ds_name:
-                    el_num = min([el_num, np.count_nonzero(np.sum(np.unique(am.association_matrix, axis=1), 0)),
-                                  np.count_nonzero(np.sum(np.unique(am.association_matrix, axis=0), 1)),
-                                  len(self.datasets[am.rightds])])
-                elif am.rightds == ds_name:
-                    el_num = min([el_num, np.count_nonzero(np.sum(np.unique(am.association_matrix, axis=1), 0)),
-                                  np.count_nonzero(np.sum(np.unique(am.association_matrix, axis=0), 1)),
-                                  len(self.datasets[am.leftds])])
-            rank = el_num
-        elif self.init_strategy == "random":
-            rank = 100
+        if ds_name in self.dataset_ks:
+            rank = self.dataset_ks[ds_name]
+        else:
+            if self.init_strategy == "kmeans" or self.init_strategy == "skmeans":
+                el_num = len(self.datasets[ds_name])
+                if el_num > 200:
+                    el_num = int(el_num / 5)
+                for am in self.association_matrices:  # rank should be less then the number of unique elements in rows and in columns of any matrix where datatype is present
+                    if am.leftds == ds_name:
+                        el_num = min([el_num, np.count_nonzero(np.sum(np.unique(am.association_matrix, axis=1), 0)),
+                                      np.count_nonzero(np.sum(np.unique(am.association_matrix, axis=0), 1)),
+                                      len(self.datasets[am.rightds])])
+                    elif am.rightds == ds_name:
+                        el_num = min([el_num, np.count_nonzero(np.sum(np.unique(am.association_matrix, axis=1), 0)),
+                                      np.count_nonzero(np.sum(np.unique(am.association_matrix, axis=0), 1)),
+                                      len(self.datasets[am.leftds])])
+                rank = el_num
+            elif self.init_strategy == "random":
+                rank = 100
         return rank
 
     def get_error(self):
