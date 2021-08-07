@@ -2,11 +2,11 @@
 #integration.strategy	intersection
 #initialization	skmeans
 #metric	LOG_RMSE
-#number.of.iterations	1000
+#number.of.iterations	25
 #type.of.masking	fully_random
 #stop.criterion	maximum_metric
 #score.threshold	0.001
-#k	cell_line	50
-#k	drug	50
+#k	cell_line	60
+#k	drug	70
 #nodes_left	nodes_right	filename	main
 cell_line	drug	drug_cell.txt   1

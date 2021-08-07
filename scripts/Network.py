@@ -178,7 +178,10 @@ class Network():
     def validate(self, metric=EvaluationMetric.APS):
         for am in self.association_matrices:
             if am.main == 1 and am.validation == 1:
-                return am.validate(metric)
+                #return am.validate(metric)
+                return am.validate_log10(metric)
+
+
 
     def get_main(self):
         for am in self.association_matrices:

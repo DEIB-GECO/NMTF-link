@@ -46,7 +46,7 @@ def predict(num_iterations, th):
 
     for i in range(num_iterations):
         network.update()
-        print(f"iteration {i}, error = {network.get_error()}")
+        print(f"iteration {i+1}, error = {network.get_error()}")
 
     rebuilt_association_matrix = np.linalg.multi_dot(
         [network.get_main().G_left, network.get_main().S, network.get_main().G_right.transpose()])
@@ -99,7 +99,7 @@ if stop_criterion == StopCriterion.MAXIMUM_METRIC:
     best_iter = 0
     best_iter_arr = []  # contains the iterations with best performance from each of 5 validation runs (j cycle)
     # cycle to find the stop criterion value
-    for j in range(5):
+    for j in range(20):
         V = []
         if j > 0:
             verbose = False
@@ -108,27 +108,19 @@ if stop_criterion == StopCriterion.MAXIMUM_METRIC:
         network = Network(dirname_1, dirname_2, verbose)
         initial_error = network.get_error()
         print('\033[1m' + "Run number " + str(j + 1) + " of the algorithm" + '\033[0m')
-        print("initial error: {}".format(initial_error))
+        #print("initial error: {}".format(initial_error))
         for i in range(max_iter):
             network.update()
-            if i % 10 == 0:
-                metric_vals[i // 10] = network.validate(metric)
             V.append(network.validate(metric))
-            print(f"iteration {i + 1}, {metric.value} = {V[-1]}")
-        plot_iteration(max_iter, metric_vals)
-        best_iter_arr.append(V.index(min(V)) if metric==EvaluationMetric.RMSE else V.index(max(V)))
+        print(f"iteration {i + 1}, {metric.value} = {V[-1]}")
+        best_iter_arr.append(V.index(min(V)) if (metric==EvaluationMetric.RMSE or metric==EvaluationMetric.LOG_RMSE) else V.index(max(V)))
         best_iter = 0
         time.sleep(2)  # used since otherwise random initialization gives the same result multiple times
 
-    complete_plot(metric)
-
     res_best_iter = statistics.median(best_iter_arr)
-    plt.axvline(x=res_best_iter, color='k', label='selected stop iteration', linestyle='dashed')
-    plt.legend(loc=4)
-    plt.savefig(f'results/{metric.value}_{network.init_strategy}_{stop_criterion.value}.png')
-    plt.close("all")
-
+    print(res_best_iter)
     predict(res_best_iter, threshold)
+    print(f"iteration {res_best_iter}, {metric.value} = {V[res_best_iter]}")
 
 elif stop_criterion == StopCriterion.RELATIVE_ERROR:
     best_epsilon_arr = []

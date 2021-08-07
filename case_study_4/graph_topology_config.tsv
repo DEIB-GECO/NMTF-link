@@ -7,5 +7,6 @@
 #normalization	standard_scaler
 #stop.criterion	maximum_metric
 #score.threshold	0.1
+#k	cell_line	10
 #nodes_left	nodes_right	filename	main
 cell_line	drug	drug_cell.txt   1

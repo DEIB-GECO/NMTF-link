@@ -5,10 +5,11 @@ import networkx as nx
 import numpy as np
 from sklearn.cluster import KMeans
 from spherecluster import SphericalKMeans
+from scipy.linalg import svd
 import sklearn.metrics as metrics
 from scipy import stats as stats
 import copy
-
+import pandas as pd
 from contextlib import contextmanager
 import os
 import sys
@@ -221,11 +222,35 @@ class AssociationMatrix():
                 self.association_matrix[i, :] = np.multiply(self.association_matrix[i, :], a)
                 self.M[i, :] = a
 
+    def svd(self, metric=EvaluationMetric.APS):
+        if self.main == 1 and self.validation == 1:
+            U, S, VT = svd(self.association_matrix)
+            # create m x n Sigma matrix
+            Sigma = np.zeros((self.association_matrix.shape[0], self.association_matrix.shape[1]))
+            # populate Sigma with n x n diagonal matrix
+            Sigma[:self.association_matrix.shape[1], :self.association_matrix.shape[1]] = np.diag(S)
+            # reconstruct matrix
+            rebuilt_association_matrix = U.dot(Sigma.dot(VT))
+
+            R12_2 = list(self.original_matrix[self.M == 0])
+            R12_found_2 = list(rebuilt_association_matrix[self.M == 0])
+
+            if metric == EvaluationMetric.AUROC:
+                fpr, tpr, _ = metrics.roc_curve(R12_2, R12_found_2)
+                return metrics.auc(fpr, tpr)
+            elif metric == EvaluationMetric.APS:
+                return metrics.average_precision_score(R12_2, R12_found_2)
+            elif metric == EvaluationMetric.RMSE:
+                return (metrics.mean_squared_error(R12_2, R12_found_2)) ** (.5)
+            elif metric == EvaluationMetric.LOG_RMSE:
+                return np.log10((metrics.mean_squared_error(R12_2, R12_found_2)) ** (.5))
+            elif metric == EvaluationMetric.PEARSON:
+                return stats.pearsonr(R12_2, R12_found_2)[0]
+
     # method to produce performance metrics (APS, AUROC). Produces output only if the matrix is the matrix for which predictions are searched and the network is in validation mode.
     def validate(self, metric=EvaluationMetric.APS):
         if self.main == 1 and self.validation == 1:
             self.rebuilt_association_matrix = np.linalg.multi_dot([self.G_left, self.S, self.G_right.transpose()])
-
             R12_2 = list(self.original_matrix[self.M == 0])
             R12_found_2 = list(self.rebuilt_association_matrix[self.M == 0])
             if metric == EvaluationMetric.AUROC:
@@ -237,6 +262,28 @@ class AssociationMatrix():
                 return (metrics.mean_squared_error(R12_2, R12_found_2))**(.5)
             elif metric == EvaluationMetric.LOG_RMSE:
                 return np.log10((metrics.mean_squared_error(R12_2, R12_found_2))**(.5))
+            elif metric == EvaluationMetric.PEARSON:
+                return stats.pearsonr(R12_2, R12_found_2)[0]
+
+        # method to produce performance metrics (APS, AUROC). Produces output only if the matrix is the matrix for which predictions are searched and the network is in validation mode.
+    def validate_log10(self, metric=EvaluationMetric.APS):
+        if self.main == 1 and self.validation == 1:
+            self.rebuilt_association_matrix = np.linalg.multi_dot([self.G_left, self.S, self.G_right.transpose()])
+            R12_2 = [10**x for x in list(self.original_matrix[self.M == 0])]
+            R12_2 = pd.Series(R12_2).fillna(0).tolist()
+            R12_found_2 = [10**x for x in list(self.rebuilt_association_matrix[self.M == 0])]
+            R12_found_2 = pd.Series(R12_found_2).fillna(0).tolist()
+            if metric == EvaluationMetric.AUROC:
+                fpr, tpr, _ = metrics.roc_curve(R12_2, R12_found_2)
+                return metrics.auc(fpr, tpr)
+            elif metric == EvaluationMetric.APS:
+                return metrics.average_precision_score(R12_2, R12_found_2)
+            elif metric == EvaluationMetric.RMSE:
+                return (metrics.mean_squared_error(R12_2, R12_found_2)) ** (.5)
+            elif metric == EvaluationMetric.LOG_RMSE:
+                def log_inf(x):
+                    return np.log10(x) if x > 0 else -float('Inf')
+                return log_inf((metrics.mean_squared_error(R12_2, R12_found_2)) ** (.5))
             elif metric == EvaluationMetric.PEARSON:
                 return stats.pearsonr(R12_2, R12_found_2)[0]
 
