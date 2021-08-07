@@ -40,22 +40,11 @@ for k1 in ks:
                 f2.write(f'###### K1:{k1}, K2: {k2}')
                 f2.writelines(lines)
         l = last_line
-        #print(l)
         l = l[-1].strip().split(',')
         print(f'k1:{k1}, k2: {k2}, {l}')
         l[0] = int(l[0].replace('iteration ', ''))
         error = float(l[1].split(' ')[-1])
-        #l[1] = float(l[1].replace(' error = ', ''))
         errors[(k1,k2)] = error#l[1]
 
-    #print(min(errors, key=errors.get), errors[min(errors, key=errors.get)])
-#import matplotlib.pylab as plt
-
-#lists = sorted(errors.items()) # sorted by key, return a list of tuples
-
-#x, y = zip(*lists) # unpack a list of pairs into two tuples
-
-#plt.plot(x, y)
-#plt.show()
 
 print('############ MIN:   ' , min(errors, key=errors.get), errors[min(errors, key=errors.get)])

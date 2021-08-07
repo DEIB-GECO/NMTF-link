@@ -269,10 +269,10 @@ class AssociationMatrix():
     def validate_log10(self, metric=EvaluationMetric.APS):
         if self.main == 1 and self.validation == 1:
             self.rebuilt_association_matrix = np.linalg.multi_dot([self.G_left, self.S, self.G_right.transpose()])
-            R12_2 = [10**x for x in list(self.original_matrix[self.M == 0])]
-            R12_2 = pd.Series(R12_2).fillna(0).tolist()
-            R12_found_2 = [10**x for x in list(self.rebuilt_association_matrix[self.M == 0])]
-            R12_found_2 = pd.Series(R12_found_2).fillna(0).tolist()
+            R12_2 = [(10**x)-1 for x in list(self.original_matrix[self.M == 0])]
+            #R12_2 = pd.Series(R12_2).fillna(0).tolist()
+            R12_found_2 = [(10**x)-1 for x in list(self.rebuilt_association_matrix[self.M == 0])]
+            #R12_found_2 = pd.Series(R12_found_2).fillna(0).tolist()
             if metric == EvaluationMetric.AUROC:
                 fpr, tpr, _ = metrics.roc_curve(R12_2, R12_found_2)
                 return metrics.auc(fpr, tpr)
