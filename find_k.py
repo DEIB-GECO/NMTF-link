@@ -34,10 +34,13 @@ for k1 in ks:
         os.system("python NMTF-link.py  case_study_4  graph_topology_config_k.tsv > results/output.txt")
 
         with open("results/output.txt", "r") as f:
-            last_line = f.readlines()[-3:-2]
-
+            lines = f.readlines()
+            last_line = lines#[-1]#[-2:-1]
+            with open("results/all_output.txt", "a") as f2:
+                f2.write(f'###### K1:{k1}, K2: {k2}')
+                f2.writelines(lines)
         l = last_line
-        print(l)
+        #print(l)
         l = l[-1].strip().split(',')
         print(f'k1:{k1}, k2: {k2}, {l}')
         l[0] = int(l[0].replace('iteration ', ''))
@@ -46,13 +49,13 @@ for k1 in ks:
         errors[(k1,k2)] = error#l[1]
 
     #print(min(errors, key=errors.get), errors[min(errors, key=errors.get)])
-import matplotlib.pylab as plt
+#import matplotlib.pylab as plt
 
-lists = sorted(errors.items()) # sorted by key, return a list of tuples
+#lists = sorted(errors.items()) # sorted by key, return a list of tuples
 
-x, y = zip(*lists) # unpack a list of pairs into two tuples
+#x, y = zip(*lists) # unpack a list of pairs into two tuples
 
-plt.plot(x, y)
-plt.show()
+#plt.plot(x, y)
+#plt.show()
 
-print(min(errors, key=errors.get), errors[min(errors, key=errors.get)])
+print('############ MIN:   ' , min(errors, key=errors.get), errors[min(errors, key=errors.get)])

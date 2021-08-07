@@ -44,7 +44,7 @@ def complete_plot(m):
 def predict(num_iterations, th):
     network = Network(dirname_1, dirname_2, mask=0, verbose=False)
 
-    for i in range(num_iterations):
+    for i in range(int(num_iterations)):
         network.update()
         print(f"iteration {i+1}, error = {network.get_error()}")
 
@@ -117,10 +117,12 @@ if stop_criterion == StopCriterion.MAXIMUM_METRIC:
         best_iter = 0
         time.sleep(2)  # used since otherwise random initialization gives the same result multiple times
 
-    res_best_iter = statistics.median(best_iter_arr)
-    print(res_best_iter)
+    #res_best_iter = statistics.median(best_iter_arr)
+    #print(res_best_iter)
+    #predict(res_best_iter, threshold)
+    res_best_iter = 24
     predict(res_best_iter, threshold)
-    print(f"iteration {res_best_iter}, {metric.value} = {V[res_best_iter]}")
+    print(f"iteration {res_best_iter}, {metric.value} = {V[int(res_best_iter)]}")
 
 elif stop_criterion == StopCriterion.RELATIVE_ERROR:
     best_epsilon_arr = []
