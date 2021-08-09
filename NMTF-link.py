@@ -1,3 +1,4 @@
+import random
 import warnings
 
 warnings.filterwarnings('ignore')
@@ -15,7 +16,7 @@ import os
 
 current = os.getcwd()
 
-_, filename_1, filename_2 = sys.argv
+_, filename_1, filename_2 = sys.argv[:3]
 dirname_1 = os.path.join(current, filename_1, filename_2)
 dirname_2 = os.path.join(current, filename_1)
 
@@ -88,14 +89,46 @@ with open(dirname_1) as f:
             except ValueError:
                 threshold = default_threshold
 
-print(f"metric : {metric.value}")
-print(f"number of iterations : {max_iter}")
-print(f"stop criterion : {stop_criterion.value}")
-print(f"threshold : {threshold}")
+# print(f"metric : {metric.value}")
+# print(f"number of iterations : {max_iter}")
+# print(f"stop criterion : {stop_criterion.value}")
+# print(f"threshold : {threshold}")
 
 metric_vals = np.zeros(max_iter // 10)
 
-if stop_criterion == StopCriterion.MAXIMUM_METRIC:
+bibm = True
+if bibm:
+    errors = []
+    for _ in range(20):
+        time.sleep(2)
+        network = Network(dirname_1, dirname_2, verbose=False)
+        previous_error = network.get_error()
+        network.update()
+        next_error = network.get_error()
+        # print(f"{0} : {previous_error}")
+        # print(f"{1} : {next_error}")
+        i = 1
+        while ((previous_error - next_error)/previous_error) > 10**(-3):
+            network.update()
+            previous_error, next_error = next_error, network.get_error()
+            i += 1
+            # print(f"{i} : {next_error}")
+
+        # print(f"metric: {network.validate(metric)}, iteration: {i}")
+        e = network.validate(metric)
+        errors.append(e)
+        print(e)
+
+    # print("k1", sys.argv[3])
+    # print("k2", sys.argv[4])
+    # print("mean", np.mean(errors))
+    # print("median", np.median(errors))
+    # print("min", min(errors))
+    # print("max", max(errors))
+    # print("std", np.std(errors))
+    print(f"{sys.argv[3]}\t{sys.argv[4]}\t{np.mean(errors)}")
+
+elif stop_criterion == StopCriterion.MAXIMUM_METRIC:
     best_iter = 0
     best_iter_arr = []  # contains the iterations with best performance from each of 5 validation runs (j cycle)
     # cycle to find the stop criterion value

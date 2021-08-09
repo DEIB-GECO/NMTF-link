@@ -1,0 +1,12 @@
+#parameters
+#integration.strategy	intersection
+#initialization	skmeans
+#metric	CUSTOM
+#number.of.iterations	25
+#type.of.masking	fully_random
+#stop.criterion	maximum_metric
+#score.threshold	0.001
+#k	cell_line	2
+#k	drug	10
+#nodes_left	nodes_right	filename	main
+cell_line	drug	input.graph.norm.tsv   1

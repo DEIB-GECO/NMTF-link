@@ -76,6 +76,12 @@ class AssociationMatrix():
         self.original_matrix = copy.deepcopy(self.association_matrix)  # for all to use in select_rank
         if self.main == 1 and self.validation == 1:  # so this is the matrix which we try to investigate
             self.mask_matrix()
+        # # ----
+        #     self.mean = np.mean(self.association_matrix)
+        #     self.std = np.std(self.association_matrix)
+        #     norm = np.vectorize(lambda x : x/self.std)
+        #     self.association_matrix = norm(self.association_matrix)
+        # # ----
         self.G_left = None
         self.G_left_primary = False
         self.G_right = None
@@ -228,6 +234,8 @@ class AssociationMatrix():
 
             R12_2 = list(self.original_matrix[self.M == 0])
             R12_found_2 = list(self.rebuilt_association_matrix[self.M == 0])
+            # for x,y in zip(R12_2, R12_found_2):
+            #     print(x,y)
             if metric == EvaluationMetric.AUROC:
                 fpr, tpr, _ = metrics.roc_curve(R12_2, R12_found_2)
                 return metrics.auc(fpr, tpr)
@@ -239,6 +247,9 @@ class AssociationMatrix():
                 return np.log10((metrics.mean_squared_error(R12_2, R12_found_2))**(.5))
             elif metric == EvaluationMetric.PEARSON:
                 return stats.pearsonr(R12_2, R12_found_2)[0]
+            elif metric == EvaluationMetric.CUSTOM:
+                return np.log10((metrics.mean_squared_error([x**2 for x in R12_2], [x**2 for x in R12_found_2])) ** (.5))
+
 
     def get_error(self):
         self.rebuilt_association_matrix = np.linalg.multi_dot([self.G_left, self.S, self.G_right.transpose()])

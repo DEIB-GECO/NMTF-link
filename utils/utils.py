@@ -10,6 +10,7 @@ class EvaluationMetric(Enum):
     PEARSON = 'PEARSON'
     RMSE = 'RMSE'
     LOG_RMSE = 'LOG_RMSE'
+    CUSTOM = 'CUSTOM'
 
     @classmethod
     def _missing_(cls, value):
