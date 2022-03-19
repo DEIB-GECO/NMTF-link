@@ -125,10 +125,10 @@ The element equal to 1 in the column **main** of the [setting file](https://gith
 ## Input network format
 Each input file (e.g., [UsersToGenres.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/UsersToGenres.txt), [UsersToMovies.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/UsersToMovies.txt), [MoviesToActors.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/MoviesToActors.txt) ,([MoviesToGenres.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/MoviesToGenres.txt)) is a tab-separated file containing all link information for each bipartite layer of the overall input network architecture. For example, the below first five rows of [UsersToMovies.txt](https://github.com/DEIB-GECO/NMTF-link/blob/master/case_study_1/UsersToMovies.txt) show that the first column contains user names and the second column contains movie titles as follows:
 
-| **UsersToMovies.txt** | | 
-| ------------- | ------------- | 
-| Anna |	The Lighthouse |
-| Anna |	Doctor Sleep|
-| Anna |	Ma |
-| Anna |	Spider-Man |
-| Anna |	Oceans 8 | 
+| **UsersToMovies.txt** | |
+|-----------------------| ------------- |
+| Anna                  |	The Lighthouse |
+| Anna                  |	Doctor Sleep|
+| Anna                  |	Ma |
+| Anna                  |	Spider-Man |
+| Anna                  |	Oceans 8 |

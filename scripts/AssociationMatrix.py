@@ -86,10 +86,10 @@ class AssociationMatrix():
         if initialize_strategy == "random":
             if verbose == True:
                 print("Association matrix filename: " + self.filename)
-                print("Used parameters: " + '\033[1m' + " k\u2081 = " + str(self.k1) + " and" + " k\u2082 = " + str(
-                    self.k2) + '\033[0m')
-                print("Non-zero elements of the association matrix = " + '\033[1m' + "{}".format(
-                    np.count_nonzero(self.association_matrix)) + '\033[0m')
+                print("Used parameters: k1 = " + str(self.k1) + " and" + " k2 = " + str(
+                    self.k2))
+                print("Non-zero elements of the association matrix = {}".format(
+                    np.count_nonzero(self.association_matrix)))
             if self.G_left is None:
                 self.G_left = np.random.rand(self.association_matrix.shape[0], self.k1)
                 self.G_left_primary = True
@@ -99,10 +99,10 @@ class AssociationMatrix():
         elif initialize_strategy == "oldkmeans":
             if verbose == True:
                 print("Association matrix filename: " + self.filename)
-                print("Used parameters: " + '\033[1m' + " k\u2081 = " + str(self.k1) + " and" + " k\u2082 = " + str(
-                    self.k2) + '\033[0m')
-                print("Non-zero elements of the association matrix = " + '\033[1m' + "{}".format(
-                    np.count_nonzero(self.association_matrix)) + '\033[0m')
+                print("Used parameters: k1" + str(self.k1) + " and k2" + str(
+                    self.k2))
+                print("Non-zero elements of the association matrix = {}".format(
+                    np.count_nonzero(self.association_matrix)))
             if self.G_left is None:
                 with suppress_stdout():
                     km = KMeans(n_clusters=self.k1).fit(self.association_matrix)
@@ -124,10 +124,10 @@ class AssociationMatrix():
         elif initialize_strategy == "kmeans":
             if verbose == True:
                 print("Association matrix filename: " + self.filename)
-                print("Used parameters: " + '\033[1m' + " k\u2081 = " + str(self.k1) + " and" + " k\u2082 = " + str(
-                    self.k2) + '\033[0m')
-                print("Non-zero elements of the association matrix = " + '\033[1m' + "{}".format(
-                    np.count_nonzero(self.association_matrix)) + '\033[0m')
+                print("Used parameters: k1 = " + str(self.k1) + " and k2 = " + str(
+                    self.k2))
+                print("Non-zero elements of the association matrix = {}".format(
+                    np.count_nonzero(self.association_matrix)))
             if self.G_left is None:
                 with suppress_stdout():
                     km = KMeans(n_clusters=self.k1, n_init=10).fit_predict(self.association_matrix.transpose())
@@ -145,10 +145,10 @@ class AssociationMatrix():
         elif initialize_strategy == "skmeans":
             if verbose == True:
                 print("Association matrix filename: " + self.filename)
-                print("Used parameters: " + '\033[1m' + " k\u2081 = " + str(self.k1) + " and" + " k\u2082 = " + str(
-                    self.k2) + '\033[0m')
-                print("Non-zero elements of the association matrix = " + '\033[1m' + "{}".format(
-                    np.count_nonzero(self.association_matrix)) + '\033[0m')
+                print("Used parameters: k1 = " + str(self.k1) + " and k2 = " + str(
+                    self.k2))
+                print("Non-zero elements of the association matrix = {}".format(
+                    np.count_nonzero(self.association_matrix)))
             # with suppress_stdout():
             if self.G_left is None:
                 with suppress_stdout():
@@ -249,16 +249,18 @@ class AssociationMatrix():
             def update_G_r():
                 num = np.linalg.multi_dot([self.association_matrix.transpose(), self.G_left, self.S])
                 den = np.linalg.multi_dot(
-                    [self.G_right, self.G_right.transpose(), self.association_matrix.transpose(), self.G_left, self.S])
+                    [self.G_right, self.S.transpose(), self.G_left.transpose(), self.G_left, self.S])
                 for am in self.dep_own_right_other_right:
+                    #self.G_right == am.G_right
                     num += np.linalg.multi_dot([am.association_matrix.transpose(), am.G_left, am.S])
                     den += np.linalg.multi_dot(
-                        [am.G_right, am.G_right.transpose(), am.association_matrix.transpose(), am.G_left, am.S])
+                        [self.G_right, am.S.transpose(), am.G_left.transpose(), am.G_left, am.S])
                 for am in self.dep_own_right_other_left:
+                    #self.G_right == am.G_left
                     num += np.linalg.multi_dot([am.association_matrix, am.G_right, am.S.transpose()])
                     den += np.linalg.multi_dot(
-                        [am.G_left, am.G_left.transpose(), am.association_matrix, am.G_right, am.S.transpose()])
-                div = np.sqrt(np.divide(num, den + 0.00000001))
+                        [self.G_right, am.S, am.G_right.transpose(), am.G_right, am.S.transpose()])
+                div = np.divide(num, den)
                 return np.multiply(self.G_right, div)
 
             self.update_G_right = update_G_r
@@ -267,17 +269,19 @@ class AssociationMatrix():
             def update_G_l():
                 num = np.linalg.multi_dot([self.association_matrix, self.G_right, self.S.transpose()])
                 den = np.linalg.multi_dot(
-                    [self.G_left, self.G_left.transpose(), self.association_matrix, self.G_right, self.S.transpose()])
+                   [self.G_left, self.S, self.G_right.transpose(), self.G_right, self.S.transpose()])
 
                 for am in self.dep_own_left_other_left:
+                    #self.G_left == am.G_left
                     num += np.linalg.multi_dot([am.association_matrix, am.G_right, am.S.transpose()])
                     den += np.linalg.multi_dot(
-                        [am.G_left, am.G_left.transpose(), am.association_matrix, am.G_right, am.S.transpose()])
+                        [self.G_left, am.S, am.G_right.transpose(), am.G_right, am.S.transpose()])
                 for am in self.dep_own_left_other_right:
+                    #self.G_left == am.G_right
                     num += np.linalg.multi_dot([am.association_matrix.transpose(), am.G_left, am.S])
                     den += np.linalg.multi_dot(
-                        [am.G_right, am.G_right.transpose(), am.association_matrix.transpose(), am.G_left, am.S])
-                div = np.sqrt(np.divide(num, den + 0.00000001))
+                        [self.G_left, am.S.transpose(), am.G_left.transpose(), am.G_left, am.S])
+                div = np.divide(num, den)
                 return np.multiply(self.G_left, div)
 
             self.update_G_left = update_G_l
@@ -286,10 +290,11 @@ class AssociationMatrix():
             num = np.linalg.multi_dot([self.G_left.transpose(), self.association_matrix, self.G_right])
             den = np.linalg.multi_dot(
                 [self.G_left.transpose(), self.G_left, self.S, self.G_right.transpose(), self.G_right])
-            div = np.sqrt(np.divide(num, den + 0.00000001))
+            div = np.divide(num, den)
             return np.multiply(self.S, div)
 
         self.update_S = update_S
+
 
     def update(self):
         if self.G_right_primary:

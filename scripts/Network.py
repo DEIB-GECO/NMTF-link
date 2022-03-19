@@ -8,6 +8,7 @@ from AssociationMatrix import AssociationMatrix, EvaluationMetric
 import numpy as np
 import os
 
+
 class Network():
 
     def __init__(self, graph_topology_file, dirfilename, verbose, mask=1):
@@ -45,7 +46,7 @@ class Network():
                         print("Option '{}' not supported".format(s[1]))
                         exit(-1)
                     if verbose == True:
-                        print("Initialization strategy is " + '\033[1m' + self.init_strategy + '\033[0m' + "\n")
+                        print("Initialization strategy is " + self.init_strategy + "\n")
                 elif line.strip().startswith("#type.of.masking"):
                     s = line.strip().split("\t")
                     if s[1] == "fully_random":
@@ -77,7 +78,6 @@ class Network():
                         self.datasets[ds1_name] = self.integration_strategy(self.datasets[ds1_name], ds1_entities)
                     else:
                         self.datasets[ds1_name] = ds1_entities
-
                     if ds2_name in self.datasets:
                         self.datasets[ds2_name] = self.integration_strategy(self.datasets[ds2_name], ds2_entities)
                     else:
@@ -88,8 +88,8 @@ class Network():
             self.datasets[k] = list(sorted(list(self.datasets[k])))
 
         if verbose == True:
-            print('All specified nodes\' categories: ' + '\033[1m' + "{}".format(
-                str(list(self.datasets.keys()))) + '\033[0m' + "\n")
+            print('All specified nodes\' categories: ' + "{}".format(
+                str(list(self.datasets.keys()))) + "\n")
 
         with open(graph_topology_file) as f:
             for line in f:
@@ -120,7 +120,7 @@ class Network():
                         # m2.dep_own_left_other_left.append(m1)
                     elif m1.rightds == m2.rightds:
                         m1.dep_own_right_other_right.append(m2)
-                    # m2.dep_own_right_other_right.append(m1)
+                        # m2.dep_own_right_other_right.append(m1)
                     elif m1.rightds == m2.leftds:
                         m1.dep_own_right_other_left.append(m2)
                         # m2.dep_own_left_other_right.append(m1)
@@ -131,6 +131,15 @@ class Network():
         for k in self.datasets.keys():
             if not k.strip().startswith("+"):
                 rank = self.select_rank(k)
+            #
+            #
+            #
+            #
+            #QUANDO INIZIA CON '+'?
+            #
+            #
+            #
+            #
 
             for am in self.association_matrices:
                 if am.leftds == k:
@@ -149,6 +158,7 @@ class Network():
     def select_rank(self, ds_name):
         if ds_name in self.dataset_ks:
             rank = self.dataset_ks[ds_name]
+
         else:
             if self.init_strategy == "kmeans" or self.init_strategy == "skmeans":
                 el_num = len(self.datasets[ds_name])

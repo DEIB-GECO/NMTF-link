@@ -88,7 +88,7 @@ with open(dirname_1) as f:
             except ValueError:
                 threshold = default_threshold
 
-print(f"metric : {metric.value}")
+print('\n'f"metric : {metric.value}")
 print(f"number of iterations : {max_iter}")
 print(f"stop criterion : {stop_criterion.value}")
 print(f"threshold : {threshold}")
@@ -107,7 +107,7 @@ if stop_criterion == StopCriterion.MAXIMUM_METRIC:
             verbose = True
         network = Network(dirname_1, dirname_2, verbose)
         initial_error = network.get_error()
-        print('\033[1m' + "Run number " + str(j + 1) + " of the algorithm" + '\033[0m')
+        print("Run number " + str(j + 1) + " of the algorithm")
         print("initial error: {}".format(initial_error))
         for i in range(max_iter):
             network.update()
@@ -143,7 +143,7 @@ elif stop_criterion == StopCriterion.RELATIVE_ERROR:
             verbose = True
         network = Network(dirname_1, dirname_2, verbose)
         initial_error = network.get_error()
-        print('\033[1m' + "Run number " + str(j + 1) + " of the algorithm" + '\033[0m')
+        print("\nRun number " + str(j + 1) + " of the algorithm")
         print("initial error: {}".format(initial_error))
         eps_iter = []
         for i in range(max_iter):
@@ -170,11 +170,11 @@ elif stop_criterion == StopCriterion.RELATIVE_ERROR:
     plt.savefig('results/' + metric.value + '_' + network.init_strategy + '_' + stop_criterion.value + '.png')
     plt.close("all")
 
-    print('\033[1m' + "Final run without masking, stop at iteration: " + str(res_best_epsilon) + '\033[0m')
+    print("\nFinal run without masking, stop at iteration: " + str(res_best_epsilon))
     predict(res_best_epsilon, threshold)
 
 elif stop_criterion == StopCriterion.MAXIMUM_ITERATIONS:
     network = Network(dirname_1, dirname_2, mask=0, verbose=True)
     initial_error = network.get_error()
-    print('\033[1m' + "Unique run of the algorithm without masking" + '\033[0m')
+    print("\nUnique run of the algorithm without masking")
     predict(max_iter, threshold)

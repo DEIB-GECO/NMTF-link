@@ -107,3 +107,6 @@ venv.bak/
 .DS_Store
 
 .idea*
+
+results/APS_random_RELATIVE_ERROR.png
+results/myOutFile.txt
