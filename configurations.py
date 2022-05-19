@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 stop_criterion = 'maximum_metric'
-init_strategies = ['random', 'skmeans' , 'kmeans']
+init_strategies = ['random', 'kmeans']
 integ_strategies = ['intersection', 'union']
-metrics = ['RMSE', 'R2' , 'PEARSON']
+metrics = ['RMSE', 'R2', 'PEARSON']
 n_iter = range(100, 500, 100)
 masks = ['fully_random', 'per_row_random']
 normalizations = ['standard_scaler', 'min_max', 'max', 'unit_form', 'none']

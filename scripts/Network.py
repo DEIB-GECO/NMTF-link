@@ -36,7 +36,7 @@ class Network():
                 exit(-1)
 
             initialization = graph_topology["initialization"]
-            if (initialization == "random") or (initialization == "kmeans") or (initialization == "skmeans"):
+            if (initialization == "random") or (initialization == "kmeans"):
                 self.init_strategy = initialization
             else:
                 print("Option '{}' not supported".format(initialization))
@@ -141,7 +141,7 @@ class Network():
             rank = self.dataset_ks[ds_name]
 
         else:
-            if self.init_strategy == "kmeans" or self.init_strategy == "skmeans":
+            if self.init_strategy == "kmeans":
                 el_num = len(self.datasets[ds_name])
                 if el_num > 200:
                     el_num = int(el_num / 5)

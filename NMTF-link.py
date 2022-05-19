@@ -70,10 +70,10 @@ with open(dirname_1, 'r') as f:
     stop_criterion = StopCriterion(graph_topology["stop.criterion"].upper())
 
     try:
-        vmax_iter = graph_topology["number.of.iterations"]
-        vmax_iter = int(vmax_iter)
+        max_iter_value = graph_topology["number.of.iterations"]
+        max_iter = int(max_iter_value)
     except ValueError:
-        print(f"Invalid number of iteration {vmax_iter}, set default value {max_iter}", file=sys.stderr)
+        print(f"Invalid number of iteration {max_iter_value}, set default value {max_iter}", file=sys.stderr)
 
     try:
         threshold = graph_topology["score.threshold"]

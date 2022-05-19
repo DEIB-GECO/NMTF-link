@@ -4,7 +4,6 @@ warnings.filterwarnings('ignore')
 import networkx as nx
 import numpy as np
 from sklearn.cluster import KMeans
-from spherecluster import SphericalKMeans
 import sklearn.metrics as metrics
 from scipy import stats as stats
 import copy
@@ -141,28 +140,6 @@ class AssociationMatrix():
                     self.G_right = np.array(
                         [np.mean([self.association_matrix[i] for i in range(len(km)) if km[i] == p], axis=0) for p in
                          range(self.k2)]).transpose()
-                    self.G_right_primary = True
-        elif initialize_strategy == "skmeans":
-            if verbose == True:
-                print("Association matrix filename: " + self.filename)
-                print("Used parameters: k1 = " + str(self.k1) + " and k2 = " + str(
-                    self.k2))
-                print("Non-zero elements of the association matrix = {}".format(
-                    np.count_nonzero(self.association_matrix)))
-            # with suppress_stdout():
-            if self.G_left is None:
-                with suppress_stdout():
-                    #skm = SphericalKMeans(n_clusters=self.k1)
-                    skm = SphericalKMeans(n_clusters=5)
-                    skm = skm.fit(self.association_matrix.transpose())
-                    # Factor matrices are initialized with the center coordinates
-                    self.G_left = skm.cluster_centers_.transpose()
-                    self.G_left_primary = True
-            if self.G_right is None:
-                with suppress_stdout():
-                    skm = SphericalKMeans(n_clusters=self.k2).fit(self.association_matrix)
-                    # Factor matrices are initialized with the center coordinates
-                    self.G_right = skm.cluster_centers_.transpose()
                     self.G_right_primary = True
 
         for am in self.dep_own_left_other_left:

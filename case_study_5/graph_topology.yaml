@@ -1,9 +1,9 @@
 #graph_topology.yaml file
 ---
   integration.strategy: intersection
-  initialization: random
+  initialization: kmeans
   metric: APS
-  number.of.iterations: 200
+  number.of.iterations: 500
   type.of.masking: fully_random
   stop.criterion: relative_error
   score.threshold: 0.5

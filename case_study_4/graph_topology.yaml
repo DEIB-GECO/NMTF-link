@@ -1,7 +1,7 @@
 #graph_topology.yaml file
 ---
   integration.strategy: intersection
-  initialization: skmeans
+  initialization: kmeans
   metric: LOG_RMSE
   number.of.iterations: 1000
   type.of.masking: fully_random
