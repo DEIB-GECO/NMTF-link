@@ -1,0 +1,230 @@
+Star Wars: Episode VII - The Force Awakens (2015)	Action
+Star Wars: Episode VII - The Force Awakens (2015)	Adventure
+Star Wars: Episode VII - The Force Awakens (2015)	Sci-Fi
+The Avengers (2012)	Action
+The Avengers (2012)	Adventure
+The Avengers (2012)	Sci-Fi
+Captain America: Civil War (2016)	Action
+Captain America: Civil War (2016)	Adventure
+Captain America: Civil War (2016)	Sci-Fi
+Frozen (2013)	Animation
+Frozen (2013)	Adventure
+Frozen (2013)	Comedy
+Frozen (2013)	Family
+Frozen (2013)	Fantasy
+Frozen (2013)	Musical
+Finding Nemo (2003)	Animation
+Finding Nemo (2003)	Adventure
+Finding Nemo (2003)	Comedy
+Finding Nemo (2003)	Family
+The Jungle Book (2016)	Adventure
+The Jungle Book (2016)	Drama
+The Jungle Book (2016)	Fantasy
+The Jungle Book (2016)	Family
+Inside Out (2015)	Animation
+Inside Out (2015)	Adventure
+Inside Out (2015)	Comedy
+Inside Out (2015)	Family
+Inside Out (2015)	Fantasy
+Inside Out (2015)	Sci-Fi
+Inside Out (2015)	Drama
+American Sniper (2014)	Action
+American Sniper (2014)	Biography
+American Sniper (2014)	Drama
+American Sniper (2014)	War
+Joker (2019)	Crime
+Joker (2019)	Drama
+Joker (2019)	Thriller
+Forrest Gump (1994)	Drama
+Forrest Gump (1994)	Romance
+Transformers (2007)	Action
+Transformers (2007)	Adventure
+Transformers (2007)	Sci-Fi
+Iron Man (2008)	Action
+Iron Man (2008)	Adventure
+Iron Man (2008)	Sci-Fi
+Harry Potter and the Sorcerer's Stone (2001)	Adventure
+Harry Potter and the Sorcerer's Stone (2001)	Family
+Harry Potter and the Sorcerer's Stone (2001)	Fantasy
+Skyfall (2012)	Action
+Skyfall (2012)	Adventure
+Skyfall (2012)	Thriller
+The Sixth Sense (1999)	Drama
+The Sixth Sense (1999)	Mystery
+The Sixth Sense (1999)	Thriller
+Inception (2010)	Action
+Inception (2010)	Adventure
+Inception (2010)	Sci-Fi
+Inception (2010)	Thriller
+Home Alone (1990)	Comedy
+Home Alone (1990)	Family
+The Incredibles (2004)	Action
+The Incredibles (2004)	Adventure
+The Incredibles (2004)	Animation
+The Incredibles (2004)	Family
+The Blind Side (2009)	Biography
+The Blind Side (2009)	Drama
+The Blind Side (2009)	Sport
+Night at the Museum (2006)	Adventure
+Night at the Museum (2006)	Comedy
+Night at the Museum (2006)	Family
+Night at the Museum (2006)	Fantasy
+My Big Fat Greek Wedding (2002)	Comedy
+My Big Fat Greek Wedding (2002)	Drama
+My Big Fat Greek Wedding (2002)	Romance
+The Da Vinci Code (2006)	Mystery
+The Da Vinci Code (2006)	Thriller
+Saving Private Ryan (1998)	Drama
+Saving Private Ryan (1998)	War
+Bohemian Rhapsody (2018)	Biography
+Bohemian Rhapsody (2018)	Drama
+Bohemian Rhapsody (2018)	Music
+A Star Is Born (2018)	Drama
+A Star Is Born (2018)	Music
+A Star Is Born (2018)	Romance
+Sherlock Holmes (2009)	Action
+Sherlock Holmes (2009)	Adventure
+Sherlock Holmes (2009)	Mystery
+Pearl Harbor (2001)	Action
+Pearl Harbor (2001)	Drama
+Pearl Harbor (2001)	History
+Pearl Harbor (2001)	Romance
+Pearl Harbor (2001)	War
+Twilight (2008)	Drama
+Twilight (2008)	Fantasy
+Twilight (2008)	Romance
+Grease (1978)	Comedy
+Grease (1978)	Musical
+Grease (1978)	Romance
+Dunkirk (2017)	Action
+Dunkirk (2017)	Drama
+Dunkirk (2017)	History
+Dunkirk (2017)	Thriller
+Dunkirk (2017)	War
+The Revenant (2015)	Action
+The Revenant (2015)	Adventure
+The Revenant (2015)	Drama
+The Revenant (2015)	History
+The Revenant (2015)	Western
+Pretty Woman (1990)	Comedy
+Pretty Woman (1990)	Romance
+The Karate Kid (2010)	Action
+The Karate Kid (2010)	Drama
+The Karate Kid (2010)	Family
+The Karate Kid (2010)	Sport
+A Beautiful Mind (2001)	Biography
+A Beautiful Mind (2001)	Drama
+Django Unchained (2012)	Drama
+Django Unchained (2012)	Western
+Fantastic Four (2005)	Action
+Fantastic Four (2005)	Adventure
+Fantastic Four (2005)	Fantasy
+Fantastic Four (2005)	Sci-Fi
+Sex and the City (2008)	Comedy
+Sex and the City (2008)	Drama
+Sex and the City (2008)	Romance
+La La Land (2016)	Comedy
+La La Land (2016)	Drama
+La La Land (2016)	Music
+La La Land (2016)	Musical
+La La Land (2016)	Romance
+Les Misérables (2012)	Drama
+Les Misérables (2012)	Musical
+Les Misérables (2012)	Romance
+I, Robot (2004)	Action
+I, Robot (2004)	Mystery
+I, Robot (2004)	Sci-Fi
+I, Robot (2004)	Thriller
+Sister Act (1992)	Comedy
+Sister Act (1992)	Family
+Sister Act (1992)	Music
+Troy (2004)	Drama
+Troy (2004)	History
+American Gangster (2007)	Biography
+American Gangster (2007)	Crime
+American Gangster (2007)	Drama
+Rocky IV (1985)	Drama
+Rocky IV (1985)	Sport
+Lucy (2014)	Action
+Lucy (2014)	Sci-Fi
+Lucy (2014)	Thriller
+Sully (2016)	Biography
+Sully (2016)	Drama
+The Mask (1994)	Action
+The Mask (1994)	Comedy
+The Mask (1994)	Crime
+The Mask (1994)	Fantasy
+Ford v Ferrari (2019)	Action
+Ford v Ferrari (2019)	Biography
+Ford v Ferrari (2019)	Drama
+Ford v Ferrari (2019)	Sport
+The Wolf of Wall Street (2013)	Biography
+The Wolf of Wall Street (2013)	Comedy
+The Wolf of Wall Street (2013)	Crime
+The Wolf of Wall Street (2013)	Drama
+8 Mile (2002)	Drama
+8 Mile (2002)	Music
+Unbroken (2014)	Action
+Unbroken (2014)	Biography
+Unbroken (2014)	Drama
+Unbroken (2014)	Sport
+Unbroken (2014)	War
+Creed (2015)	Action
+Creed (2015)	Drama
+Creed (2015)	Sport
+Pulp Fiction (1994)	Crime
+Pulp Fiction (1994)	Drama
+Robin Hood (2010)	Action
+Robin Hood (2010)	Adventure
+Robin Hood (2010)	Drama
+Robin Hood (2010)	History
+Murder on the Orient Express (2017)	Crime
+Murder on the Orient Express (2017)	Drama
+Murder on the Orient Express (2017)	Mystery
+Maverick (1994)	Action
+Maverick (1994)	Adventure
+Maverick (1994)	Comedy
+Maverick (1994)	Thriller
+Maverick (1994)	Western
+Cowboys & Aliens (2011)	Action
+Cowboys & Aliens (2011)	Sci-Fi
+Cowboys & Aliens (2011)	Thriller
+Cowboys & Aliens (2011)	Western
+Schindler's List (1993)	Biography
+Schindler's List (1993)	Drama
+Schindler's List (1993)	History
+Encanto (2021)	Animation
+Encanto (2021)	Comedy
+Encanto (2021)	Drama
+Encanto (2021)	Family
+Encanto (2021)	Fantasy
+Encanto (2021)	Musical
+The Imitation Game (2014)	Biography
+The Imitation Game (2014)	Drama
+The Imitation Game (2014)	Thriller
+The Imitation Game (2014)	War
+Space Jam (1996)	Adventure
+Space Jam (1996)	Animation
+Space Jam (1996)	Comedy
+Space Jam (1996)	Family
+Space Jam (1996)	Fantasy
+Space Jam (1996)	Sci-Fi
+Space Jam (1996)	Sport
+Oblivion (2013)	Action
+Oblivion (2013)	Adventure
+Oblivion (2013)	Sci-Fi
+Inside Man (2006)	Crime
+Inside Man (2006)	Drama
+Inside Man (2006)	Mystery
+Inside Man (2006)	Thriller
+School of Rock (2003)	Comedy
+School of Rock (2003)	Music
+21 (2008)	Crime
+21 (2008)	Drama
+21 (2008)	History
+21 (2008)	Thriller
+Cars (2006)	Adventure
+Cars (2006)	Animation
+Cars (2006)	Comedy
+Cars (2006)	Family
+Cars (2006)	Sport

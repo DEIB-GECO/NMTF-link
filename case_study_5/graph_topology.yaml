@@ -1,0 +1,18 @@
+#graph_topology.yaml file
+---
+  integration.strategy: intersection
+  initialization: random
+  metric: APS
+  number.of.iterations: 200
+  type.of.masking: fully_random
+  stop.criterion: relative_error
+  score.threshold: 0.5
+  graph.datasets:
+    - nodes.left: users
+      nodes.right: movies
+      filename: UsersToMovies.txt
+      main: 1
+    - nodes.left: movies
+      nodes.right: genres
+      filename: MoviesToGenres.txt
+      main: 0
