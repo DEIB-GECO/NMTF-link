@@ -1,0 +1,26 @@
+#graph_topology.yaml file
+---
+  integration.strategy: intersection
+  initialization: kmeans
+  metric: APS
+  number.of.iterations: 200
+  type.of.masking: fully_random
+  stop.criterion: relative_error
+  score.threshold: 0.5
+  graph.datasets:
+    - nodes.left: drug
+      nodes.right: indication
+      filename: DrugsToIndications.txt
+      main: 1
+    - nodes.left: drug
+      nodes.right: protein
+      filename: DrugsToProteins.txt
+      main: 0
+    - nodes.left: drug
+      nodes.right: disease
+      filename: DrugsToDiseases.txt
+      main: 0
+    - nodes.left: protein
+      nodes.right: pathway
+      filename: ProteinsToPathways.txt
+      main: 0

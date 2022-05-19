@@ -1,0 +1,19 @@
+#graph_topology.yaml file
+---
+  integration.strategy: intersection
+  initialization: skmeans
+  metric: LOG_RMSE
+  number.of.iterations: 1000
+  type.of.masking: fully_random
+  stop.criterion: maximum_metric
+  score.threshold: 0.001
+  k:
+    - dsname: cell_line
+      k: 50
+    - dsname: drug
+      k: 50
+  graph.datasets:
+    - nodes.left: cell_line
+      nodes.right: drug
+      filename: drug_cell.txt
+      main: 1

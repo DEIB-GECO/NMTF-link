@@ -1,18 +1,19 @@
 import warnings
-
-warnings.filterwarnings('ignore')
 import sys
 from scripts import Network
 import numpy as np
 import matplotlib
 from utils import EvaluationMetric, StopCriterion
-
-matplotlib.use('agg')
 import pylab as plt
 import time
 import statistics
 import os
+import yaml
 
+warnings.filterwarnings('ignore')
+matplotlib.use('agg')
+
+# current directory
 current = os.getcwd()
 
 _, filename_1, filename_2 = sys.argv
@@ -21,10 +22,10 @@ dirname_2 = os.path.join(current, filename_1)
 
 # Baseline parameters
 default_threshold = 0.1
-threshold=default_threshold
+threshold = default_threshold
 metric = 'aps'
-max_iter =200
-stop_criterion= 'calculate'
+max_iter = 200
+stop_criterion = 'calculate'
 
 def plot_iteration(max_it, met_val):
     X = np.arange(1, max_it, 10)
@@ -62,42 +63,38 @@ def predict(num_iterations, th):
                     outF.write("\n")
 
 
-with open(dirname_1) as f:
-    for line in f:
-        if line.strip().startswith("#metric"):
-            _,metric_name = line.strip().split("\t")
-            metric = EvaluationMetric(metric_name.upper())
+with open(dirname_1, 'r') as f:
+    graph_topology = yaml.load(f, Loader=yaml.FullLoader)
 
-        if line.strip().startswith("#number.of.iterations"):
-            try:
-                s, max_iter_value = line.strip().split("\t")
-                max_iter = int(max_iter_value)
-            except ValueError:
-                print(f"Invalid number of iteration {max_iter_value}, set default value {max_iter}", file=sys.stderr)
+    metric = EvaluationMetric(graph_topology["metric"].upper())
+    stop_criterion = StopCriterion(graph_topology["stop.criterion"].upper())
 
-        if line.strip().startswith("#stop.criterion"):
-            _,criterion_name = line.strip().split("\t")
-            stop_criterion = StopCriterion(criterion_name.upper())
+    try:
+        vmax_iter = graph_topology["number.of.iterations"]
+        vmax_iter = int(vmax_iter)
+    except ValueError:
+        print(f"Invalid number of iteration {vmax_iter}, set default value {max_iter}", file=sys.stderr)
 
-        if line.strip().startswith("#score.threshold"):
-            _, th_value = line.strip().split("\t")
-            try:
-                threshold = float(th_value)
-                if not (0 <= threshold <= 1):
-                    raise ValueError()
-            except ValueError:
-                threshold = default_threshold
+    try:
+        threshold = graph_topology["score.threshold"]
+        threshold = int(threshold)
+        if not (0 <= threshold <= 1):
+            raise ValueError()
+    except ValueError:
+        print(f"Invalid threshold {threshold}, set default value {default_threshold}")
+        threshold = default_threshold
 
-print('\n'f"metric : {metric.value}")
-print(f"number of iterations : {max_iter}")
-print(f"stop criterion : {stop_criterion.value}")
-print(f"threshold : {threshold}")
+print("\nmetric :", metric.value)
+print("number of iterations : ", max_iter)
+print("stop criterion : ", stop_criterion.value)
+print("threshold : ", threshold)
 
 metric_vals = np.zeros(max_iter // 10)
 
 if stop_criterion == StopCriterion.MAXIMUM_METRIC:
     best_iter = 0
-    best_iter_arr = []  # contains the iterations with best performance from each of 5 validation runs (j cycle)
+    best_iter_arr = []  # contains the iterations with the best performance from each of 5 validation runs (j cycle)
+
     # cycle to find the stop criterion value
     for j in range(5):
         V = []
@@ -105,19 +102,26 @@ if stop_criterion == StopCriterion.MAXIMUM_METRIC:
             verbose = False
         elif j == 0:
             verbose = True
+
         network = Network(dirname_1, dirname_2, verbose)
+
         initial_error = network.get_error()
         print("Run number " + str(j + 1) + " of the algorithm")
+        start = time.time()
         print("initial error: {}".format(initial_error))
         for i in range(max_iter):
+            startIteration = time.time();
             network.update()
             if i % 10 == 0:
                 metric_vals[i // 10] = network.validate(metric)
             V.append(network.validate(metric))
-            print(f"iteration {i + 1}, {metric.value} = {V[-1]}")
+            endIteration = time.time();
+            print(f"iteration {i + 1}, {metric.value} = {V[-1]}, time = {endIteration - startIteration}")
+        end = time.time()
         plot_iteration(max_iter, metric_vals)
-        best_iter_arr.append(V.index(min(V)) if metric==EvaluationMetric.RMSE else V.index(max(V)))
+        best_iter_arr.append(V.index(min(V)) if metric == EvaluationMetric.RMSE else V.index(max(V)))
         best_iter = 0
+        print("Total time: ", end - start)
         time.sleep(2)  # used since otherwise random initialization gives the same result multiple times
 
     complete_plot(metric)
@@ -132,6 +136,7 @@ if stop_criterion == StopCriterion.MAXIMUM_METRIC:
 
 elif stop_criterion == StopCriterion.RELATIVE_ERROR:
     best_epsilon_arr = []
+
     # cycle to find the stop criterion value
     for j in range(5):
         epsilon = 0
@@ -141,12 +146,16 @@ elif stop_criterion == StopCriterion.RELATIVE_ERROR:
             verbose = False
         elif j == 0:
             verbose = True
+
         network = Network(dirname_1, dirname_2, verbose)
+
         initial_error = network.get_error()
         print("\nRun number " + str(j + 1) + " of the algorithm")
+        start = time.time()
         print("initial error: {}".format(initial_error))
         eps_iter = []
         for i in range(max_iter):
+            startIteration = time.time()
             network.update()
             error.append(network.get_error())
             V.append(network.validate(metric))
@@ -156,9 +165,12 @@ elif stop_criterion == StopCriterion.RELATIVE_ERROR:
                 epsilon = abs((error[-1] - error[-2]) / error[-2])
                 if epsilon < 0.001:
                     eps_iter.append(i)
-            print(f"iteration {i + 1}, relative error = {epsilon}")
-
+            endIteration = time.time();
+            print(f"iteration {i + 1}, relative error = {epsilon}, time = {endIteration - startIteration}")
+        end = time.time()
+        print("Total time: ", end - start)
         plot_iteration(max_iter, metric_vals)
+
         time.sleep(2)  # used since otherwise random initialization gives the same result multiple times
         best_epsilon_arr.append(eps_iter[0])
 

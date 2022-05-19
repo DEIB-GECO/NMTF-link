@@ -37,8 +37,8 @@ def parse_line(line):
 
 
 class AssociationMatrix():
-    def __init__(self, filename, leftds, rightds, left_sorted_terms, right_sorted_terms, main, mask, type_of_masking,
-                 verbose):
+    def __init__(self, filename, leftds, rightds, left_sorted_terms, right_sorted_terms, main,
+                 mask, type_of_masking, verbose):
         self.filename = filename
         self.leftds = leftds
         self.rightds = rightds
@@ -251,16 +251,14 @@ class AssociationMatrix():
                 den = np.linalg.multi_dot(
                     [self.G_right, self.S.transpose(), self.G_left.transpose(), self.G_left, self.S])
                 for am in self.dep_own_right_other_right:
-                    #self.G_right == am.G_right
                     num += np.linalg.multi_dot([am.association_matrix.transpose(), am.G_left, am.S])
                     den += np.linalg.multi_dot(
                         [self.G_right, am.S.transpose(), am.G_left.transpose(), am.G_left, am.S])
                 for am in self.dep_own_right_other_left:
-                    #self.G_right == am.G_left
                     num += np.linalg.multi_dot([am.association_matrix, am.G_right, am.S.transpose()])
                     den += np.linalg.multi_dot(
                         [self.G_right, am.S, am.G_right.transpose(), am.G_right, am.S.transpose()])
-                div = np.divide(num, den)
+                div = np.divide(num, den + sys.float_info.min)
                 return np.multiply(self.G_right, div)
 
             self.update_G_right = update_G_r
@@ -272,16 +270,14 @@ class AssociationMatrix():
                    [self.G_left, self.S, self.G_right.transpose(), self.G_right, self.S.transpose()])
 
                 for am in self.dep_own_left_other_left:
-                    #self.G_left == am.G_left
                     num += np.linalg.multi_dot([am.association_matrix, am.G_right, am.S.transpose()])
                     den += np.linalg.multi_dot(
                         [self.G_left, am.S, am.G_right.transpose(), am.G_right, am.S.transpose()])
                 for am in self.dep_own_left_other_right:
-                    #self.G_left == am.G_right
                     num += np.linalg.multi_dot([am.association_matrix.transpose(), am.G_left, am.S])
                     den += np.linalg.multi_dot(
                         [self.G_left, am.S.transpose(), am.G_left.transpose(), am.G_left, am.S])
-                div = np.divide(num, den)
+                div = np.divide(num, den + sys.float_info.min)
                 return np.multiply(self.G_left, div)
 
             self.update_G_left = update_G_l
@@ -290,7 +286,7 @@ class AssociationMatrix():
             num = np.linalg.multi_dot([self.G_left.transpose(), self.association_matrix, self.G_right])
             den = np.linalg.multi_dot(
                 [self.G_left.transpose(), self.G_left, self.S, self.G_right.transpose(), self.G_right])
-            div = np.divide(num, den)
+            div = np.divide(num, den + sys.float_info.min)
             return np.multiply(self.S, div)
 
         self.update_S = update_S

@@ -1,0 +1,15 @@
+#graph_topology.yaml file
+---
+  integration.strategy: intersection
+  initialization: kmeans
+  metric: Pearson
+  number.of.iterations: 300
+  type.of.masking: fully_random
+  normalization: min_max
+  stop.criterion: maximum_metric
+  score.threshold: 0.01
+  graph.datasets:
+    - nodes.left: people
+      nodes.right: hobbies
+      filename: graph2.txt
+      main: 1
