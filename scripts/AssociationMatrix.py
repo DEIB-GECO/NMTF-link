@@ -129,17 +129,11 @@ class AssociationMatrix():
                     np.count_nonzero(self.association_matrix)))
             if self.G_left is None:
                 with suppress_stdout():
-                    km = KMeans(n_clusters=self.k1, n_init=10).fit_predict(self.association_matrix.transpose())
-                    self.G_left = np.array(
-                        [np.mean([self.association_matrix[:, i] for i in range(len(km)) if km[i] == p], axis=0) for p in
-                         range(self.k1)]).transpose()
+                    self.G_left = KMeans(n_clusters=self.k1).fit_transform(self.association_matrix)
                     self.G_left_primary = True
             if self.G_right is None:
                 with suppress_stdout():
-                    km = KMeans(n_clusters=self.k2, n_init=10).fit_predict(self.association_matrix)
-                    self.G_right = np.array(
-                        [np.mean([self.association_matrix[i] for i in range(len(km)) if km[i] == p], axis=0) for p in
-                         range(self.k2)]).transpose()
+                    self.G_right = KMeans(n_clusters=self.k2).fit_transform(self.association_matrix.transpose())
                     self.G_right_primary = True
 
         for am in self.dep_own_left_other_left:
